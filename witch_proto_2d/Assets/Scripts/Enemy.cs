@@ -116,7 +116,7 @@ public class Enemy : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject == player) {
-            SceneManager.LoadScene("SampleScene"); // SceneManager.GetActiveScene().buildIndex
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 
         }
     }
 }
