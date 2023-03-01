@@ -55,6 +55,9 @@ public class Player : MonoBehaviour {
         rb.AddForce(new Vector2(horDir * speed, verDir * speed));
         if (rb.velocity.x > maxSpeed)  rb.velocity = new Vector2(maxSpeed, rb.velocity.y); // @TODO: does this enforce the wanted amount of restriction on diagonal movement too? hmm, double check
         if (rb.velocity.y > maxSpeed)  rb.velocity = new Vector2(rb.velocity.x, maxSpeed);
+
+        // update z coordinate to be in front / behind other objects
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
     

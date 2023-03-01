@@ -106,8 +106,13 @@ public class Enemy : MonoBehaviour {
             if (to_mode_wait) mode = "wait";
             if (to_mode_move) mode = "move";
 
-        } 
+        }
+
+        // update z coordinate to be in front / behind other objects
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
+
+
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject == player) {
