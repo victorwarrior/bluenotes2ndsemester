@@ -7,11 +7,13 @@ public class MainController : MonoBehaviour {
     // references
     public GameObject player;
     public GameObject enemyPrefab;
+    public GameObject mapCanvas;
 
     // constants
     public int numberOfEnemies = 48;
 
     // other
+    bool mapOnScreen = false;
 
     void Start() {
         for (int i = 0; i < numberOfEnemies; i++) {
@@ -23,6 +25,9 @@ public class MainController : MonoBehaviour {
     }
 
     void Update() {
-        
+        if (Input.GetKeyDown("m")) {
+            mapOnScreen = !mapOnScreen;
+            mapCanvas.SetActive(mapOnScreen);
+        }
     }
 }
