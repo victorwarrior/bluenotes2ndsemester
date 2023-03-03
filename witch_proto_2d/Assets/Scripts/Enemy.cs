@@ -89,21 +89,23 @@ public class Enemy : MonoBehaviour {
             }
             if (to_mode_attack) {
                 mode  = "attack";
-                timer = 0.8f;
+                //timer = 0.1f;
             }
 
 
         } else if (mode == "attack") {
 
-            // behaviour
-            if (timer > 0) {
-                timer -= Time.deltaTime;
-            } else {
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);                
+            // behaviour    
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);                
+            if (Vector2.Distance(transform.position, player.transform.position) <= (aggroRange + 1f)) {
+                to_mode_wait = true;
             }
 
             // transitions
-            if (to_mode_wait) mode = "wait";
+            if (to_mode_wait) {
+                mode  = "wait";
+                timer = Random.Range(4f, 30f);
+            }
             if (to_mode_move) mode = "move";
 
         }
