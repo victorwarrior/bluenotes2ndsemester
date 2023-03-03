@@ -10,9 +10,10 @@ public class Enemy : MonoBehaviour {
            Rigidbody2D rb;
 
     // constants
-    public float aggroRange   = 11.5f;
-    public float walkSpeed    = 2f;
-    public float followSpeed  = 7f;
+           float aggroRange   = 11.5f;
+           float deaggroRange = 15.5f;
+           float walkSpeed    = 0.04f;
+           float followSpeed  = 0.16f;
            float walkDistance = 20f;
 
     // other
@@ -77,7 +78,7 @@ public class Enemy : MonoBehaviour {
             if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
                 to_mode_attack = true;
             } else if (transform.position != walkPosition) {
-                transform.position = Vector3.MoveTowards(transform.position, walkPosition, walkSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, walkPosition, walkSpeed);
             } else {
                 to_mode_wait = true;
             }
@@ -96,9 +97,10 @@ public class Enemy : MonoBehaviour {
         } else if (mode == "attack") {
 
             // behaviour    
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, followSpeed * Time.deltaTime);                
-            if (Vector2.Distance(transform.position, player.transform.position) <= (aggroRange + 1f)) {
+            if (Vector2.Distance(transform.position, player.transform.position) >= 15) {
                 to_mode_wait = true;
+            } else {
+                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, followSpeed);    
             }
 
             // transitions
