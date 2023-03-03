@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour {
             if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
                 to_mode_attack = true;
             } else if (transform.position != walkPosition) {
-                transform.position = Vector3.MoveTowards(transform.position, walkPosition, walkSpeed);
+                transform.position = Vector2.MoveTowards(transform.position, walkPosition, walkSpeed);
             } else {
                 to_mode_wait = true;
             }
@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour {
             if (Vector2.Distance(transform.position, player.transform.position) >= 15) {
                 to_mode_wait = true;
             } else {
-                transform.position = Vector3.MoveTowards(transform.position, player.transform.position, followSpeed);    
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed);    
             }
 
             // transitions
