@@ -6,48 +6,42 @@ whitch_narrative_structure
 {
   "ifid": "11899774-A49B-4B01-B893-6BC6701245ED",
   "format": "Harlowe",
-  "format-version": "3.3.4",
-  "start": "Final ritual",
-  "zoom": 1
+  "format-version": "3.3.5",
+  "start": "The Druids' House",
+  "zoom": 0.3
 }
 
 
-:: Bridget banishes cu Sithe {"position":"200,450","size":"100,100"}
-[[Bridget receives the 1st rune]]
+:: Beatrix is kidnapped {"position":"1200,1075","size":"100,100"}
+As Bridget returns with the ingredients, she hears her mother Beatrix arguing with some townspeople. They are threatening her and forcing her to come and treat the beast now, not caring for her pleas that it will be impossible without the elixir. The guards pull her away, forcing her to join them. Leaving Bridget behind. 
+
+[[Follow the Christians]]
+[[Stay at the house]]
 
 
-:: Bridget banishes the Wulver {"position":"350,450","size":"100,100"}
-
-[[Bridget receives the 1st rune]]
-
-
-:: Bridget gets the final rune {"position":"750,175","size":"100,100"}
-Bridget completes a final test, and gets a new rune
-
-[[Tight deadline]]
+:: Bridget banishes cu Sithe {"position":"2825,500","size":"100,100"}
+[[Bridget gets the rune]]
 
 
-:: Bridget harmonizes nature {"position":"325,25","size":"100,100"}
-Here Bridget will perform a ritual which allows the Cu Sithe to have a place in nature, returning magical balance to the region
+:: Bridget banishes the Wulver {"position":"2825,375","size":"100,100"}
+[[Bridget gets the rune]]
 
 
-:: Bridget makes peace between the two creatures {"position":"475,450","size":"100,100"}
-[[Bridget receives the 1st rune]]
+:: Bridget gets the rune {"position":"3200,1075","size":"100,100"}
+[[Nuckelavee chase]]
 
 
-:: Bridget meets Wulver {"position":"125,275","size":"100,100"}
+:: Bridget makes peace between the two creatures {"position":"2825,250","size":"100,100"}
+[[Bridget gets the rune]]
+
+
+:: Bridget meets Wulver {"position":"2500,350","size":"100,100"}
 When Bridget meets Wulver, she will be introduced to his way of life, and the fact that it has been threatened by the appearance of the Cu sithe. The Wulver will try and compell bridget to get rid of the Cu sithe one way or another, by using her druidic prowess and rituals. Wulver gives Bridget some information/lore on the Cu sithe, like how if it barks 3 times, a person will be overcome with fear till the brink of death. The Wulver will in general be speaking of the evil nature of the Cu sithe.
 
-
-:: Bridget receives the 1st rune {"position":"350,650","size":"100,100"}
-<!--Can you choose to fight the Nuckelavee until it runs away?-->
-
-Bridget returns to the stone circle and this time, the ritual works. She gathers the power of her ancestors and koalesces it into a rune.
-[[Nuckelavee chase]] 
+[[Bridget stalks Cu Sithe]]
 
 
-
-:: Bridget stalks Cu Sithe {"position":"375,300","size":"100,100"}
+:: Bridget stalks Cu Sithe {"position":"2650,350","size":"100,100"}
 Bridget will find the Cu sithe, she will then stalk it, retreiving ingredients from it, which can be used for good or evil depending on the players choice. She will also be observing the behavior of the Cu sithe, maybe we will have a save the cat moment, revealing that the Cu sithe is not entirely evil in nature, and that it is indeed an existence, and maybe it can have a place in the world. Finally Bridget might be caught by the Cu sithe, and she will be confronted by it, and forced into a choice. This however should be noted goes against the gameplay previously introduced where the player is supposed to be careful when stalking the cu sithe. Thus if an encounter with the Cu sithe is forced, the player will have no reason to have been careful to begin with. On the other hand one could force the encounter later, and if the player were to have been un-careful when stalking and then gets caught, the cu sithe would attack the player, this will create natual animosity from the player upon the Cu sithe.
 
 
@@ -58,44 +52,105 @@ Bridget will find the Cu sithe, she will then stalk it, retreiving ingredients f
 [[Bridget makes peace between the two creatures]]
 
 
-:: Circle is still broken {"position":"1000,1300","size":"100,100"}
+:: Circle is still broken {"position":"2800,1025","size":"100,100"}
 As you return to the circle you notice thatt it is still broken. following its light leads you to a monster
 
 [[Meeting the monster]]
 
 
-:: Final ritual {"position":"1275,200","size":"100,100"}
+:: Continue through the woods {"position":"900,1075","size":"100,100"}
+[[Return home]]
+
+
+:: Crossing the stream of fresh water {"position":"1575,1175","size":"100,100"}
+After having crossed the stream of fresh water, Bridget is in distress and Macha starts talking to her.
+
+[[Discussion with Macha]]
+
+
+
+:: Defeating the monster {"position":"2650,1150","size":"100,100"}
+[[Bridget gets the rune]] 
+
+
+:: Discussion with Macha {"position":"1725,1100","size":"100,100"}
+Bridget discusses with the cat Macha (house familiar) about what to do. Macha insists that they must go as fast as possible, otherwise her mother will die, and the world is doomed. Bridget insists that she is far from being fully taught and thus completely ready.
+
+[[Exploration]]
+
+
+:: Exploration {"position":"1850,1100","size":"100,100"}
+Macha tells Bridget the background-story (mythos) to why their world is in decay. The Kingdom of Brian had exploited the Earth for too long, creating an imbalance and therefore provoking the dark side of the force. Their Great Protector has been cursed for unknown reasons and now its territory is filled with dark sea-creatures like the Nuckelavee. Macha also explains that Bridget must be careful showing her witchcraft as it's condemned by humans and might entice the dark creatures to fight. 
+
+<!--Ideally a lot of the exploration is spread out in the game. By actively talking with the cat (not optionally), you're able to build a more complex relationship with Macha-->
+
+[[Rune trial 1]]
+[[Rune trial 2]]
+[[Rune trial 3]]
+
+
+:: Explore the environment {"position":"2650,1575","size":"100,100"}
+As Bridget explores the environment she can/should spread the kelp as well.
+Bridget gets a good idea of where the streams of fresh water are and perhaps where she can hide.
+
+Bridget needs to make sure how to get to the stone circle upon setting the kelp on fire. She needs to follow a route which prevents the Nuckelavee from chasing her down.
+
+<!--It would be interesting if there were certian celtic creatures which you could interact with, and who would tell you that they were hiding from the Nuckelavee-->
+
+[[Set the kelp on fire]]
+
+
+:: Final ritual {"position":"4450,1100","size":"100,100"}
 Bridget completes the last ritual and removes the coruption from the beast.
 
 
-:: Hell no {"position":"1000,1175","size":"100,100"}
+:: Follow the Christians {"position":"1325,1225","size":"100,100"}
+As Bridget follows the Christians Macha is telling her to turn her focus on gathering the runes instead. It's hopeless to try making the Christians listen.
+
+[[Turn around]]
+[[Keep following the Christians]]
+
+
+:: Hell no {"position":"2650,975","size":"100,100"}
 You decide to send them away. As you return to the c
 
 [[Circle is still broken]]
 
 
-:: Help them anyway {"position":"1125,1300","size":"100,100"}
+:: Help them anyway {"position":"2800,750","size":"100,100"}
 They tell you thhat a monster has appeared and taken the energy from the stone circle to itself and offer to help you out in return for sharing your resources with them.
 
 [[They help you restore the circle]]
 
 
-:: Intermezzo {"position":"1150,875","size":"100,100"}
+:: Intermezzo 1 {"position":"3875,950","size":"100,100"}
+[[Rune trial 1]]
+[[Rune trial 2]]
+[[Rune trial 3]]
 
 
-[[Rune trial 2]] 
+:: Intermezzo 2 {"position":"3875,1075","size":"100,100"}
+[[Rune trial 1]]
+[[Rune trial 2]]
+[[Rune trial 3]]
 
 
-:: Leave Macha to die {"position":"925,350","size":"100,100"}
+:: Keep following the Christians {"position":"1450,1175","size":"100,100"}
+Having followed the Christians for some time suddenly the horses and the soldiers exclaims in fear: "The Nuckelavee". The Nuckelavee shows up and since the Christians seems to keep it at bay by throwing water at it the Nuckelavee quickly turns it's focus on Bridget instead. Macha tells Bridget to run to the stream of fresh water.
+
+[[Crossing the stream of fresh water]]
+
+
+:: Leave Macha to die {"position":"4150,1150","size":"100,100"}
 [[The final stone circle]]
 
 
-:: Macha Collapses {"position":"950,200","size":"100,100"}
-[[Save Macha<- Save Macha at the expense of "the Lifeforce"]]
-[[Leave Macha to die<- Spare "the Lifeforce" for later use and leave Macha to die]]
+:: Macha Collapses {"position":"4025,1100","size":"100,100"}
+[[Save Macha<- Save Macha at the expense of the runes]]
+[[Leave Macha to die<- Spare the runes for later use and leave Macha to die]]
 
 
-:: Meeting the Fear gorta {"position":"1000,1050","size":"100,100"}
+:: Meeting the Fear gorta {"position":"2500,900","size":"100,100"}
 You notice a large fire around which three famished humanoid creatures stand, warming themselves. As you approach, they turn around and ask with hoarse voices.
 		"Please, can you help us?"
         "Anything at all, please!"
@@ -107,34 +162,43 @@ You notice a large fire around which three famished humanoid creatures stand, wa
 [[Share your stuff]]
 
 
+:: Meeting the monster {"position":"2500,1150","size":"100,100"}
+[[Defeating the monster]]
 
-:: Meeting the monster {"position":"750,1175","size":"100,100"}
 
-
-
-:: Nuckelavee chase {"position":"900,500","size":"100,100"}
+:: Nuckelavee chase {"position":"3350,1075","size":"100,100"}
 After each minor ritual, theNuckalavee senses the magic and comes after you. This leaves the player with a choice:
+
+<!--The Nuckelavee chase will be different for each stone circle-->
 
 [[Stand and fight]]
 
 [[Run to the nearest freshwater stream]]
 
 
+:: Other solution {"position":"2800,900","size":"100,100"}
+[[Defeating the monster]] 
 
 
-:: Other solution {"position":"1250,1300","size":"100,100"}
+:: Return home {"position":"1050,1075","size":"100,100"}
+[[Beatrix is kidnapped]]
 
 
+:: Reward? {"position":"3650,1175","size":"100,100"}
+[[Stonecircle destroyed]]
 
-:: Reward? {"position":"900,750","size":"100,100"}
-[[Stonecircle destroyed]] 
 
-
-:: Ruined fields {"position":"525,150","size":"100,100"}
+:: Ruined fields {"position":"2500,1575","size":"100,100"}
 Abandoned houses. Half eaten cow corpses and dead crops. The fields here are dying. It is no wonder the circle doesn't work. This must be the work of the Nuckelavee. To restore the fields you need to burn Kelp. But burning Kelp will attract and enrage the creature.
+Macha warns Bridget:
+		"Once you burn this, the Nuckelavee will come running! Make sure you have an escape"
+
+[[Explore the environment]]
+
+<!--Should you maybe go to the shore to collect the kelp?-->
 
 
-:: Run to the nearest freshwater stream {"position":"1025,625","size":"100,100"}
+:: Run to the nearest freshwater stream {"position":"3500,1025","size":"100,100"}
 The Nuckelavee is allergic to freshwater which means that if you can just get to a stream of freshwater and cross it in time, The creature will have to walk all the way around, or build a dam to get over it.
 
 
@@ -142,17 +206,17 @@ The Nuckelavee is allergic to freshwater which means that if you can just get to
 <!--After this, we go back to the main game-->
 
 
-[[Stonecircle destroyed]] 
+[[Stonecircle destroyed]]
 
 
-:: Rune trial 1 {"position":"275,150","size":"100,100"}
+:: Rune trial 1 {"position":"2350,350","size":"100,100"}
 Bridget approaches the stone circle and tries to use it to gather energy. This fails however, and she is now forced to figure out why. Strange lights from the circle seems to point in a particular direction though.
 
 
-[[Bridget stalks Cu Sithe]]
+[[Bridget meets Wulver]]
 
 
-:: Rune trial 2 {"position":"1000,925","size":"100,100"}
+:: Rune trial 2 {"position":"2350,1075","size":"100,100"}
 Bridget approaches the stone circle and tries to use it to gather energy. This fails however, and she is now forced to figure out why. Strange lights from the circle seems to point in a particular direction though.
 
 <!--The theme here is destruction by over consuming-->
@@ -162,7 +226,7 @@ Bridget approaches the stone circle and tries to use it to gather energy. This f
 [[Meeting the monster<--If you instead follows the circle's light]]
 
 
-:: Rune trial 3 {"position":"625,25","size":"100,100"}
+:: Rune trial 3 {"position":"2350,1575","size":"100,100"}
 Bridget approaches the stone circle and tries to use it to gather energy. This fails however, and she is now forced to figure out why. Strange lights from the circle seems to point in a particular direction though.
 
 <!--The theme is pollution-->
@@ -170,15 +234,21 @@ Bridget approaches the stone circle and tries to use it to gather energy. This f
 [[Ruined fields]]
 
 
-
-:: Save Macha {"position":"1000,75","size":"100,100"}
+:: Save Macha {"position":"4150,1025","size":"100,100"}
 After establishing a spiritual bond between Bridget and Macha, she is now a fully-fledged Druid. Macha congratulates her and thanks her for saving it's life.
-Unfortunately, it is now obvious that "the Lifeforce" has become much weaker than before. And even more unfortunately, Bridget won't have time to re-establish it by going through the three rituals once again.
+Unfortunately, it is now obvious that the nature has become much weaker than before. And even more unfortunately, Bridget won't have time to regain the runes by going through the three rituals once again.
 
 [[The final stone circle<- Continue the quest towards the final ritual ground]]
 
 
-:: Share your stuff {"position":"1125,1175","size":"100,100"}
+:: Set the kelp on fire {"position":"2800,1575","size":"100,100"}
+Bridget performs some ritual which sets all the kelp on fire at once. The Nuckelavee is on its way and Bridget has to quickly run to the stone circle to complete the ritual.
+Following the path which she had plotted out in advance she is able to trap the Nuckelavee from chasing her down.
+
+[[Bridget gets the rune]]
+
+
+:: Share your stuff {"position":"2650,825","size":"100,100"}
 They don't seem to be asking for much, and you remember the stories of blessings from sharing your things. But as you give a small present to the first, it howls
 		"Come my friends! This one is generous!"
 
@@ -189,7 +259,7 @@ And from the dark woods suddenly several more corpse like people emerge.
 [[Other solution]]
 
 
-:: Stand and fight {"position":"900,625","size":"100,100"}
+:: Stand and fight {"position":"3500,1175","size":"100,100"}
 <!--Requires some kind of combat mechanic at the ritual site-->
 
 You damage the Nuckalavee at the risk/cost of resources. After taking enough damage it runs away.
@@ -197,29 +267,40 @@ You damage the Nuckalavee at the risk/cost of resources. After taking enough dam
 [[Reward?]]
 
 
-
-:: Stonecircle destroyed {"position":"1025,750","size":"100,100"}
-
-[[Intermezzo]]
+:: Stay at the house {"position":"1325,1000","size":"100,100"}
+[[Discussion with Macha]]
 
 
-:: The final stone circle {"position":"1475,75","size":"100,100"}
+:: Stonecircle destroyed {"position":"3650,1025","size":"100,100"}
+[[Intermezzo 1<-- If this is your first rune, go to Intermezzo 1]]
+[[Intermezzo 2<-- If this is your second rune, go to Intermezzo 2]]
+[[Tight deadline<-- If this is your third rune, go to "tight deadline" ]]
+
+
+
+:: The Druids' House {"position":"750,1075","size":"100,100"}
+Bridget, her Mother Beatrix and Beatrix' cat Macha walk out of their house talking about this !!THING!! that they need to do.
+Beatrix:
+		"And you're sure you packed enough candles?"
+
+[[Continue through the woods]]
+
+
+:: The final stone circle {"position":"4300,1100","size":"100,100"}
 [[Final ritual]]
 
 
-:: They help you restore the circle {"position":"1125,1450","size":"100,100"}
+:: They help you restore the circle {"position":"2950,825","size":"100,100"}
+[[Bridget gets the rune]]
 
 
-
-:: Tight deadline {"position":"750,300","size":"100,100"}
+:: Tight deadline {"position":"3875,1200","size":"100,100"}
 Bridget has collected enough energy to complete the final ritual, but she is running out of time. Nature is getting more corrupted by the hour meaning an increased number of shadow people to work around. The Nuckelavee is on her trail, and to make matters worse it is full moon soon. Somehow she has to navigate through her enemies and do the ritual before the next lunar cycle.
 
 This is shown by having more enemies appear, as well as more frequent encounters with the Nuckelavee.
 
-[[Macha Collapses]] 
+[[Macha Collapses]]
 
 
-
-
-:: Unavngiven passage {"position":"1075,250","size":"100,100"}
-
+:: Turn around {"position":"1450,1300","size":"100,100"}
+[[Discussion with Macha]]
