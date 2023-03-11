@@ -1,0 +1,65 @@
+:: StoryTitle
+whitch_narrative_structure
+
+
+:: StoryData
+{
+  "ifid": "11899774-A49B-4B01-B893-6BC6701245ED",
+  "format": "Harlowe",
+  "format-version": "3.3.5",
+  "start": "Final ritual",
+  "zoom": 1
+}
+
+
+:: Bridget banishes cu sithe {"position":"250,300","size":"100,100"}
+
+
+
+:: Bridget gets the final rune {"position":"500,200","size":"100,100"}
+Bridget completes a final test, and gets a new rune
+
+
+:: Bridget harmonizes nature {"position":"250,100","size":"100,100"}
+Here Bridget will perform a ritual which allows the Cu Sithe to have a place in nature, returning magical balance to the region
+
+
+:: Bridget meets Wulver {"position":"0,200","size":"100,100"}
+When Bridget meets Wulver, she will be introduced to his way of life, and the fact that it has been threatened by the appearance of the Cu sithe. The Wulver will try and compell bridget to get rid of the Cu sithe one way or another, by using her druidic prowess and rituals. Wulver gives Bridget some information/lore on the Cu sithe, like how if it barks 3 times, a person will be overcome with fear till the brink of death. The Wulver will in general be speaking of the evil nature of the Cu sithe.
+
+
+:: Bridget receives the 1st rune {"position":"350,200","size":"100,100"}
+
+
+
+:: Bridget stalks Cu Sithe {"position":"150,200","size":"100,100"}
+Bridget will find the Cu sithe, she will then stalk it, retreiving ingredients from it, which can be used for good or evil depending on the players choice. She will also be observing the behavior of the Cu sithe, maybe we will have a save the cat moment, revealing that the Cu sithe is not entirely evil in nature, and that it is indeed an existence, and maybe it can have a place in the world. Finally Bridget might be caught by the Cu sithe, and she will be confronted by it, and forced into a choice. This however should be noted goes against the gameplay previously introduced where the player is supposed to be careful when stalking the cu sithe. Thus if an encounter with the Cu sithe is forced, the player will have no reason to have been careful to begin with. On the other hand one could force the encounter later, and if the player were to have been un-careful when stalking and then gets caught, the cu sithe would attack the player, this will create natual animosity from the player upon the Cu sithe.
+
+
+:: Final ritual {"position":"1275,200","size":"100,100"}
+Bridget completes the last ritual and removes the coruption from the beast.
+
+
+:: Leave Macha to die\  {"position":"1000,325","size":"100,100"}
+[[The final stone circle ]]
+
+
+:: Macha Collapses {"position":"950,200","size":"100,100"}
+
+[[Save Macha <- Save Macha at the expense of "the Lifeforce"]]
+[[Leave Macha to die <- Spare "the Lifeforce" for later use and leave Macha to die]]
+
+
+:: Save Macha\  {"position":"1000,75","size":"100,100"}
+After establishing a spiritual bond between Bridget and Macha, she is now a fully-fledged Druid. Macha congratulates her and thanks her for saving it's life.
+Unfortunately, it is now obvious that "the Lifeforce" has become much weaker than before. And even more unfortunately, Bridget won't have time to re-establish it by going through the three rituals once again.
+
+[[The final stone circle <- Continue the quest towards the final ritual ground]]
+
+
+:: The final stone circle\  {"position":"1150,200","size":"100,100"}
+[[Final ritual]]
+
+
+:: Untitled Passage {"position":"1475,500","size":"100,100"}
+
