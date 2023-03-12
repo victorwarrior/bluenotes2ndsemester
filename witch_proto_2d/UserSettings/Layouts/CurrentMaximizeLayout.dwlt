@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 181
+  controlID: 62
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 182
+  controlID: 63
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 183
+  controlID: 64
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -524,9 +524,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 729.6109, y: 580.53534, z: -6.731981}
+    m_Target: {x: 42.324516, y: -23.364723, z: -0.56253445}
     speed: 2
-    m_Value: {x: 729.6109, y: 580.53534, z: -6.731981}
+    m_Value: {x: 42.324516, y: -23.364723, z: -0.56253445}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -577,9 +577,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 626.3605
+    m_Target: 9.422902
     speed: 2
-    m_Value: 626.3605
+    m_Value: 9.422902
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -672,21 +672,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\victo\Documents\Small Unity Projects\bluenotes2ndsemester\witch_proto_2d
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 24.333344}
-    m_SelectedIDs: d06d0000
-    m_LastClickedID: 28112
+    m_SelectedIDs: 666f0000
+    m_LastClickedID: 28518
     m_ExpandedIDs: 00000000d06d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
