@@ -2,10 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Item/Create New Item")]
-public class Items : MonoBehaviour
+/*public class Item 
 {
-    public int    id;
-    public string itemName;
-    public Sprite icon;
+  public enum ItemType
+    {
+        Nirnroot,
+    }
+
+    public ItemType itemType;
+    public int amount;
+
+    public Sprite GetSprite()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.Nirnroot: return ItemAssets.Instance.Nirnroot;
+        }
+    }
 }
+*/
