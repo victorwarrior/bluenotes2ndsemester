@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4968824244573370526}
   - component: {fileID: 2313142781668494437}
+  - component: {fileID: -3749469628353539931}
+  - component: {fileID: -3091526956479271265}
   m_Layer: 0
   m_Name: Statue
   m_TagString: Untagged
@@ -45,6 +47,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339022a5d879ab04badf8b9da75f0870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3749469628353539931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011459752032089065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19c5cc82a0696c4facd686d9c2602de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!70 &-3091526956479271265
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011459752032089065}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!1 &1151890218305624890
 GameObject:
   m_ObjectHideFlags: 0

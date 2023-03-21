@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -24,6 +25,10 @@ public class Player : MonoBehaviour {
     // other
     bool staminaRegenBool = false;
 
+    private Object StoneLight;
+
+    Transform child;
+
 
     void Start() {
 
@@ -43,6 +48,9 @@ public class Player : MonoBehaviour {
 
         bool keySprint    = Input.GetKey(KeyCode.LeftShift);
         bool keySprintEnd = Input.GetKeyUp(KeyCode.LeftShift);
+
+        bool keyLight     = Input.GetKeyDown("l");
+        bool keyLightEnd  = Input.GetKeyUp("l");
 
         // determines direction based on what keys are pressed @TODO: decide what pressing left then right should result in and then write something that shouldnt be touched again
         float horDir = 0f;
@@ -86,6 +94,36 @@ public class Player : MonoBehaviour {
 
         // update z coordinate to be in front / behind other objects
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+
+        // emits a light to activate the stone circles
+        StoneLight = Resources.Load("PlayerLight", typeof(GameObject));
+
+
+        //if (keyLightEnd)
+        //{
+        //    Destroy(EmitLight.GameObject);
+        //}
+        
+        if (keyLight)
+        {
+            GameObject EmitLight         = Instantiate (StoneLight) as GameObject;
+            EmitLight.transform.parent   = this.transform;
+            EmitLight.transform.position = this.transform.position;
+
+        }
+        if (keyLightEnd)
+        {
+            for (int i = 0; i < this.transform.childCount; i++)
+            {
+                child = this.transform.GetChild(i);
+                if (child.name == "PlayerLight(Clone)")
+                {
+                    Destroy(child.gameObject);
+                }
+
+            }
+        }
+
     }
 
     
