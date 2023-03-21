@@ -2,23 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class Item 
+[CreateAssetMenu(fileName = "New Item", menuName = "Item/Create New Item")]
+public class Item : ScriptableObject
 {
-  public enum ItemType
-    {
-        Nirnroot,
-    }
-
-    public ItemType itemType;
-    public int amount;
-
-    public Sprite GetSprite()
-    {
-        switch (itemType)
-        {
-            default:
-            case ItemType.Nirnroot: return ItemAssets.Instance.Nirnroot;
-        }
-    }
+    public int id;
+    public string itemName;
+    public Sprite icon;
 }
-*/
