@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -33,16 +34,16 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(item.gameObject);
         }
-        /*
+        
         foreach (var item in Items)
         {
-            GameObject obj = Instantiate(InventoryItem, ItemContent);
-            //var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
-            var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
+            GameObject obj    = Instantiate(InventoryItem, ItemContent);
+            TMP_Text itemName = obj.transform.Find("ItemName").GetComponent<TMP_Text>();
+            Image itemIcon    = obj.transform.Find("ItemIcon").GetComponent<Image>();
 
-           // itemName.text = itemIcon.ItemName;
+            itemName.text   = item.itemName;
             itemIcon.sprite = item.icon;
-        }*/
+        }
     }
     
 }
