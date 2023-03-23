@@ -6,18 +6,13 @@ public class ItemPickup : MonoBehaviour
 {
     public Item Item;
 
-    void Pickup()
-    {
-        InventoryManager.Instance.Add(Item);
-        Destroy(gameObject);
-        Debug.Log("Item picked up");
-    }
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            //Pickup() // kunne ikke se en grund til at det her var en method... - Victor
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<Player>())
-        {
-            Pickup();
+            Debug.Log("Item picked up");
+            Destroy(gameObject);
+            InventoryManager.Instance.Add(Item);
         }
     }
 }
