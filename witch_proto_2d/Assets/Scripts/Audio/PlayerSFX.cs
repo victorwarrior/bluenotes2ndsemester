@@ -23,7 +23,7 @@ public class PlayerSFX : MonoBehaviour
         if (Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d"))
         {
             StartCoroutine(MovementPlayer());
-            Debug.Log("coroutine started");
+            //Debug.Log("coroutine started");
         }
         else if (!(Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")))
         {
@@ -40,7 +40,7 @@ public class PlayerSFX : MonoBehaviour
             {
                 audioSource.clip = audioClip2;
                 waitingTime      = audioSource.clip.length;
-                Debug.Log("Sound playing");
+                //Debug.Log("Sound playing");
             }
             else if(audioSource.clip == audioClip2)
             {
