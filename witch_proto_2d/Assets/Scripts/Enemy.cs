@@ -10,18 +10,18 @@ public class Enemy : MonoBehaviour {
            Rigidbody2D rb;
 
     // constants
-           float aggroRange   = 11.5f;
-           float deaggroRange = 15.5f;
-           float walkSpeed    = 0.04f;
-           float followSpeed  = 0.16f;
-           float walkDistance = 20f;
-           int   enemyType    = 0;
+           float   aggroRange     = 11.5f;
+           float   deaggroRange   = 15.5f;
+           float   walkSpeed      = 0.04f;
+           float   followSpeed    = 0.16f;
+           float   walkDistance   = 20f;
+           int     enemyType      = 0;
 
     // other
-    public float   timer        = 0f;
-           Vector3 walkPosition = new Vector3(0f, 0f, 0f);
-           string  mode         = "";
-    Vector2 chaseDirection;
+    public float   timer          = 0f;
+           Vector3 walkPosition   = new Vector3(0f, 0f, 0f);
+           string  mode           = "";
+           Vector2 chaseDirection;
 
 
     void Start() {
