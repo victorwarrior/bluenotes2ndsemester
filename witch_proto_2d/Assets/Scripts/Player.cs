@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
     Transform child;
 
     // constants               // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
-    float speed       = 68f;   // how fast you accelerate, rigidbody velocity is the real measurement of speed
+    float speed       = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
     float maxSpeed    = 8f;    // top speed
     float sprintBoost = 1.75f; // speed * sprintBoost = sprinting speed, max speed * sprintBoost = top sprinting speed 
     
@@ -23,6 +23,8 @@ public class Player : MonoBehaviour {
 
     // other
     bool  staminaRegenBool = false;
+    bool latestVerIsUp     = false;
+    bool latestHorIsRight  = false;
 
     public float xVelForDisplay = 0f;
     public float xVelForDisplayPreCalc = 0f;
@@ -46,10 +48,14 @@ public class Player : MonoBehaviour {
     void FixedUpdate() {
 
         // checks and stores what keys are pressed
-        bool keyUp        = Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow);
-        bool keyDown      = Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow);
-        bool keyLeft      = Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow);
-        bool keyRight     = Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow);
+        bool keyUp    = Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow);
+        bool keyDown  = Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow);
+        bool keyLeft  = Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow);
+        bool keyRight = Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow);
+        if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))    latestVerIsUp    = true;
+        if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow))  latestVerIsUp    = false;
+        if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))  latestHorIsRight = false;
+        if (Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow)) latestHorIsRight = true;
 
         bool keySprint    = Input.GetKey(KeyCode.LeftShift);
         bool keySprintEnd = Input.GetKeyUp(KeyCode.LeftShift);
@@ -58,25 +64,23 @@ public class Player : MonoBehaviour {
         bool keyLightEnd  = Input.GetKeyUp("l");
 
         // determines direction based on what keys are pressed @TODO: decide what pressing left then right should result in and then write something that shouldnt be touched again
+        bool isMovingDiagonally = false;
+
         float horDir = 0f;
         float verDir = 0f;
-        if (keyUp)   verDir += 1f;
-        if (keyDown) verDir += -1f;
-        if (keyLeft) {
-            if (verDir == 0) {
-                horDir += -1f;
-            } else {
-                horDir = -0.70710678118654f; // -cos(45), so you don't travel faster when inputting a diagonal direction
-                verDir =  0.70710678118654f * verDir;
-            }
-        }
-        if (keyRight) {
-            if (verDir == 0) {
-                horDir += 1f;
-            } else {
-                horDir = 0.70710678118654f;
-                verDir = 0.70710678118654f * verDir;
-            }
+
+        if (keyUp)    verDir =  1f;
+        if (keyDown)  verDir = -1f;
+        if (keyRight) horDir =  1f;
+        if (keyLeft)  horDir = -1f;
+        if (keyDown && keyUp)    verDir = (latestVerIsUp) ? 1f : -1f;
+        if (keyLeft && keyRight) horDir = (latestHorIsRight) ? 1f : -1f;
+
+        if ((keyDown || keyUp || keyRight || keyLeft)
+        &&  (verDir + horDir == 0f || verDir + horDir == 2f || verDir + horDir == -2f)) {
+            horDir = horDir * 0.70710678118654f; // cos(45)
+            verDir = verDir * 0.70710678118654f; // cos(45)
+            isMovingDiagonally = true;
         }
 
         // moves the character in the determined direction, possibly sprint boosted
@@ -99,10 +103,17 @@ public class Player : MonoBehaviour {
         xVelForDisplayPreCalc = rb.velocity.x;
         yVelForDisplayPreCalc = rb.velocity.y;
 
-        if (rb.velocity.x > (maxSpeed * spdMultiplier))       rb.velocity = new Vector2((maxSpeed * spdMultiplier), rb.velocity.y); // @TODO: does this enforce the wanted amount of restriction on diagonal movement too? hmm, double check
-        else if (rb.velocity.x < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(-(maxSpeed * spdMultiplier), rb.velocity.y);
-        if (rb.velocity.y > (maxSpeed * spdMultiplier))       rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * spdMultiplier));
-        else if (rb.velocity.y < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * spdMultiplier));
+        if (isMovingDiagonally == false) {
+            if (rb.velocity.x > (maxSpeed * spdMultiplier))       rb.velocity = new Vector2((maxSpeed * spdMultiplier), rb.velocity.y);
+            else if (rb.velocity.x < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(-(maxSpeed * spdMultiplier), rb.velocity.y);
+            if (rb.velocity.y > (maxSpeed * spdMultiplier))       rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * spdMultiplier));
+            else if (rb.velocity.y < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * spdMultiplier));
+        } else {
+            if (rb.velocity.x > (maxSpeed * 0.70710678118654f * spdMultiplier))       rb.velocity = new Vector2((maxSpeed * 0.70710678118654f * spdMultiplier), rb.velocity.y);
+            else if (rb.velocity.x < -(maxSpeed * 0.70710678118654f * spdMultiplier)) rb.velocity = new Vector2(-(maxSpeed * 0.70710678118654f * spdMultiplier), rb.velocity.y);
+            if (rb.velocity.y > (maxSpeed * 0.70710678118654f * spdMultiplier))       rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * 0.70710678118654f * spdMultiplier));
+            else if (rb.velocity.y < -(maxSpeed * 0.70710678118654f * spdMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * 0.70710678118654f * spdMultiplier));            
+        }
 
         xVelForDisplay = rb.velocity.x;
         yVelForDisplay = rb.velocity.y;
