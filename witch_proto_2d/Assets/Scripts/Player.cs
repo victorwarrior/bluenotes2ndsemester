@@ -10,11 +10,11 @@ public class Player : MonoBehaviour {
     Transform child;
 
     // constants               // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
-    float speed       = 40; // how fast you accelerate
-    float maxSpeed    = 100f;  // top speed
-    float sprintBoost = 1.75f;  // speed * sprintBoost = sprinting speed, max speed * sprintBoost = top sprinting speed 
+    float speed       = 68f;   // how fast you accelerate, rigidbody velocity is the real measurement of speed
+    float maxSpeed    = 8f;    // top speed
+    float sprintBoost = 1.75f; // speed * sprintBoost = sprinting speed, max speed * sprintBoost = top sprinting speed 
     
-    float friction    = 6.05f; // used to make the character slow down, so it eventually stands still no keys are being pressed
+    float friction    = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
     
     int stamina       = 1000;  // used for sprinting
     int staminaMax    = 1000;  
@@ -25,8 +25,8 @@ public class Player : MonoBehaviour {
     bool  staminaRegenBool = false;
 
     public float xVelForDisplay = 0f;
-    public float yVelForDisplay = 0f;
     public float xVelForDisplayPreCalc = 0f;
+    public float yVelForDisplay = 0f;
     public float yVelForDisplayPreCalc = 0f;
 
     Object     stoneLight;
@@ -81,12 +81,12 @@ public class Player : MonoBehaviour {
 
         // moves the character in the determined direction, possibly sprint boosted
 
-        float speedMultiplier = 1f;
+        float spdMultiplier = 1f;
         if (keySprintEnd) staminaRegenBool = true;
 
         if (keySprint && stamina >= staminaDrain && (keyDown || keyUp || keyRight || keyLeft)) {
             stamina         -= staminaDrain;
-            speedMultiplier  = sprintBoost;
+            spdMultiplier  = sprintBoost;
             staminaRegenBool = false;
         } else if (stamina <= staminaMax && staminaRegenBool) {
             if (stamina < 0) stamina = 0;
@@ -94,13 +94,15 @@ public class Player : MonoBehaviour {
             if (stamina > staminaMax) stamina = staminaMax;
         }
 
-        rb.AddForce(new Vector2(horDir * speed * speedMultiplier, verDir * speed * speedMultiplier));
+        rb.AddForce(new Vector2(horDir * speed * spdMultiplier, verDir * speed * spdMultiplier));
 
         xVelForDisplayPreCalc = rb.velocity.x;
         yVelForDisplayPreCalc = rb.velocity.y;
 
-        if (rb.velocity.x > (maxSpeed * speedMultiplier)) rb.velocity = new Vector2((maxSpeed * speedMultiplier), rb.velocity.y); // @TODO: does this enforce the wanted amount of restriction on diagonal movement too? hmm, double check
-        if (rb.velocity.y > (maxSpeed * speedMultiplier)) rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * speedMultiplier));
+        if (rb.velocity.x > (maxSpeed * spdMultiplier))       rb.velocity = new Vector2((maxSpeed * spdMultiplier), rb.velocity.y); // @TODO: does this enforce the wanted amount of restriction on diagonal movement too? hmm, double check
+        else if (rb.velocity.x < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(-(maxSpeed * spdMultiplier), rb.velocity.y);
+        if (rb.velocity.y > (maxSpeed * spdMultiplier))       rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * spdMultiplier));
+        else if (rb.velocity.y < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * spdMultiplier));
 
         xVelForDisplay = rb.velocity.x;
         yVelForDisplay = rb.velocity.y;
