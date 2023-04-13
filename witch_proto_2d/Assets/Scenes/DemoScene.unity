@@ -14699,3 +14699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97faa8badc8b3d74b8dcef4569bcf71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  xVelForDisplay: 0
+  xVelForDisplayPreCalc: 0
+  yVelForDisplay: 0
+  yVelForDisplayPreCalc: 0

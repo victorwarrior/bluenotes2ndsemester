@@ -117,7 +117,8 @@ public class Enemy : MonoBehaviour {
                 {
                     //chaseDirection = player.transform.position;
                     // StartCoroutine(Attacking());
-                    rb.velocity = chaseDirection * 2 * followSpeed;
+                    //rb.velocity = chaseDirection * 2 * followSpeed;
+                    transform.position = Vector2.MoveTowards(transform.position, chaseDirection * 2, 2*followSpeed);
                 }
             }
 
