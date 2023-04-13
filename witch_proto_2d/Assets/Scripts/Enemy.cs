@@ -25,13 +25,14 @@ public class Enemy : MonoBehaviour {
 
 
     void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
         rb      = GetComponent<Rigidbody2D>();
         rb.drag = 5.25f;
 
         mode    = "wait";
         timer   = Random.Range(0f, 10f);
 
-        transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
+        //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
 
         enemyType = Random.Range(0, 2);
     }
@@ -142,7 +143,7 @@ public class Enemy : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        if (col.gameObject == player) {
+        if (col.gameObject.tag == "Player") {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 
         }
     }
