@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour {
 
         //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
 
-        enemyType = Random.Range(0, 2);
+        //enemyType = Random.Range(0, 2);
     }
 
 
