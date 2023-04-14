@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4011775791173301368}
   - component: {fileID: 6784596100043746125}
   - component: {fileID: 3245016089347316672}
+  - component: {fileID: 581005218013280425}
+  - component: {fileID: 4281039553516751206}
   m_Layer: 0
   m_Name: Rocks
   m_TagString: Untagged
@@ -111,6 +113,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.135417, y: 0.29281467}
   m_EdgeRadius: 0
+--- !u!114 &581005218013280425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977800360091717538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad1fbb4be5b7534ab02621ef26f844f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pushSpeed: 1
+  Player: {fileID: 7081135925501212638, guid: 101ca72e2e9a27741b523df181b97873, type: 3}
+--- !u!50 &4281039553516751206
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5977800360091717538}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0
+  m_AngularDrag: 1000
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &8415237220899629096
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +158,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5908861688197374233}
   - component: {fileID: 2563345597019067258}
-  - component: {fileID: 7243311330671211211}
   m_Layer: 0
   m_Name: Stones
   m_TagString: Untagged
@@ -157,17 +193,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339022a5d879ab04badf8b9da75f0870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7243311330671211211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8415237220899629096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad1fbb4be5b7534ab02621ef26f844f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushSpeed: 0
-  Player: {fileID: 7081135925501212638, guid: 101ca72e2e9a27741b523df181b97873, type: 3}
