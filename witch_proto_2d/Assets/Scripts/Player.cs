@@ -7,20 +7,20 @@ public class Player : MonoBehaviour {
 
     // references
     Rigidbody2D rb;
-    Transform child;
+    Transform   child;
 
     // constants                    // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
     float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
     float maxSpeed         = 7.6f;  // top speed
     float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
     
-    float friction    = 6.5f;       // used to make the character slow down, so it eventually stands still no keys are being pressed
+    float friction = 6.5f;          // used to make the character slow down, so it eventually stands still no keys are being pressed
          
-    public int stamina       = 1000;       // used for sprinting
-    int staminaMax    = 1000;       
-    int staminaMin    = 100;        // can't sprint if below this unless you're already sprinting
-    int staminaDrain  = 8;          // how much stamina is used per tick when sprinting
-    int staminaRegen  = 1;          // how much stamina is gained when not sprinting
+    int stamina      = 1000;        // used for sprinting
+    int staminaMax   = 1000;       
+    int staminaMin   = 100;         // can't sprint if below this unless you're already sprinting
+    int staminaDrain = 8;           // how much stamina is used per tick when sprinting
+    int staminaRegen = 1;           // how much stamina is gained when not sprinting
 
     // debug
     public float xVelForDisplay        = 0f;
@@ -29,6 +29,14 @@ public class Player : MonoBehaviour {
     public float yVelForDisplayPreCalc = 0f;
 
     // other
+    bool keyUp       = false;
+    bool keyDown     = false;
+    bool keyLeft     = false;
+    bool keyRight    = false;
+    bool keySprint   = false;
+    bool keyLight    = false;
+    bool keyLightEnd = false;
+
     bool staminaRegenBool      = false;
     bool staminaExhausted      = false;
     bool latestSprintIsRelease = false;
@@ -39,13 +47,29 @@ public class Player : MonoBehaviour {
     GameObject emitLight; 
 
 
-
     void Start() {
 
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction; 
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject)); // @NOTE: this line was previously in FixedUpdate - it only needs to happen once though! -Victor
 
+    }
+
+
+    void Update() {
+        // checks and stores what keys are pressed
+        keyUp    = Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow);
+        keyDown  = Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow);
+        keyLeft  = Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow);
+        keyRight = Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow);
+        if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))    latestVerIsUp    = true;
+        if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow))  latestVerIsUp    = false;
+        if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))  latestHorIsRight = false;
+        if (Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow)) latestHorIsRight = true;
+        
+        keySprint   = Input.GetKey(KeyCode.LeftShift);
+        keyLight    = Input.GetKeyDown("l");
+        keyLightEnd = Input.GetKeyUp("l");
     }
 
 
