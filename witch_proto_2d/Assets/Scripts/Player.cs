@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     // references
     Rigidbody2D rb;
     Transform   child;
+
+    public Image staminaBar;
 
     // constants                    // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
     float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
@@ -57,6 +60,7 @@ public class Player : MonoBehaviour {
 
 
     void Update() {
+
         // checks and stores what keys are pressed
         keyUp    = Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow);
         keyDown  = Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow);
@@ -70,25 +74,11 @@ public class Player : MonoBehaviour {
         keySprint   = Input.GetKey(KeyCode.LeftShift);
         keyLight    = Input.GetKeyDown("l");
         keyLightEnd = Input.GetKeyUp("l");
+        
     }
 
 
     void FixedUpdate() {
-
-        // checks and stores what keys are pressed
-        bool keyUp    = Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow);
-        bool keyDown  = Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow);
-        bool keyLeft  = Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow);
-        bool keyRight = Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow);
-        if (Input.GetKeyDown("w") || Input.GetKeyDown(KeyCode.UpArrow))    latestVerIsUp    = true;
-        if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow))  latestVerIsUp    = false;
-        if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))  latestHorIsRight = false;
-        if (Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow)) latestHorIsRight = true;
-
-        bool keySprint = Input.GetKey(KeyCode.LeftShift);
-        
-        bool keyLight     = Input.GetKeyDown("l");
-        bool keyLightEnd  = Input.GetKeyUp("l");
 
         // determines direction based on what keys are pressed
         bool isMovingDiagonally = false;
@@ -122,11 +112,15 @@ public class Player : MonoBehaviour {
             staminaRegenBool = false;
             stamina          = (stamina <= 0) ? 0 : stamina;
             staminaExhausted = (stamina <= 0) ? true : false;
-        }
+            
+            staminaBar.fillAmount = stamina / staminaMax;
+            }
 
         if (staminaRegenBool) {
             stamina += staminaRegen;
             if (stamina > staminaMax) stamina = staminaMax;
+
+            staminaBar.fillAmount = stamina / 100f;
         }
 
         rb.AddForce(new Vector2(horDir * speed * spdMultiplier, verDir * speed * spdMultiplier));
