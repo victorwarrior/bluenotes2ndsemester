@@ -16,8 +16,7 @@ public class Player : MonoBehaviour {
     float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
     float maxSpeed         = 7.6f;  // top speed
     float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
-    
-    float friction = 6.5f;          // used to make the character slow down, so it eventually stands still no keys are being pressed
+    float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
          
     int stamina      = 1000;        // used for sprinting
     int staminaMax   = 1000;       
@@ -101,26 +100,23 @@ public class Player : MonoBehaviour {
         }
 
         // moves the character in the determined direction, possibly sprint boosted
-
         float spdMultiplier = 1f;
         staminaRegenBool    = (stamina == staminaMax) ? false : true;
+
         if (staminaExhausted) staminaExhausted = (stamina >= staminaMin) ? false : true;
         
         if (keySprint && stamina >= staminaDrain && (keyDown || keyUp || keyRight || keyLeft) && staminaExhausted == false) {
-            stamina          = stamina - staminaDrain;
-            spdMultiplier    = sprintMultiplier;
-            staminaRegenBool = false;
-            stamina          = (stamina <= 0) ? 0 : stamina;
-            staminaExhausted = (stamina <= 0) ? true : false;
-            
-            staminaBar.fillAmount = stamina / staminaMax;
+            stamina               = stamina - staminaDrain;
+            spdMultiplier         = sprintMultiplier;
+            staminaRegenBool      = false;
+            stamina               = (stamina <= 0) ? 0 : stamina;
+            staminaExhausted      = (stamina <= 0) ? true : false;
+            staminaBar.fillAmount = (float) stamina / (float) staminaMax;
             }
 
         if (staminaRegenBool) {
-            stamina += staminaRegen;
-            if (stamina > staminaMax) stamina = staminaMax;
-
-            staminaBar.fillAmount = stamina / 100f;
+            stamina               = (stamina > staminaMax) ? staminaMax : stamina + staminaRegen;
+            staminaBar.fillAmount = (float) stamina / (float) staminaMax;
         }
 
         rb.AddForce(new Vector2(horDir * speed * spdMultiplier, verDir * speed * spdMultiplier));
@@ -159,10 +155,8 @@ public class Player : MonoBehaviour {
                 if (child.name == "PlayerLight(Clone)") {
                     Destroy(child.gameObject);
                 }
-
             }
         }
-
 
     }
 
