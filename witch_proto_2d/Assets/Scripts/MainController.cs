@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainController : MonoBehaviour {
     
@@ -30,5 +31,10 @@ public class MainController : MonoBehaviour {
             mapOnScreen = !mapOnScreen;
             mapCanvas.SetActive(mapOnScreen);
         }
+        
+        if (Input.GetKeyDown("r")) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
     }
 }
