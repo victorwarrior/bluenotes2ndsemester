@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
     float deaggroRange = 15.5f;
     float walkSpeed    = 0.04f;
     float followSpeed  = 0.16f;
-    float dashSpeed    = 0.24f;
+    float dashSpeed    = 0.36f;
     float walkDistance = 20f;
 
     // other
@@ -54,7 +54,6 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "wait") {
 
-            // behaviour
             timer -= Time.deltaTime;
 
             if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
@@ -65,7 +64,6 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "move") {
 
-            // behaviour
             if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
                 nextMode = "attack";
             } else if (transform.position != walkPosition) {
@@ -76,7 +74,7 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "attack") {
 
-            // behaviour
+            timer -= Time.deltaTime;
             if (Vector2.Distance(transform.position, player.transform.position) >= 15) {
                 nextMode = "wait";
             } else {
@@ -84,8 +82,8 @@ public class Enemy : MonoBehaviour {
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed);
                 }
                 else if (type == 1) {
-                    if (transform.position != new Vector3(chaseDirection.x, chaseDirection.y, transform.position.z)) { // @BUG: @TODO: if two chase you they can get stuck and never reach this point. anyway the dash should go past the player and also be based a fixed time -Victor 
-                        transform.position = Vector2.MoveTowards(transform.position, chaseDirection, dashSpeed);
+                    if (timer > 0f) {
+                        transform.Translate(dashSpeed * chaseDirection);
                     } else {
                         nextMode = "stunned";
                     }
@@ -94,7 +92,6 @@ public class Enemy : MonoBehaviour {
         
         } else if (mode == "stunned") {
 
-            // behaviour
             timer -= Time.deltaTime;
 
             if (timer <= 0) {
@@ -141,7 +138,9 @@ public class Enemy : MonoBehaviour {
                 case "move":
                 case "attack":
                 case "stunned":
-                    chaseDirection = new Vector2(player.transform.position.x, player.transform.position.y);
+                    timer = 0.85f;
+                    chaseDirection = (new Vector2(player.transform.position.x, player.transform.position.y)
+                                     -new Vector2(transform.position.x, transform.position.y)).normalized;
                     break;
             }
         } else if (nextMode == "stunned") {
@@ -151,7 +150,7 @@ public class Enemy : MonoBehaviour {
                 case "move":
                 case "attack":
                 case "stunned":
-                    timer = 0.8f;
+                    timer = 0.7f;
                     break;
             }
         }
