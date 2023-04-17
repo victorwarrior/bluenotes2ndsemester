@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Nuckelavee : MonoBehaviour
 {
     //references
    public GameObject player;
    public GameObject enemy;
+          TrailRenderer mudTrail;
+          EdgeCollider2D mudCollider;
           Rigidbody2D rb;
 
     //vectors
@@ -15,32 +18,37 @@ public class Nuckelavee : MonoBehaviour
 
     private float spawnTime;
     private float enemyCallTime;
-    private float enemyCallCD;
-    private float enemyCallCDAdd;
-    private int   enemySpawnNumber;
+    private float enemyCallCD = 15;
+    private float enemyCallCDAdd = 15;
+    private int   enemySpawnNumber = 4;
 
     private float dashTime;
-    private float dashCD;
-    private float dashCDAdd;
-    private float dashSpeed;
+    private float dashCD = 10f;
+    private float dashCDAdd = 10f;
+    private float dashSpeed = 0.3f;
 
     private float distanceToPlayer;
-    private float followSpeed;
+    private float followSpeed = 0.12f;
 
-    public float dashDistance;
-    public float dashPositionScale;
-    public float spawnRangeMaxX;
-    public float spawnRangeMaxY;
-    public float spawnRangeMinX;
-    public float spawnRangeMinY;
+    public float dashDistance = 11f;
+    public float dashPositionScale = 1.1f;
+    public float spawnRangeMaxX = 30f;
+    public float spawnRangeMaxY = 30f;
+    public float spawnRangeMinX = 15f;
+    public float spawnRangeMinY = 15f;
 
     private bool dashMode;
     // Start is called before the first frame update
     void Start()
     {
         spawnTime      = Time.time;
-        
         enemyCallTime  = spawnTime;
+
+        mudTrail = this.GetComponent<TrailRenderer>();
+
+        GameObject colliderObject = new GameObject("TrailCollider", typeof(EdgeCollider2D));
+        mudCollider = colliderObject.GetComponent<EdgeCollider2D>();
+        mudCollider.isTrigger = true;
     }
 
     
@@ -54,7 +62,7 @@ public class Nuckelavee : MonoBehaviour
             dashMode = true;
             dashPosition = player.transform.position*dashPositionScale;
         }
-        else
+        else if (dashTime < dashCD)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed);
         }
@@ -69,6 +77,9 @@ public class Nuckelavee : MonoBehaviour
                 dashCD = dashTime + dashCDAdd;
             }
         }
+
+        //Call method which creates trail collider
+        SetColliderPointsFromTrail(mudTrail, mudCollider);
     }
 
     void Update()
@@ -87,4 +98,13 @@ public class Nuckelavee : MonoBehaviour
         }
     }
 
+    void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D collider)
+    {
+        List<Vector2> points = new List<Vector2>();
+        for(int position = 0; position < trail.positionCount; position++)
+        {
+            points.Add(trail.GetPosition(position));
+        }
+        collider.SetPoints(points);
+    }
 }

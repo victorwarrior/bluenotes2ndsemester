@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5003429528163324788, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 25.6
       objectReference: {fileID: 0}
     - target: {fileID: 5003429528163324788, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -29.3
       objectReference: {fileID: 0}
     - target: {fileID: 5003429528163324788, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
       propertyPath: m_LocalPosition.z
@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557128604185311158, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
       propertyPath: m_Name
-      value: Angel (1) Variant
+      value: Nuckelavee
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5439364788507015392, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
@@ -63,20 +63,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6557128604185311158, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
   m_PrefabInstance: {fileID: 5541421419596104154}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8729822133788238695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1592177304241501804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be94cd1c5a051e4697d0d378434ce1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashDistance: 0
-  dashPositionScale: 0
 --- !u!96 &2042731196365806780
 TrailRenderer:
   serializedVersion: 2
@@ -176,3 +162,23 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &8729822133788238695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592177304241501804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be94cd1c5a051e4697d0d378434ce1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 7081135925501212638, guid: 101ca72e2e9a27741b523df181b97873, type: 3}
+  enemy: {fileID: 6557128604185311158, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
+  dashDistance: 0
+  dashPositionScale: 0
+  spawnRangeMaxX: 0
+  spawnRangeMaxY: 0
+  spawnRangeMinX: 0
+  spawnRangeMinY: 0
