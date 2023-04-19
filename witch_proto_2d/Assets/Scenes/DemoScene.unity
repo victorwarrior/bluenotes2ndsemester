@@ -9318,6 +9318,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nuckelavee
       objectReference: {fileID: 0}
+    - target: {fileID: 1592177304241501804, guid: ed9f85f9aa2a70c43a0cf377399d1efa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5445482205237596313, guid: ed9f85f9aa2a70c43a0cf377399d1efa, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 6557128604185311158, guid: 5e72d1daac0cad14cae3b68a17c1bc51, type: 3}
+    - target: {fileID: 5445482205237596313, guid: ed9f85f9aa2a70c43a0cf377399d1efa, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 7081135925398222775}
     m_RemovedComponents:
     - {fileID: 8729822133788238695, guid: ed9f85f9aa2a70c43a0cf377399d1efa, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ed9f85f9aa2a70c43a0cf377399d1efa, type: 3}

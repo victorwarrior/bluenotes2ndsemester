@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Nuckelavee : MonoBehaviour
 {
+    /*
     //references
    public GameObject player;
    public GameObject enemy;
@@ -17,7 +18,7 @@ public class Nuckelavee : MonoBehaviour
     private Vector2 enemySpawnPosition;
 
     private float spawnTime;
-    private float enemyCallTime;
+    private float enemyCallTime; // @NOTE: maybe rename it to summonEnemiesTimer or summonAbilityTimer -Victor
     private float enemyCallCD = 15;
     private float enemyCallCDAdd = 15;
     private int   enemySpawnNumber = 4;
@@ -41,7 +42,7 @@ public class Nuckelavee : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnTime      = Time.time;
+        spawnTime      = Time.time; // @NOTE: timers should go down not up -Victor
         enemyCallTime  = spawnTime;
 
         mudTrail = this.GetComponent<TrailRenderer>();
@@ -54,32 +55,29 @@ public class Nuckelavee : MonoBehaviour
     
     void FixedUpdate()
     {
-        dashTime = Time.time - spawnTime;
+        dashTime         = Time.time - spawnTime;
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+
         //Moves the Nuckelavee or initiates dash sequence
-        if (dashTime >= dashCD && distanceToPlayer < dashDistance)
-        {
+        if (dashTime >= dashCD && distanceToPlayer < dashDistance) {
             dashMode = true;
             dashPosition = player.transform.position*dashPositionScale;
         }
-        else if (dashTime < dashCD)
-        {
+        else if (dashTime < dashCD) {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed);
         }
         
         //Executes dash sequence.
-        if (dashMode)
-        {
+        if (dashMode) {
             Vector2.MoveTowards(transform.position, dashPosition, dashSpeed);
-            if(transform.position.x == dashPosition.x && transform.position.y == dashPosition.y)
-            {
+            if(transform.position.x == dashPosition.x && transform.position.y == dashPosition.y) {
                 dashMode = false;
-                dashCD = dashTime + dashCDAdd;
+                dashCD   = dashTime + dashCDAdd;
             }
         }
 
         //Call method which creates trail collider
-        SetColliderPointsFromTrail(mudTrail, mudCollider);
+        //SetColliderPointsFromTrail(mudTrail, mudCollider);
     }
 
     void Update()
@@ -87,10 +85,8 @@ public class Nuckelavee : MonoBehaviour
        
        enemyCallTime = Time.time - spawnTime;
 
-        if(enemyCallTime >= enemyCallCD)
-        {
-            for(int i = 0; i < enemySpawnNumber; i++)
-            {
+        if(enemyCallTime >= enemyCallCD) { 
+            for(int i = 0; i < enemySpawnNumber; i++) {
                 enemySpawnPosition = new Vector2(Random.Range(spawnRangeMinX, spawnRangeMaxX), Random.Range(spawnRangeMinY, spawnRangeMaxY));
                 Instantiate(enemy, enemySpawnPosition, Quaternion.identity);
             }
@@ -98,13 +94,12 @@ public class Nuckelavee : MonoBehaviour
         }
     }
 
-    void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D collider)
-    {
+    void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D collider) {
         List<Vector2> points = new List<Vector2>();
-        for(int position = 0; position < trail.positionCount; position++)
-        {
+        for(int position = 0; position < trail.positionCount; position++) {
             points.Add(trail.GetPosition(position));
         }
         collider.SetPoints(points);
     }
+    */
 }
