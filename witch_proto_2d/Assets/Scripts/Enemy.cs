@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour {
         timer     = Random.Range(0f, 10f);
         type      = Random.Range(0, 2);
 
-        transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
+        //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
 
     }
 

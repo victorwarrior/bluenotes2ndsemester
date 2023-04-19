@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - CircleLight
+  - Enemy
   layers:
   - Default
   - TransparentFX

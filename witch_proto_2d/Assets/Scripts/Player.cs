@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     // references
     Rigidbody2D rb;
     Transform   child;
+    
 
     public Image staminaBar;
 
@@ -17,8 +18,9 @@ public class Player : MonoBehaviour {
     float maxSpeed         = 7.6f;  // top speed
     float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
     float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
-        
-    
+
+
+
     int stamina      = 1000;        // used for sprinting
     int staminaMax   = 1000;       
     int staminaMin   = 100;         // can't sprint if below this unless you're already sprinting
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour {
 
 
     void Start() {
-
+        rb = GetComponent<Rigidbody2D>();
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction; 
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject)); // @NOTE: this line was previously in FixedUpdate - it only needs to happen once though! -Victor
@@ -160,6 +162,8 @@ public class Player : MonoBehaviour {
         }
 
     }
+
+  
 
 
     

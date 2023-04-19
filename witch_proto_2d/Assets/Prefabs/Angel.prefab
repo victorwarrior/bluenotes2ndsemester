@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 537380111379435843}
   m_Layer: 0
   m_Name: Angel
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,11 +364,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5be94cd1c5a051e4697d0d378434ce1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 7081135925501212638, guid: 101ca72e2e9a27741b523df181b97873, type: 3}
-  enemy: {fileID: 6557128604185311158}
-  dashDistance: 11
-  dashPositionScale: 1.1
-  spawnRangeMaxX: 30
-  spawnRangeMaxY: 30
-  spawnRangeMinX: 15
-  spawnRangeMinY: 15
