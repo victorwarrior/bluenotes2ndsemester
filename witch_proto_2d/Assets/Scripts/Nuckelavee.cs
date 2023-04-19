@@ -5,45 +5,36 @@ using UnityEngine;
 
 public class Nuckelavee : MonoBehaviour
 {
-    /*
-    //references
-   public GameObject player;
-   public GameObject enemy;
-          TrailRenderer mudTrail;
-          EdgeCollider2D mudCollider;
-          Rigidbody2D rb;
 
-    //vectors
-    private Vector2 dashPosition;
-    private Vector2 enemySpawnPosition;
+    // references
+    public GameObject     player;
+    public GameObject     enemy;
+           TrailRenderer  mudTrail;
+           EdgeCollider2D mudCollider;
+           Rigidbody2D    rb;
 
-    private float spawnTime;
-    private float enemyCallTime; // @NOTE: maybe rename it to summonEnemiesTimer or summonAbilityTimer -Victor
-    private float enemyCallCD = 15;
-    private float enemyCallCDAdd = 15;
-    private int   enemySpawnNumber = 4;
-
-    private float dashTime;
-    private float dashCD = 10f;
-    private float dashCDAdd = 10f;
-    private float dashSpeed = 0.3f;
-
-    private float distanceToPlayer;
-    private float followSpeed = 0.12f;
-
-    public float dashDistance = 11f;
+    // constants
+           float followSpeed       = 0.12f;
+           float dashSpeed         = 0.3f;
+    public float dashDistance      = 11f;
     public float dashPositionScale = 1.1f;
-    public float spawnRangeMaxX = 30f;
-    public float spawnRangeMaxY = 30f;
-    public float spawnRangeMinX = 15f;
-    public float spawnRangeMinY = 15f;
+           float dashAbilityCD     = 10f;
+           float callAbilityCD       = 15;
+           int   enemySpawnNumber  = 4;
+           float spawnRange        = 4f;
 
-    private bool dashMode;
-    // Start is called before the first frame update
-    void Start()
-    {
-        spawnTime      = Time.time; // @NOTE: timers should go down not up -Victor
-        enemyCallTime  = spawnTime;
+    // other
+    Vector2 dashPosition;
+    float   spawnTime;
+    float   callAbilityTimer;
+    float   dashAbilityTimer;
+    float   distanceToPlayer;
+    bool    dashMode;
+
+
+    void Start() {
+        dashAbilityTimer = dashAbilityCD;
+        callAbilityTimer = callAbilityCD;
 
         mudTrail = this.GetComponent<TrailRenderer>();
 
@@ -53,46 +44,42 @@ public class Nuckelavee : MonoBehaviour
     }
 
     
-    void FixedUpdate()
-    {
-        dashTime         = Time.time - spawnTime;
+    void FixedUpdate() {
+        dashAbilityTimer = dashAbilityTimer - Time.deltaTime;
         distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
-        //Moves the Nuckelavee or initiates dash sequence
-        if (dashTime >= dashCD && distanceToPlayer < dashDistance) {
-            dashMode = true;
+        // moves the Nuckelavee or initiates dash sequence
+        if (dashAbilityTimer <= 0 && distanceToPlayer < dashDistance) {
+            dashMode     = true;
             dashPosition = player.transform.position*dashPositionScale;
-        }
-        else if (dashTime < dashCD) {
+        } else if (dashAbilityTimer > 0) {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed);
         }
-        
-        //Executes dash sequence.
+
+        // executes dash sequence
         if (dashMode) {
             Vector2.MoveTowards(transform.position, dashPosition, dashSpeed);
             if(transform.position.x == dashPosition.x && transform.position.y == dashPosition.y) {
                 dashMode = false;
-                dashCD   = dashTime + dashCDAdd;
+                dashAbilityTimer = dashAbilityCD;
             }
+        }
+
+        callAbilityTimer = callAbilityTimer - Time.deltaTime;
+
+        if (callAbilityTimer <= 0f) { 
+            for (int i = 0; i < enemySpawnNumber; i++) {
+                Vector2 enemySpawnPosition = new Vector2(transform.position.x + Random.Range(-spawnRange, spawnRange),
+                                                         transform.position.y + Random.Range(-spawnRange, spawnRange));
+                Instantiate(enemy, enemySpawnPosition, Quaternion.identity);
+            }
+            callAbilityTimer = callAbilityCD;
         }
 
         //Call method which creates trail collider
         //SetColliderPointsFromTrail(mudTrail, mudCollider);
     }
 
-    void Update()
-    {
-       
-       enemyCallTime = Time.time - spawnTime;
-
-        if(enemyCallTime >= enemyCallCD) { 
-            for(int i = 0; i < enemySpawnNumber; i++) {
-                enemySpawnPosition = new Vector2(Random.Range(spawnRangeMinX, spawnRangeMaxX), Random.Range(spawnRangeMinY, spawnRangeMaxY));
-                Instantiate(enemy, enemySpawnPosition, Quaternion.identity);
-            }
-            enemyCallCD = enemyCallTime + enemyCallCDAdd;
-        }
-    }
 
     void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D collider) {
         List<Vector2> points = new List<Vector2>();
@@ -101,5 +88,4 @@ public class Nuckelavee : MonoBehaviour
         }
         collider.SetPoints(points);
     }
-    */
 }
