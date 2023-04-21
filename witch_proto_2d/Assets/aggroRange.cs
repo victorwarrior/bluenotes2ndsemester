@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class aggroRange : MonoBehaviour {
+public class AggroRange : MonoBehaviour {
 
     // references
            GameObject enemy;
@@ -13,8 +13,7 @@ public class aggroRange : MonoBehaviour {
     void OnTriggerStay2D(Collider2D col) {
        
 
-        if (col.gameObject.tag == "Enemy")
-        {
+        if (col.gameObject.tag == "Enemy") {
             enemy = col.gameObject;
             RaycastHit2D hit = Physics2D.Raycast(player.transform.position,
                                                  (enemy.transform.position - player.transform.position).normalized,
