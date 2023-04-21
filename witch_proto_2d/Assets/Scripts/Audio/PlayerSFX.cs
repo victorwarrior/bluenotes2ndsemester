@@ -4,59 +4,50 @@ using UnityEngine;
 
 public class PlayerSFX : MonoBehaviour
 {
-    public AudioSource audioSource;
-    public AudioClip audioClip1;
+    private AudioSource audioSource;
+    AudioClip audioClip1;
     public AudioClip audioClip2;
 
-
-    private float clipTime;    // cummulative amount of time of clips.
-    private float resetTimer; // time that needs to surpass cliptime to play sound.
-    private float startTime; // time the script starts.
-    private int walkingInt = 1;
+    private float waitingTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        clipTime = 0f;
-        startTime = Time.time;
+        audioSource = GetComponent<AudioSource>();
+        audioClip1 = audioSource.clip;
     }
 
     // Update is called once per frame
     void Update()
     {
-        resetTimer = Time.time - startTime;
-        if (Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d") && resetTimer >= clipTime)
+        if (Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d"))
         {
-            if(walkingInt == 1)
-            {
-                WalkingSound1();
-            }
+            StartCoroutine(MovementPlayer());
+            //Debug.Log("coroutine started");
         }
-        if (Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d") && resetTimer >= clipTime)
+        else if (!(Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")))
         {
-            if (walkingInt == 2)
-            {
-                WalkingSound2();
-            }
+            StopCoroutine(MovementPlayer());
         }
     }
 
-   
-    public void WalkingSound1()
+    IEnumerator MovementPlayer()
     {
-        audioSource.clip = audioClip1;
-        audioSource.Play();
-        walkingInt = 2;
-        clipTime += audioSource.clip.length;
-        //Debug.Log("soundclip nr "+walkingInt+" is playing and the next sound will play at "+clipTime+" current time is "+resetTimer);
-    }
-
-    public void WalkingSound2()
-    {
-        audioSource.clip = audioClip2;
-        audioSource.Play();
-        walkingInt = 1;
-        clipTime += audioSource.clip.length;
-        //Debug.Log("soundclip nr " + walkingInt + " is playing and the next sound will play at " + clipTime + " current time is " + resetTimer);
+          for(int i = 0; i < 100; i++)
+        {
+            audioSource.Play();
+            if(audioSource.clip == audioClip1)
+            {
+                audioSource.clip = audioClip2;
+                waitingTime      = audioSource.clip.length;
+                //Debug.Log("Sound playing");
+            }
+            else if(audioSource.clip == audioClip2)
+            {
+                audioSource.clip = audioClip1;
+                waitingTime      = audioSource.clip.length;
+            }
+        }
+        yield return new WaitForSeconds(waitingTime);
     }
 }

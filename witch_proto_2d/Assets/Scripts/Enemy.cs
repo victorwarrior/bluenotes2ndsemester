@@ -58,8 +58,6 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "wait") {
 
-            isAttacking = false;
-
             timer -= Time.deltaTime;
 
             if (isAttacking == true) {
@@ -82,6 +80,7 @@ public class Enemy : MonoBehaviour {
 
             timer -= Time.deltaTime;
             if (Vector2.Distance(transform.position, player.transform.position) >= 15) {
+                isAttacking = false;
                 nextMode = "wait";
             } else {
                 if (type == 0) {
@@ -91,6 +90,7 @@ public class Enemy : MonoBehaviour {
                     if (timer > 0f) {
                         transform.Translate(dashSpeed * chaseDirection);
                     } else {
+                        isAttacking = false;
                         nextMode = "stunned";
                     }
                 }
