@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  m_Layer: 0
+  - component: {fileID: 6976337311879535036}
+  m_Layer: 2
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -84,6 +85,39 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &6976337311879535036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &840303162
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 840303163}
   - component: {fileID: 840303164}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: InnerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +146,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2115915258}
   m_Father: {fileID: 7548834373656748949}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964235465}
   - component: {fileID: 1964235466}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MaxLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +260,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7548834373656748949}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1964235466
 MonoBehaviour:
@@ -316,7 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115915258}
   - component: {fileID: 2115915259}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DangerLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,8 +370,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7548834373656748949}
-  m_RootOrder: 3
+  m_Father: {fileID: 840303163}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2115915259
 MonoBehaviour:
@@ -427,7 +462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4993000041991151855}
   - component: {fileID: 1011631536485878234}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -515,7 +550,7 @@ GameObject:
   - component: {fileID: 442466415}
   - component: {fileID: 442466413}
   - component: {fileID: 442466414}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -537,7 +572,6 @@ Transform:
   - {fileID: 4993000041991151855}
   - {fileID: 519420032}
   - {fileID: 840303163}
-  - {fileID: 2115915258}
   - {fileID: 1964235465}
   - {fileID: 4496482470510022224}
   m_Father: {fileID: 0}
@@ -725,7 +759,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7228047926333458799, guid: 5914a13f637fee244b2d40d9c91c2e80, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7228047926333458799, guid: 5914a13f637fee244b2d40d9c91c2e80, type: 3}
       propertyPath: m_LocalPosition.x
@@ -770,6 +804,10 @@ PrefabInstance:
     - target: {fileID: 8230005981288475488, guid: 5914a13f637fee244b2d40d9c91c2e80, type: 3}
       propertyPath: m_Name
       value: AggroRange
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230005981288475488, guid: 5914a13f637fee244b2d40d9c91c2e80, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5914a13f637fee244b2d40d9c91c2e80, type: 3}

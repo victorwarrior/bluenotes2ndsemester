@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2893782447853925703}
   m_Layer: 0
   m_Name: Isometric Diamond
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,7 +181,6 @@ GameObject:
   - component: {fileID: 8978428236370875302}
   - component: {fileID: 5439364788507015392}
   - component: {fileID: 1312820269}
-  - component: {fileID: 537380111379435843}
   m_Layer: 0
   m_Name: Angel
   m_TagString: Enemy
@@ -352,15 +351,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &537380111379435843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6557128604185311158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5be94cd1c5a051e4697d0d378434ce1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

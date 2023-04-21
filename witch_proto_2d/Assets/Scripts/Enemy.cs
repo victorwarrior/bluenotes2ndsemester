@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     public GameObject  player;
            Rigidbody2D rb;
 
+
     // constants
     float aggroRange   = 11.5f;
     float deaggroRange = 15.5f;
@@ -18,11 +19,12 @@ public class Enemy : MonoBehaviour {
     float walkDistance = 20f;
 
     // other
-    float   timer          = 0f;
-    string  mode           = "";
-    int     type           = 0;
-    Vector3 walkPosition   = new Vector3(0f, 0f, 0f);
+    float   timer           = 0f;
+    string  mode            = "";
+    int     type            = 0;
+    Vector3 walkPosition    = new Vector3(0f, 0f, 0f);
     Vector2 chaseDirection;
+    public bool isAttacking;
 
 
     void Start() {
@@ -33,6 +35,8 @@ public class Enemy : MonoBehaviour {
         mode      = "wait";
         timer     = Random.Range(0f, 10f);
         type      = Random.Range(0, 2);
+
+        isAttacking = false;
 
         //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
 
@@ -54,9 +58,11 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "wait") {
 
+            isAttacking = false;
+
             timer -= Time.deltaTime;
 
-            if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
+            if (isAttacking == true) {
                 nextMode = "attack";
             } else if (timer <= 0f) {
                 nextMode = "move";
@@ -64,7 +70,7 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "move") {
 
-            if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
+            if (isAttacking == true) {
                 nextMode = "attack";
             } else if (transform.position != walkPosition) {
                 transform.position = Vector2.MoveTowards(transform.position, walkPosition, walkSpeed);
