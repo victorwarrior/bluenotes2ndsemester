@@ -12,7 +12,7 @@ public class ItemPickup : MonoBehaviour
 
             Debug.Log("Item picked up");
             Destroy(gameObject);
-            InventoryManager.Instance.Add(Item);
+            //InventoryManager.Instance.Add(Item);
         }
     }
 }
