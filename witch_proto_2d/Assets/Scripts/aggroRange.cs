@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AggroRange : MonoBehaviour {
+public class aggroRange : MonoBehaviour {
 
     // references
            GameObject enemy;
