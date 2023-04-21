@@ -9,7 +9,6 @@ public class Enemy : MonoBehaviour {
     public GameObject  player;
            Rigidbody2D rb;
 
-
     // constants
     float aggroRange   = 11.5f;
     float deaggroRange = 15.5f;
@@ -19,10 +18,10 @@ public class Enemy : MonoBehaviour {
     float walkDistance = 20f;
 
     // other
-    float   timer           = 0f;
-    string  mode            = "";
-    int     type            = 0;
-    Vector3 walkPosition    = new Vector3(0f, 0f, 0f);
+    float   timer        = 0f;
+    string  mode         = "";
+    int     type         = 0;
+    Vector3 walkPosition = new Vector3(0f, 0f, 0f);
     Vector2 chaseDirection;
     public bool isAttacking;
 
@@ -33,8 +32,9 @@ public class Enemy : MonoBehaviour {
         rb.drag = 5.25f;
 
         mode      = "wait";
-        timer     = Random.Range(0f, 10f);
+        timer     = Random.Range(2f, 20f);
         type      = Random.Range(0, 2);
+        type      = 1;
 
         isAttacking = false;
 
@@ -43,10 +43,11 @@ public class Enemy : MonoBehaviour {
     }
 
 
-
     void FixedUpdate() {
 
         string nextMode = "";
+        timer           = timer - Time.deltaTime;
+
         if (false) {
 
         // states: wait, move, attack, stunned
@@ -58,8 +59,6 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "wait") {
 
-            timer -= Time.deltaTime;
-
             if (isAttacking == true) {
                 nextMode = "attack";
             } else if (timer <= 0f) {
@@ -68,19 +67,24 @@ public class Enemy : MonoBehaviour {
 
         } else if (mode == "move") {
 
+//            float threshold = 1f;
+
             if (isAttacking == true) {
                 nextMode = "attack";
+            } else if (timer <= 0f) {
+                nextMode = "wait";
             } else if (transform.position != walkPosition) {
                 transform.position = Vector2.MoveTowards(transform.position, walkPosition, walkSpeed);
-            } else {
-                nextMode = "wait";
             }
+//            } else if (((transform.position.x - walkPosition.x <= threshold && transform.position.x - walkPosition.x > 0) || (transform.position.x - walkPosition.x >= -threshold && transform.position.x - walkPosition.x < 0))
+//                   &&  ((transform.position.y - walkPosition.y <= threshold && transform.position.y - walkPosition.y > 0) || (transform.position.y - walkPosition.y >= -threshold && transform.position.y - walkPosition.y < 0))) {
+//                Debug.Log("move to wait.");
+//                nextMode = "wait";
+//            }
 
         } else if (mode == "attack") {
 
-            timer -= Time.deltaTime;
             if (Vector2.Distance(transform.position, player.transform.position) >= 15) {
-                isAttacking = false;
                 nextMode = "wait";
             } else {
                 if (type == 0) {
@@ -90,15 +94,12 @@ public class Enemy : MonoBehaviour {
                     if (timer > 0f) {
                         transform.Translate(dashSpeed * chaseDirection);
                     } else {
-                        isAttacking = false;
                         nextMode = "stunned";
                     }
                 }
             }
         
         } else if (mode == "stunned") {
-
-            timer -= Time.deltaTime;
 
             if (timer <= 0) {
                 if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
@@ -117,50 +118,58 @@ public class Enemy : MonoBehaviour {
 
         } else if (nextMode == "wait") {
             mode = "wait";
+            timer = Random.Range(2f, 20f);
             switch (mode) {
+                case "attack":
+                    isAttacking = false;
+                    break;
                 case "wait":
                 case "move":
-                case "attack":
                 case "stunned":
-                    timer = Random.Range(4f, 30f);
                     break;
             }
         } else if (nextMode == "move") {
-            mode = "move";
+            mode             = "move";
+            timer            = Random.Range(4f, 14f); // @TODO: enemies should switch to walk when they reach their new position instead of this stupid fix -Victor
+            float newWalkDir = Random.Range(0, 2.0f*Mathf.PI);
+            walkPosition     = new Vector3(transform.position.x + Mathf.Sin(newWalkDir)*walkDistance,
+                                           transform.position.y + Mathf.Cos(newWalkDir)*walkDistance,
+                                           transform.position.z);
+            //walkPosition = new Vector3(transform.position.x + Random.Range(-walkDistance, walkDistance), // @TODO: should it be a circle instead of a square?
+            //                           transform.position.y + Random.Range(-walkDistance, walkDistance),
+            //                           transform.position.z);
             switch (mode) {
                 case "wait":
                 case "move":
                 case "attack":
                 case "stunned":
-                    walkPosition = new Vector3(transform.position.x + Random.Range(-walkDistance, walkDistance), // @TODO: should it be a circle instead of a square?
-                                               transform.position.y + Random.Range(-walkDistance, walkDistance),
-                                               transform.position.z);
                     break;
             }
         } else if (nextMode == "attack") {
-            mode = "attack";
+            mode           = "attack";
+            timer          = 0.85f;
+            chaseDirection = (new Vector2(player.transform.position.x, player.transform.position.y)
+                             -new Vector2(transform.position.x, transform.position.y)).normalized;
             switch (mode) {
                 case "wait":
                 case "move":
                 case "attack":
                 case "stunned":
-                    timer = 0.85f;
-                    chaseDirection = (new Vector2(player.transform.position.x, player.transform.position.y)
-                                     -new Vector2(transform.position.x, transform.position.y)).normalized;
                     break;
             }
         } else if (nextMode == "stunned") {
-            mode = "stunned";
+            mode  = "stunned";
+            timer = 0.7f;
             switch (mode) {
+                case "attack":
+                    isAttacking = false;
+                    break;
                 case "wait":
                 case "move":
-                case "attack":
                 case "stunned":
-                    timer = 0.7f;
                     break;
             }
         }
-
 
 
         // update z coordinate to be in front / behind other objects
