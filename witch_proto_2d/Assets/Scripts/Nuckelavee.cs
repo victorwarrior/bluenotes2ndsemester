@@ -9,8 +9,8 @@ public class Nuckelavee : MonoBehaviour
     // references
     public GameObject player;
     public GameObject enemy;
-    TrailRenderer mudTrail;
-    EdgeCollider2D mudCollider;
+   // TrailRenderer mudTrail;
+   // EdgeCollider2D mudCollider;
     Rigidbody2D rb;
 
     // constants
@@ -37,11 +37,11 @@ public class Nuckelavee : MonoBehaviour
         dashAbilityTimer = dashAbilityCD;
         callAbilityTimer = callAbilityCD;
 
-        mudTrail = this.GetComponent<TrailRenderer>();
+       // mudTrail = this.GetComponent<TrailRenderer>();
 
-        GameObject colliderObject = new GameObject("TrailCollider", typeof(EdgeCollider2D));
-        mudCollider = colliderObject.GetComponent<EdgeCollider2D>();
-        mudCollider.isTrigger = true;
+        //GameObject colliderObject = new GameObject("TrailCollider", typeof(EdgeCollider2D));
+        //mudCollider = colliderObject.GetComponent<EdgeCollider2D>();
+       // mudCollider.isTrigger = true;
     }
 
 
@@ -90,7 +90,7 @@ public class Nuckelavee : MonoBehaviour
     }
 
 
-    void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D collider)
+   /* void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D collider)
     {
         List<Vector2> points = new List<Vector2>();
         for (int position = 0; position < trail.positionCount; position++)
@@ -98,5 +98,5 @@ public class Nuckelavee : MonoBehaviour
             points.Add(trail.GetPosition(position));
         }
         collider.SetPoints(points);
-    }
+    }*/
 }
