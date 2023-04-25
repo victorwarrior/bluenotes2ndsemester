@@ -4,23 +4,37 @@ using UnityEngine;
 
 public class MudSlow : MonoBehaviour
 {
-    public float slowScale = 0.7f; //to modify the maxspeed of the player
-    public GameObject player;
-    public GameObject nuckelavee;
-   // Player playerScript = player.GetComponent<Player>();
-  /*void OnTriggerEnter2D(Collider2D col) //slows the player when the player enters the slow field
+    float spawnTime;
+    float timeActive;
+    public float fadeOutTime = 5f;
+    public float waitingTime = 0.1f;
+    public void Start()
     {
-        if (col.GetComponent<Player>())
+        spawnTime = Time.time;
+    }
+
+    public void FixedUpdate()
+    {
+        timeActive = Time.time - spawnTime;
+        if (timeActive > fadeOutTime)
         {
-           // player.maxSpeed = player.maxSpeed * slowScale;
+            StartCoroutine(Fade());
+        }
+        if (GetComponent<Renderer>().material.color.a <= 0.1)
+        {
+            Destroy(gameObject);
         }
     }
 
-    void OnTriggerExit2D(Collider2D col) //unslows player when leaving slow field
+    IEnumerator Fade()
     {
-        if (col.GetComponent<Player>())
+        //Color c = renderer.material.color;
+        Color c = GetComponent<Renderer>().material.color;
+        for (float alpha = 1f; alpha>=0f; alpha -= 0.1f)
         {
-            //  playerScript.maxSpeed = playerScript.maxSpeed / slowScale;
+            c.a = alpha;
+            GetComponent<Renderer>().material.color = c;
+            yield return new WaitForSeconds(waitingTime);
         }
-    }*/
+    }
 }

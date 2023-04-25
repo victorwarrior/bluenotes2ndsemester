@@ -9,8 +9,7 @@ public class Nuckelavee : MonoBehaviour
     // references
     public GameObject player;
     public GameObject enemy;
-   // TrailRenderer mudTrail;
-   // EdgeCollider2D mudCollider;
+    public GameObject mud;
     Rigidbody2D rb;
 
     // constants
@@ -22,26 +21,24 @@ public class Nuckelavee : MonoBehaviour
     float callAbilityCD = 15;
     int enemySpawnNumber = 4;
     float spawnRange = 4f;
+    float speedCoefficient;
+    public float speedCoefficientMod = 2f;
 
     // other
     Vector2 dashPosition;
-    float spawnTime;
+    float trailInstantiationMeasure;
+    public float initialInstantiationMeasure = 4f;
     float callAbilityTimer;
     float dashAbilityTimer;
     float distanceToPlayer;
     bool dashMode;
-
+    bool leaveTrail = true;
 
     void Start()
     {
-        dashAbilityTimer = dashAbilityCD;
-        callAbilityTimer = callAbilityCD;
-
-       // mudTrail = this.GetComponent<TrailRenderer>();
-
-        //GameObject colliderObject = new GameObject("TrailCollider", typeof(EdgeCollider2D));
-        //mudCollider = colliderObject.GetComponent<EdgeCollider2D>();
-       // mudCollider.isTrigger = true;
+        dashAbilityTimer          = dashAbilityCD;
+        callAbilityTimer          = callAbilityCD;
+        trailInstantiationMeasure = initialInstantiationMeasure;
     }
 
 
@@ -85,18 +82,25 @@ public class Nuckelavee : MonoBehaviour
             callAbilityTimer = callAbilityCD;
         }
 
-        //Call method which creates trail collider
-        //SetColliderPointsFromTrail(mudTrail, mudCollider);
+        if (leaveTrail)
+        {
+            trailInstantiationMeasure = trailInstantiationMeasure - Time.deltaTime * speedCoefficient;
+            if (dashMode)
+            {
+                speedCoefficient = dashSpeed * speedCoefficientMod;
+            }
+            else if (!dashMode)
+            {
+                speedCoefficient = followSpeed * speedCoefficientMod;
+            }
+
+            if(trailInstantiationMeasure <= 0f)
+            {
+                Instantiate(mud, transform.position, transform.rotation); //instantiates trail.
+                trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
+            }
+        }
     }
 
 
-   /* void SetColliderPointsFromTrail(TrailRenderer trail, EdgeCollider2D collider)
-    {
-        List<Vector2> points = new List<Vector2>();
-        for (int position = 0; position < trail.positionCount; position++)
-        {
-            points.Add(trail.GetPosition(position));
-        }
-        collider.SetPoints(points);
-    }*/
 }
