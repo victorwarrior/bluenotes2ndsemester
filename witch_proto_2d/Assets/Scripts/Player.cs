@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
     float maxSpeed         = 7.6f;  // top speed
     float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
     float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
+    float slowMultiplier   = 0.7f;  // to slow down the player when in the nuckelavee mud trail.
 
 
 
@@ -162,9 +163,24 @@ public class Player : MonoBehaviour {
         }
 
     }
+    // code for getting slowed by the nuckelavee trail
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<MudSlow>())
+        {
+            maxSpeed = maxSpeed * slowMultiplier;
+            speed    = speed * slowMultiplier;
+        }
+    }
 
-  
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<MudSlow>())
+        {
+            maxSpeed = maxSpeed / slowMultiplier;
+            speed = speed / slowMultiplier;
+        }
+    }
 
 
-    
 }
