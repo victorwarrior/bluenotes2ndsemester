@@ -9,6 +9,7 @@ public class MainController : MonoBehaviour {
     // references
     public GameObject player;
     public GameObject enemyPrefab;
+    public GameObject graymanPrefab;
     public GameObject mapCanvas;
 
     // constants
@@ -19,11 +20,16 @@ public class MainController : MonoBehaviour {
 
     void Start() {
         for (int i = 0; i < numberOfEnemies; i++) {
-
             GameObject inst = Instantiate(enemyPrefab); // right now it figures out a random position on its own
-            inst.GetComponent<Enemy>().player = player;
-            
+            inst.GetComponent<Enemy>().player = player;            
+        }
+
+        for (int i = 0; i < 3; i++) {
+            GameObject inst = Instantiate(graymanPrefab); // right now it figures out a random position on its own
+            inst.GetComponent<Grayman>().player = player;
+            Debug.Log(inst);
         }        
+
     }
 
     void Update() {
