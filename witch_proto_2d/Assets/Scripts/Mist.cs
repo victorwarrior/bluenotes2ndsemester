@@ -8,11 +8,15 @@ public class Mist : MonoBehaviour {
     public GameObject graymanPrefab;
     public GameObject player;
 
-    void Start() {
+    // other
+    int dir = 1;
+    float speed = 0.2f;
 
+    void Start() {
+        //dir = (Random.Range(0, 2) ? 1 : -1;
     }
 
-    void Update() {
-        
+    void FixedUpdate() {
+        transform.Translate(speed * new Vector3(dir, 0, transform.position.z));
     }
 }
