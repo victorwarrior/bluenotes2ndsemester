@@ -14113,6 +14113,10 @@ PrefabInstance:
       propertyPath: graymanPrefab
       value: 
       objectReference: {fileID: 9053267299282224790, guid: 5b2c1e31c98315c42ab90f6ea640951f, type: 3}
+    - target: {fileID: 8250063031647753780, guid: 8cf46dcd07986cb4e820d7e7fa8fd81d, type: 3}
+      propertyPath: simpleMistPrefab
+      value: 
+      objectReference: {fileID: 5338273238021831495, guid: 150cc5eef16f1e14d956895b8b9af07a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cf46dcd07986cb4e820d7e7fa8fd81d, type: 3}
 --- !u!4 &1848084178 stripped

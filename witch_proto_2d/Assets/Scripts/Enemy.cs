@@ -10,11 +10,11 @@ public class Enemy : MonoBehaviour {
            Rigidbody2D rb;
 
     // constants
-    float aggroRange   = 11.5f;
-    float deaggroRange = 15.5f;
+    float aggroRange   = 9.5f;
+    float deaggroRange = 9.5f;
     float walkSpeed    = 0.04f;
     float followSpeed  = 0.16f;
-    float dashSpeed    = 0.36f;
+    float dashSpeed    = 0.32f;
     float walkDistance = 20f;
 
     // other

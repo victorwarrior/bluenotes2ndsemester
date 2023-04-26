@@ -10,6 +10,7 @@ public class MainController : MonoBehaviour {
     public GameObject player;
     public GameObject enemyPrefab;
     public GameObject graymanPrefab;
+    public GameObject simpleMistPrefab;
     public GameObject mapCanvas;
 
     // constants
@@ -27,9 +28,17 @@ public class MainController : MonoBehaviour {
         for (int i = 0; i < 3; i++) {
             GameObject inst = Instantiate(graymanPrefab); // right now it figures out a random position on its own
             inst.GetComponent<Grayman>().player = player;
-            Debug.Log(inst);
-        }        
-
+        }
+        
+        for (int i = 0; i < 10; i++) {
+            GameObject inst = Instantiate(simpleMistPrefab,
+                                          new Vector3(player.transform.position.x + Random.Range(-30f, 30f),
+                                                      player.transform.position.y + Random.Range(-30f, 30f),
+                                                      player.transform.position.z + 100),
+                                          Quaternion.identity);
+            
+            inst.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 0.4f);
+        }
     }
 
     void Update() {

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Mist : MonoBehaviour {
 
+    // references
+    public GameObject graymanPrefab;
+    public GameObject player;
+
     void Start() {
 
     }
