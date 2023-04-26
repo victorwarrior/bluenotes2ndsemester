@@ -11,6 +11,7 @@ public class Grayman : MonoBehaviour {
 
     // constants
     float fadeSpeed = 0.01f;
+    float maxAlpha  = 0.40f;
     float timeAlive;
     float speed;
 
@@ -24,16 +25,16 @@ public class Grayman : MonoBehaviour {
         damageCollider = GetComponent<BoxCollider2D>();
         damageCollider.enabled = false;
 
-        timeAlive = 2.8f + Random.Range(-0.4f, 0.4f);
-        speed     = 0.06f + Random.Range(-0.01f, 0.01f);
+        timeAlive = 2.4f + Random.Range(-0.4f, 0.4f);
+        speed     = 0.06f + Random.Range(-0.03f, 0.03f);
         timer     = 0f;
         alpha     = 0f;
         fadeIn    = true;
         fadeOut   = false;
 
-        transform.position = new Vector3(player.transform.position.x + Random.Range(- 20f, 20f),
-                                         player.transform.position.y + Random.Range(- 20f, 20f),
-                                         transform.position.z);
+        //transform.position = new Vector3(player.transform.position.x + Random.Range(- 20f, 20f),
+        //                                 player.transform.position.y + Random.Range(- 20f, 20f),
+        //                                 transform.position.z);
 
         SpriteRenderer[] sprites = this.GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < sprites.Length; i++) {
@@ -44,10 +45,10 @@ public class Grayman : MonoBehaviour {
     void FixedUpdate() {
 
         // fading in and out
-        if (alpha < 1f && fadeIn) {
+        if (alpha < maxAlpha && fadeIn) {
             alpha += fadeSpeed;
-            if (alpha >= 1f) {
-                alpha  = 1f;
+            if (alpha >= maxAlpha) {
+                alpha  = maxAlpha;
                 fadeIn = false;
                 timer  = timeAlive;
 
