@@ -10,10 +10,13 @@ public class MudSlow : MonoBehaviour
     public float waitingTime = 0.1f;
 
     public GameObject player;
+    Player playerScript;
+
     public void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        spawnTime = Time.time;
+        player       = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
+        spawnTime    = Time.time;
     }
 
     public void FixedUpdate()
@@ -52,7 +55,7 @@ public class MudSlow : MonoBehaviour
 
             //maxSpeed = maxSpeed * slowMultiplier;
             //speed    = speed * slowMultiplier;
-           // player.Slow();
+            playerScript.Slow();
             Debug.Log("Is slowed");
         }
     }
@@ -63,7 +66,7 @@ public class MudSlow : MonoBehaviour
         {
             // maxSpeed = maxSpeed / slowMultiplier;
             // speed = speed / slowMultiplier;
-           // player.UnSlow();
+            playerScript.UnSlow();
         }
         // CHeck if it is player in its trigger. Call method from player
     }
