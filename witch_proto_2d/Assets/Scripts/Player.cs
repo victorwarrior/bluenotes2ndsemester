@@ -18,7 +18,7 @@ public class Player : MonoBehaviour {
     float maxSpeed         = 7.6f;  // top speed
     float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
     float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
-    float slowMultiplier   = 0.7f;  // to slow down the player when in the nuckelavee mud trail.
+    public float slowMultiplier   = 1f;  // to slow down the player when in the nuckelavee mud trail.
 
 
 
@@ -129,15 +129,15 @@ public class Player : MonoBehaviour {
         yVelForDisplayPreCalc = rb.velocity.y; // @DEBUG
 
         if (isMovingDiagonally == false) {
-            if      (rb.velocity.x > (maxSpeed * spdMultiplier))  rb.velocity = new Vector2((maxSpeed * spdMultiplier), rb.velocity.y);
-            else if (rb.velocity.x < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(-(maxSpeed * spdMultiplier), rb.velocity.y);
-            if      (rb.velocity.y > (maxSpeed * spdMultiplier))  rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * spdMultiplier));
-            else if (rb.velocity.y < -(maxSpeed * spdMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * spdMultiplier));
+            if      (rb.velocity.x > (maxSpeed * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2((maxSpeed * spdMultiplier * slowMultiplier), rb.velocity.y);
+            else if (rb.velocity.x < -(maxSpeed * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(-(maxSpeed * spdMultiplier * slowMultiplier), rb.velocity.y);
+            if      (rb.velocity.y > (maxSpeed * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * spdMultiplier * slowMultiplier));
+            else if (rb.velocity.y < -(maxSpeed * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * spdMultiplier * slowMultiplier));
         } else {
-            if      (rb.velocity.x > (maxSpeed * 0.70710678118654f * spdMultiplier))  rb.velocity = new Vector2((maxSpeed * 0.70710678118654f * spdMultiplier), rb.velocity.y);
-            else if (rb.velocity.x < -(maxSpeed * 0.70710678118654f * spdMultiplier)) rb.velocity = new Vector2(-(maxSpeed * 0.70710678118654f * spdMultiplier), rb.velocity.y);
-            if      (rb.velocity.y > (maxSpeed * 0.70710678118654f * spdMultiplier))  rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * 0.70710678118654f * spdMultiplier));
-            else if (rb.velocity.y < -(maxSpeed * 0.70710678118654f * spdMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * 0.70710678118654f * spdMultiplier));            
+            if      (rb.velocity.x > (maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2((maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier), rb.velocity.y);
+            else if (rb.velocity.x < -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(-(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier), rb.velocity.y);
+            if      (rb.velocity.y > (maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier));
+            else if (rb.velocity.y < -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier));            
         }
 
         xVelForDisplay = rb.velocity.x; // @DEBUG
@@ -163,24 +163,44 @@ public class Player : MonoBehaviour {
         }
 
     }
+
+
+    // void Slow player
+
+    // void Unslow player
+
     // code for getting slowed by the nuckelavee trail
-    void OnTriggerEnter2D(Collider2D collision)
+   /* void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<MudSlow>())
+        if (!(collision.gameObject.GetComponent<MudSlow>() == null))
         {
-            maxSpeed = maxSpeed * slowMultiplier;
-            speed    = speed * slowMultiplier;
+            Debug.Log("Mud object: " + collision.gameObject);
+           
+           
+            //maxSpeed = maxSpeed * slowMultiplier;
+            //speed    = speed * slowMultiplier;
+            slowMultiplier = 0.6f;
+            Debug.Log("Is slowed");
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<MudSlow>())
+        if (!(collision.gameObject.GetComponent<MudSlow>() == null))
         {
-            maxSpeed = maxSpeed / slowMultiplier;
-            speed = speed / slowMultiplier;
+            // maxSpeed = maxSpeed / slowMultiplier;
+            // speed = speed / slowMultiplier;
+            slowMultiplier = 1f;
         }
     }
+    */
+   public void Slow()
+    {
+        slowMultiplier = 0.6f;
+    }
 
-
+    public void UnSlow()
+    {
+        slowMultiplier = 1f;
+    }
 }

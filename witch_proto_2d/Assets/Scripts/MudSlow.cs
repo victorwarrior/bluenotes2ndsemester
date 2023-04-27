@@ -6,10 +6,13 @@ public class MudSlow : MonoBehaviour
 {
     float spawnTime;
     float timeActive;
-    public float fadeOutTime = 5f;
+    public float fadeOutTime = 3f;
     public float waitingTime = 0.1f;
+
+    public GameObject player;
     public void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         spawnTime = Time.time;
     }
 
@@ -30,11 +33,38 @@ public class MudSlow : MonoBehaviour
     {
         //Color c = renderer.material.color;
         Color c = GetComponent<Renderer>().material.color;
-        for (float alpha = 1f; alpha>=0f; alpha -= 0.1f)
+        for (float alpha = 1f; alpha >= 0f; alpha -= 0.1f)
         {
             c.a = alpha;
             GetComponent<Renderer>().material.color = c;
             yield return new WaitForSeconds(waitingTime);
         }
+    }
+
+    // CHeck if it is player in its trigger. Call method from player
+   
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("Mud object: " + collision.gameObject);
+
+
+            //maxSpeed = maxSpeed * slowMultiplier;
+            //speed    = speed * slowMultiplier;
+           // player.Slow();
+            Debug.Log("Is slowed");
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            // maxSpeed = maxSpeed / slowMultiplier;
+            // speed = speed / slowMultiplier;
+           // player.UnSlow();
+        }
+        // CHeck if it is player in its trigger. Call method from player
     }
 }

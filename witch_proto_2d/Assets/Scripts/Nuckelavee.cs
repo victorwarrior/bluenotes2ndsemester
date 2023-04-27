@@ -15,19 +15,19 @@ public class Nuckelavee : MonoBehaviour
     // constants
     float followSpeed = 0.12f;
     float dashSpeed = 0.3f;
-    public float dashDistance = 11f;
+    public float dashDistance = 15f;
     public float dashPositionScale = 1.1f;
     float dashAbilityCD = 10f;
     float callAbilityCD = 15;
     int enemySpawnNumber = 4;
     float spawnRange = 4f;
     float speedCoefficient;
-    public float speedCoefficientMod = 2f;
+    float speedCoefficientMod = 40f;
 
     // other
     Vector2 dashPosition;
     float trailInstantiationMeasure;
-    public float initialInstantiationMeasure = 4f;
+    float initialInstantiationMeasure = 4f;
     float callAbilityTimer;
     float dashAbilityTimer;
     float distanceToPlayer;
@@ -36,6 +36,8 @@ public class Nuckelavee : MonoBehaviour
 
     void Start()
     {
+        dashMode = false; // this is so that everything that uses the truth value of dash has an initial configuration.
+
         dashAbilityTimer          = dashAbilityCD;
         callAbilityTimer          = callAbilityCD;
         trailInstantiationMeasure = initialInstantiationMeasure;
@@ -50,10 +52,15 @@ public class Nuckelavee : MonoBehaviour
         // moves the Nuckelavee or initiates dash sequence
         if (dashAbilityTimer <= 0 && distanceToPlayer < dashDistance)
         {
+            if (!dashMode)
+            {
+                dashPosition = (new Vector2(player.transform.position.x, player.transform.position.y)
+              - new Vector2(transform.position.x, transform.position.y)) * dashPositionScale;
+            }
             dashMode = true;
-            dashPosition = player.transform.position * dashPositionScale;
+          
         }
-        else if (dashAbilityTimer > 0)
+        else if (!dashMode)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, followSpeed);
         }
@@ -61,11 +68,13 @@ public class Nuckelavee : MonoBehaviour
         // executes dash sequence
         if (dashMode)
         {
-            Vector2.MoveTowards(transform.position, dashPosition, dashSpeed);
-            if (transform.position.x == dashPosition.x && transform.position.y == dashPosition.y)
+            transform.Translate(dashPosition.normalized * dashSpeed);
+            //if (transform.position.x == dashPosition.x && transform.position.y == dashPosition.y)
+            if(dashAbilityTimer<-1.5)
             {
                 dashMode = false;
                 dashAbilityTimer = dashAbilityCD;
+                Debug.Log("dash done");
             }
         }
 
@@ -85,6 +94,8 @@ public class Nuckelavee : MonoBehaviour
         if (leaveTrail)
         {
             trailInstantiationMeasure = trailInstantiationMeasure - Time.deltaTime * speedCoefficient;
+            Debug.Log("SpeedCoefficient is "+speedCoefficient);
+            
             if (dashMode)
             {
                 speedCoefficient = dashSpeed * speedCoefficientMod;
@@ -98,6 +109,7 @@ public class Nuckelavee : MonoBehaviour
             {
                 Instantiate(mud, transform.position, transform.rotation); //instantiates trail.
                 trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
+                
             }
         }
     }
