@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
     // references
     Rigidbody2D rb;
     Transform   child;
+    private Animator animate;
     
 
     public Image staminaBar;
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour {
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction; 
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject)); // @NOTE: this line was previously in FixedUpdate - it only needs to happen once though! -Victor
-
+        animate = GetComponentInChildren<Animator>();
     }
 
 
