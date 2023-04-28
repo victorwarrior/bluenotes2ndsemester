@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour {
             }
         
         } else if (mode == "stunned") {
+            isAttacking= false;
 
             if (timer <= 0) {
                 if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
@@ -162,7 +163,6 @@ public class Enemy : MonoBehaviour {
             timer = 0.7f;
             switch (mode) {
                 case "attack":
-                    isAttacking = false;
                     break;
                 case "wait":
                 case "move":
