@@ -79,10 +79,17 @@ public class Grayman : MonoBehaviour {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 
     }
-
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.gameObject.tag == "Player") {
+            player.GetComponent<Player>().hp -= 1;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 
+        }
+    }
+    
     void OnTriggerStay2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 
+            player.GetComponent<Player>().hp -= 1;
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // 
         }
     }
 }

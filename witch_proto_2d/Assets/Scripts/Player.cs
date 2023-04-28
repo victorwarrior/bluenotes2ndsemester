@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -10,8 +11,8 @@ public class Player : MonoBehaviour {
     Rigidbody2D rb;
     Transform   child;
     
-
     public Image staminaBar;
+    public Image hpBar;
 
     // constants                    // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
     float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
@@ -20,7 +21,8 @@ public class Player : MonoBehaviour {
     float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
     float slowMultiplier   = 0.7f;  // to slow down the player when in the nuckelavee mud trail.
 
-
+    int hpMax        = 100;
+    public int hp    = 100;
 
     int stamina      = 1000;        // used for sprinting
     int staminaMax   = 1000;       
@@ -82,6 +84,10 @@ public class Player : MonoBehaviour {
 
 
     void FixedUpdate() {
+
+        // update hp bar        
+        hpBar.fillAmount = (float) hp / (float) hpMax;
+        if (hp <= 0f) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         // determines direction based on what keys are pressed
         bool isMovingDiagonally = false;
