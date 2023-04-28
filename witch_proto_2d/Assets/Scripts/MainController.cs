@@ -14,7 +14,7 @@ public class MainController : MonoBehaviour {
     public GameObject mapCanvas;
 
     // constants
-    public int numberOfEnemies = 48;
+    public int numberOfEnemies = 0;
 
     // other
     bool mapOnScreen = false;
