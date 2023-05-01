@@ -2,72 +2,50 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MudSlow : MonoBehaviour
-{
-    float spawnTime;
-    float timeActive;
-    public float fadeOutTime = 3f;
-    public float waitingTime = 0.1f;
+public class MudSlow : MonoBehaviour {
 
+    // constants
+    float lifeTime    = 3f;
+    float fadeAmount  = 0.01f;
+
+    // other
+    float timer;
+    float alpha;
+
+    // references
     public GameObject player;
     Player playerScript;
 
-    public void Start()
-    {
+    public void Start() {
         player       = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<Player>();
-        spawnTime    = Time.time;
+        alpha        = 1f;
+        timer        = lifeTime;
     }
 
-    public void FixedUpdate()
-    {
-        timeActive = Time.time - spawnTime;
-        if (timeActive > fadeOutTime)
-        {
-            StartCoroutine(Fade());
-        }
-        if (GetComponent<Renderer>().material.color.a <= 0.1)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    IEnumerator Fade()
-    {
-        //Color c = renderer.material.color;
-        Color c = GetComponent<Renderer>().material.color;
-        for (float alpha = 1f; alpha >= 0f; alpha -= 0.1f)
-        {
-            c.a = alpha;
-            GetComponent<Renderer>().material.color = c;
-            yield return new WaitForSeconds(waitingTime);
+    public void FixedUpdate() {
+        timer -= Time.deltaTime;
+        if (timer <= 0f) {
+            alpha = alpha - fadeAmount;
+            GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, alpha);
+            if (alpha <= 0f) {
+                Debug.Log("Destroyed mud object");
+                Destroy(gameObject);
+            }
         }
     }
 
-    // CHeck if it is player in its trigger. Call method from player
-   
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Mud object: " + collision.gameObject);
-
-
-            //maxSpeed = maxSpeed * slowMultiplier;
-            //speed    = speed * slowMultiplier;
-            playerScript.Slow();
-            Debug.Log("Is slowed");
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            playerScript.slowMultiplier = playerScript.mudMultiplier;
+            //Debug.Log("player is mud slowed.");
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            // maxSpeed = maxSpeed / slowMultiplier;
-            // speed = speed / slowMultiplier;
-            playerScript.UnSlow();
+    void OnTriggerExit2D(Collider2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            playerScript.slowMultiplier = 1f;
+            //Debug.Log("player is not longer slowed.");
         }
-        // CHeck if it is player in its trigger. Call method from player
     }
 }

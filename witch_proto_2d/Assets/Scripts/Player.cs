@@ -7,22 +7,24 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
     // references
-    Rigidbody2D rb;
-    Transform   child;
-    private Animator animate;
-    
+    Rigidbody2D  rb;
+    Animator     animate;
+    Object       stoneLight;
+    GameObject   emitLight; 
 
     public Image staminaBar;
-
-    // constants                    // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
-    float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
-    float maxSpeed         = 7.6f;  // top speed
-    float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
-    float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
-    public float slowMultiplier   = 1f;  // to slow down the player when in the nuckelavee mud trail.
+    public Image hpBar;
 
 
+    // constants                        // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
+    float speed                = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
+    float maxSpeed             = 7.6f;  // top speed
+    float sprintMultiplier     = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
+    public float mudMultiplier = 0.6f;  // to slow down the player when in the nuckelavee mud trail.
+    float friction             = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
 
+    int hp           = 100;
+    int hpMax        = 100;
     int stamina      = 1000;        // used for sprinting
     int staminaMax   = 1000;       
     int staminaMin   = 100;         // can't sprint if below this unless you're already sprinting
@@ -46,20 +48,18 @@ public class Player : MonoBehaviour {
 
     bool staminaRegenBool      = false;
     bool staminaExhausted      = false;
-    bool latestSprintIsRelease = false;
     bool latestVerIsUp         = false;
     bool latestHorIsRight      = false;
 
-    Object     stoneLight;
-    GameObject emitLight; 
+    public float spdMultiplier  = 1f;
+    public float slowMultiplier = 1f;
 
 
     void Start() {
-        rb = GetComponent<Rigidbody2D>();
         rb         = GetComponent<Rigidbody2D>();
-        rb.drag    = friction; 
-        stoneLight = Resources.Load("PlayerLight", typeof(GameObject)); // @NOTE: this line was previously in FixedUpdate - it only needs to happen once though! -Victor
-        animate = GetComponentInChildren<Animator>();
+        rb.drag    = friction;
+        stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
+        animate    = GetComponentInChildren<Animator>();
     }
 
 
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour {
         if (keyDown)  verDir = -1f;
         if (keyRight) horDir =  1f;
         if (keyLeft)  horDir = -1f;
-        if (keyDown && keyUp)    verDir = (latestVerIsUp) ? 1f : -1f;
+        if (keyDown && keyUp)    verDir = (latestVerIsUp)    ? 1f : -1f;
         if (keyLeft && keyRight) horDir = (latestHorIsRight) ? 1f : -1f;
 
         if ((keyDown || keyUp || keyRight || keyLeft)
@@ -105,8 +105,8 @@ public class Player : MonoBehaviour {
         }
 
         // moves the character in the determined direction, possibly sprint boosted
-        float spdMultiplier = 1f;
-        staminaRegenBool    = (stamina == staminaMax) ? false : true;
+        spdMultiplier    = 1f;
+        staminaRegenBool = (stamina == staminaMax) ? false : true;
 
         if (staminaExhausted) staminaExhausted = (stamina >= staminaMin) ? false : true;
         
@@ -156,7 +156,7 @@ public class Player : MonoBehaviour {
         }
         if (keyLightEnd) {
             for (int i = 0; i < this.transform.childCount; i++) {
-                child = this.transform.GetChild(i); // @TODO: i think theres a get all children function instead, is probably better to use as data is pulled from memory one time instead of x insteads this way (but maybe the compiler optimizes this for us) -Victor
+                Transform child = this.transform.GetChild(i); // @TODO: i think theres a get all children function instead, is probably better to use as data is pulled from memory one time instead of x insteads this way (but maybe the compiler optimizes this for us) -Victor
                 if (child.name == "PlayerLight(Clone)") {
                     Destroy(child.gameObject);
                 }
@@ -195,13 +195,4 @@ public class Player : MonoBehaviour {
         }
     }
     */
-   public void Slow()
-    {
-        slowMultiplier = 0.6f;
-    }
-
-    public void UnSlow()
-    {
-        slowMultiplier = 1f;
-    }
 }
