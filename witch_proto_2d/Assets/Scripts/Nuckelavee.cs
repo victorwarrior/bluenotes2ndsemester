@@ -26,10 +26,11 @@ public class Nuckelavee : MonoBehaviour
     int   positionSaverInt;            //Int that changes every frame so that the position of the nuckelavee can be saved at different frames
 
     // other
-    Vector2 dashPosition;                          //The position towards which the nuckelavee will dash
-    Vector2 trailPosition;                        //The position at which the trail is to be instantiated
-    Vector2 nuckPosition1;                       // Position of Nuckelavee at uneven frames
-    Vector2 nuckPosition2;                      // Position of Nuckelavee at  even frames
+    Vector2 dashPosition;                           //The position towards which the nuckelavee will dash
+    Vector2 trailPosition;                         //The position at which the trail is to be instantiated
+    Vector2 nuckPosition1;                        //Position of Nuckelavee at uneven frames
+    Vector2 nuckPosition2;                       //Position of Nuckelavee at  even frames
+    Vector2 nuckPosDif;                         //The difference in position one frame to the other
     float trailInstantiationMeasure;           //The scaled time until a trail is instantiated
     float initialInstantiationMeasure = 0.5f; //The initial scaled time until a trail is instantiated
     float callAbilityTimer;                  //The time until call ability is used
@@ -99,7 +100,18 @@ public class Nuckelavee : MonoBehaviour
             callAbilityTimer = callAbilityCD;
         }
 
-        StartCoroutine(NuckPositions());
+       // StartCoroutine(NuckPositions());
+
+        if(positionSaverInt == 0)
+        {
+            nuckPosDif = (nuckPosition2 - nuckPosition1).normalized;
+        }
+
+        else if (positionSaverInt == 1)
+        {
+            nuckPosDif = (nuckPosition1 - nuckPosition2).normalized;
+        }
+
         if (leaveTrail)
         {
             trailInstantiationMeasure = trailInstantiationMeasure - Time.deltaTime * speedCoefficient;
@@ -119,32 +131,44 @@ public class Nuckelavee : MonoBehaviour
                 if (trailOffsetMod == 1)
                 {
 
-                    trailPosition = new Vector2(transform.position.x+trailOffset, transform.position.y);
+                    trailPosition = new Vector2(transform.position.x + trailOffset * nuckPosDif.x * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.y * trailOffsetMod);
                     Instantiate(mud, transform.position, transform.rotation); //instantiates trail.
                     trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
+                    trailOffsetMod = -1;
                 }
-               
-                
+
+                else if (trailOffsetMod == -1)
+                {
+
+                    trailPosition = new Vector2(transform.position.x + trailOffset * nuckPosDif.x * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.y * trailOffsetMod);
+                    Instantiate(mud, transform.position, transform.rotation); //instantiates trail.
+                    trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
+                    trailOffsetMod = 1;
+                }
             }
 
         }
 
-        IEnumerator NuckPositions()
+       /* IEnumerator NuckPositions()
         {
-            while(true)
-            if (positionSaverInt == 0)
+            while (true)
             {
-                positionSaverInt = 1;
-                nuckPosition1    = transform.position;
-            }
+                if (positionSaverInt == 0)
+                {
+                    nuckPosition1 = transform.position;
+                    positionSaverInt = 1;
+                    continue;
+                }
 
-            if (positionSaverInt == 1)
-            {
-                positionSaverInt = 0;
-                nuckPosition2    = transform.position;
+                if (positionSaverInt == 1)
+                {
+                    nuckPosition2 = transform.position;
+                    positionSaverInt = 0;
+                    continue;
+                }
+                yield return null;
             }
-            yield return null;
-        }
+        }*/
     }
 
 
