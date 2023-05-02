@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -15,7 +16,6 @@ public class Player : MonoBehaviour {
     public Image staminaBar;
     public Image hpBar;
 
-
     // constants                        // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
     float speed                = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
     float maxSpeed             = 7.6f;  // top speed
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour {
     public float mudMultiplier = 0.6f;  // to slow down the player when in the nuckelavee mud trail.
     float friction             = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
 
-    int hp           = 100;
+    public int hp    = 100;
     int hpMax        = 100;
     int stamina      = 1000;        // used for sprinting
     int staminaMax   = 1000;       
@@ -144,6 +144,10 @@ public class Player : MonoBehaviour {
         xVelForDisplay = rb.velocity.x; // @DEBUG
         yVelForDisplay = rb.velocity.y; // @DEBUG
 
+        // update hp
+        hpBar.fillAmount = (float) hp / (float) hpMax;
+        if (hp <= 0f) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         // updates z coordinate to be in front / behind other objects
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 
@@ -166,33 +170,4 @@ public class Player : MonoBehaviour {
     }
 
 
-    // void Slow player
-
-    // void Unslow player
-
-    // code for getting slowed by the nuckelavee trail
-   /* void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!(collision.gameObject.GetComponent<MudSlow>() == null))
-        {
-            Debug.Log("Mud object: " + collision.gameObject);
-           
-           
-            //maxSpeed = maxSpeed * slowMultiplier;
-            //speed    = speed * slowMultiplier;
-            slowMultiplier = 0.6f;
-            Debug.Log("Is slowed");
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (!(collision.gameObject.GetComponent<MudSlow>() == null))
-        {
-            // maxSpeed = maxSpeed / slowMultiplier;
-            // speed = speed / slowMultiplier;
-            slowMultiplier = 1f;
-        }
-    }
-    */
 }
