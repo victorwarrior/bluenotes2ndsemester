@@ -13,17 +13,17 @@ public class Nuckelavee : MonoBehaviour
     Rigidbody2D rb;
 
     // constants
-    float followSpeed = 0.12f;                   //Speed with which the nuckelavee follows the player.
-    float dashSpeed = 0.3f;                     //Speed with which the nuckelavee dashes towards the player
-    public float dashDistance = 15f;           //Distance from which the nuckelavee can dash
-    public float dashPositionScale = 1.1f;    //Scale that determines the distance which is dashed relative to the distance from which the nuckelavee can dash
-    float dashAbilityCD = 10f;               //Cooldown for dash
-    float callAbilityCD = 15;               //Cooldown for calling standard enemies ability
-    int enemySpawnNumber = 4;              //Number of standard enemies called when call ability is used
-    float spawnRange = 4f;                //The distance from the nuckelavee the called enemies can have
-    float speedCoefficient;              //Variable which changes depending on whether nuck is dashing or no, and which changes the speed with which trail is left 
-    float speedCoefficientMod = 40f;    //Variable which modifies the speedcoefficient
-    int   positionSaverInt;            //Int that changes every frame so that the position of the nuckelavee can be saved at different frames
+    float followSpeed              = 0.12f;        //Speed with which the nuckelavee follows the player.
+    float dashSpeed                = 0.3f;        //Speed with which the nuckelavee dashes towards the player
+    public float dashDistance      = 15f;        //Distance from which the nuckelavee can dash
+    public float dashPositionScale = 1.1f;      //Scale that determines the distance which is dashed relative to the distance from which the nuckelavee can dash
+    float dashAbilityCD            = 10f;      //Cooldown for dash
+    float callAbilityCD            = 15;      //Cooldown for calling standard enemies ability
+    int enemySpawnNumber           = 4;      //Number of standard enemies called when call ability is used
+    float spawnRange               = 4f;    //The distance from the nuckelavee the called enemies can have
+    float speedCoefficient;                //Variable which changes depending on whether nuck is dashing or no, and which changes the speed with which trail is left 
+    float speedCoefficientMod      = 40f; //Variable which modifies the speedcoefficient
+    int   positionSaverInt;              //Int that changes every frame so that the position of the nuckelavee can be saved at different frames
 
     // other
     Vector2 dashPosition;                           //The position towards which the nuckelavee will dash
@@ -32,7 +32,7 @@ public class Nuckelavee : MonoBehaviour
     Vector2 nuckPosition2;                       //Position of Nuckelavee at  even frames
     Vector2 nuckPosDif;                         //The difference in position one frame to the other
     float trailInstantiationMeasure;           //The scaled time until a trail is instantiated
-    float initialInstantiationMeasure = 0.5f; //The initial scaled time until a trail is instantiated
+    float initialInstantiationMeasure = 2f;   //The initial scaled time until a trail is instantiated
     float callAbilityTimer;                  //The time until call ability is used
     float dashAbilityTimer;                 //The time until the dash ability is used
     float distanceToPlayer;                //The distance relative to the player used to determine whether dash can be used
@@ -100,9 +100,20 @@ public class Nuckelavee : MonoBehaviour
             callAbilityTimer = callAbilityCD;
         }
 
-       // StartCoroutine(NuckPositions());
+        if (positionSaverInt == 0)
+        {
+            nuckPosition1 = transform.position;
+            positionSaverInt = 1;
+        }
 
-        if(positionSaverInt == 0)
+        else if (positionSaverInt == 1)
+        {
+            nuckPosition2 = transform.position;
+            positionSaverInt = 0;
+        }
+
+
+        if (positionSaverInt == 0)
         {
             nuckPosDif = (nuckPosition2 - nuckPosition1).normalized;
         }
@@ -132,7 +143,7 @@ public class Nuckelavee : MonoBehaviour
                 {
 
                     trailPosition = new Vector2(transform.position.x + trailOffset * nuckPosDif.x * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.y * trailOffsetMod);
-                    Instantiate(mud, transform.position, transform.rotation); //instantiates trail.
+                    Instantiate(mud, trailPosition, transform.rotation); //instantiates trail.
                     trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
                     trailOffsetMod = -1;
                 }
@@ -141,34 +152,12 @@ public class Nuckelavee : MonoBehaviour
                 {
 
                     trailPosition = new Vector2(transform.position.x + trailOffset * nuckPosDif.x * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.y * trailOffsetMod);
-                    Instantiate(mud, transform.position, transform.rotation); //instantiates trail.
+                    Instantiate(mud, trailPosition, transform.rotation); //instantiates trail.
                     trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
                     trailOffsetMod = 1;
                 }
             }
-
         }
-
-       /* IEnumerator NuckPositions()
-        {
-            while (true)
-            {
-                if (positionSaverInt == 0)
-                {
-                    nuckPosition1 = transform.position;
-                    positionSaverInt = 1;
-                    continue;
-                }
-
-                if (positionSaverInt == 1)
-                {
-                    nuckPosition2 = transform.position;
-                    positionSaverInt = 0;
-                    continue;
-                }
-                yield return null;
-            }
-        }*/
     }
 
 
