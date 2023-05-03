@@ -11,6 +11,7 @@ public class Nuckelavee : MonoBehaviour
     public GameObject enemy;
     public GameObject mud;
     Rigidbody2D rb;
+    Player      playerScript;
 
     // constants
     float followSpeed              = 0.12f;        //Speed with which the nuckelavee follows the player.
@@ -24,6 +25,8 @@ public class Nuckelavee : MonoBehaviour
     float speedCoefficient;                //Variable which changes depending on whether nuck is dashing or no, and which changes the speed with which trail is left 
     float speedCoefficientMod      = 40f; //Variable which modifies the speedcoefficient
     int   positionSaverInt;              //Int that changes every frame so that the position of the nuckelavee can be saved at different frames
+    public int damage;                  //Damage received from nuck
+    public int damageInterval;         //Interval between every damage-tick
 
     // other
     Vector2 dashPosition;                           //The position towards which the nuckelavee will dash
@@ -36,13 +39,15 @@ public class Nuckelavee : MonoBehaviour
     float callAbilityTimer;                  //The time until call ability is used
     float dashAbilityTimer;                 //The time until the dash ability is used
     float distanceToPlayer;                //The distance relative to the player used to determine whether dash can be used
-    float trailOffset = 0.2f;             //The offset of the trail from the center of the nuckelavee
+    float trailOffset = 2f;               //The offset of the trail from the center of the nuckelavee
     float trailOffsetMod;                //Variable to determine whether the offset of the trail is positive or negative
     bool dashMode;                      //Boolean to start the dash sequence
     bool leaveTrail = true;            //Boolean to be asked before trail is instantiated
 
     void Start()
     {
+        playerScript = player.GetComponent<Player>();
+
         dashMode = false; //This is so that everything that uses the truth value of dash has an initial configuration.
 
         dashAbilityTimer          = dashAbilityCD;
@@ -83,7 +88,6 @@ public class Nuckelavee : MonoBehaviour
             {
                 dashMode = false;
                 dashAbilityTimer = dashAbilityCD;
-                Debug.Log("dash done");
             }
         }
 
@@ -126,7 +130,6 @@ public class Nuckelavee : MonoBehaviour
         if (leaveTrail)
         {
             trailInstantiationMeasure = trailInstantiationMeasure - Time.deltaTime * speedCoefficient;
-            Debug.Log("SpeedCoefficient is "+speedCoefficient);
             
             if (dashMode)
             {
@@ -142,23 +145,43 @@ public class Nuckelavee : MonoBehaviour
                 if (trailOffsetMod == 1)
                 {
 
-                    trailPosition = new Vector2(transform.position.x + trailOffset * nuckPosDif.x * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.y * trailOffsetMod);
+                    trailPosition = new Vector2(transform.position.x + trailOffset  * nuckPosDif.y * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.x * trailOffsetMod);
                     Instantiate(mud, trailPosition, transform.rotation); //instantiates trail.
                     trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
-                    trailOffsetMod = -1;
+                    trailOffsetMod = -1f;
                 }
 
                 else if (trailOffsetMod == -1)
                 {
 
-                    trailPosition = new Vector2(transform.position.x + trailOffset * nuckPosDif.x * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.y * trailOffsetMod);
+                    trailPosition = new Vector2(transform.position.x + trailOffset  * nuckPosDif.y * trailOffsetMod, transform.position.y + trailOffset * nuckPosDif.x * trailOffsetMod);
                     Instantiate(mud, trailPosition, transform.rotation); //instantiates trail.
                     trailInstantiationMeasure = initialInstantiationMeasure; // resets timer for trail instantiation.
-                    trailOffsetMod = 1;
+                    trailOffsetMod = 1f;
                 }
             }
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            InvokeRepeating("TakeDamage", 0f, damageInterval);
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            CancelInvoke("TakeDamage");
+        }
+    }
+
+    void TakeDamage()
+    {
+        playerScript.hp -= damage;
+    }
 
 }
