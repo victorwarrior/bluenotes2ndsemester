@@ -30,7 +30,11 @@ public class PushObstacle : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         //pushSpeed = 1f;
+
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+
     }
+   
 
     void OnCollisionStay2D(Collision2D col)
     {
@@ -41,6 +45,7 @@ public class PushObstacle : MonoBehaviour
 
             if (col.gameObject.tag == "Player")
             {
+                rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
                 Vector2 contPosition = conts.point;
                 if (contPosition.y - (colliderSize.y / 2) >= 0 && Input.GetKey("s") && Input.GetKey("g"))
                 {
@@ -80,6 +85,7 @@ public class PushObstacle : MonoBehaviour
     void OnCollisionExit2D(Collision2D col)
     {
         rb.velocity = new Vector2(0, 0);
+        rb.constraints = RigidbodyConstraints2D.FreezePosition;
     }
 
     void FixedUpdate()
