@@ -31,7 +31,9 @@ public class PushObstacle : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //pushSpeed = 1f;
 
-        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+        //Ensures nothing can move the object
+        rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+
 
     }
    
@@ -45,10 +47,14 @@ public class PushObstacle : MonoBehaviour
 
             if (col.gameObject.tag == "Player")
             {
-                rb.constraints &= ~RigidbodyConstraints2D.FreezePosition;
+                
                 Vector2 contPosition = conts.point;
                 if (contPosition.y - (colliderSize.y / 2) >= 0 && Input.GetKey("s") && Input.GetKey("g"))
                 {
+                    //The object can now be moved
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+
+                    //Sets direction and velocity for object movement
                     movementDirection = new Vector2(0, -1);
                     rb.velocity = movementDirection * pushSpeed;
                     Debug.Log(rb.velocity);
@@ -57,6 +63,7 @@ public class PushObstacle : MonoBehaviour
                 }
                 else if (contPosition.y + (colliderSize.y / 2) <= 0 && Input.GetKey("w") && Input.GetKey("g"))
                 {
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                     movementDirection = new Vector2(0, 1);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
@@ -70,6 +77,7 @@ public class PushObstacle : MonoBehaviour
                 }
                 else if (contPosition.y + (colliderSize.y / 2) <= 0 && Input.GetKey("d") && Input.GetKey("g"))
                 {
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                     movementDirection = new Vector2(1, 0);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
@@ -85,7 +93,9 @@ public class PushObstacle : MonoBehaviour
     void OnCollisionExit2D(Collision2D col)
     {
         rb.velocity = new Vector2(0, 0);
-        rb.constraints = RigidbodyConstraints2D.FreezePosition;
+
+        //Ensures nothing can move the object
+        rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
     }
 
     void FixedUpdate()
