@@ -31,12 +31,10 @@ public class PushObstacle : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //pushSpeed = 1f;
 
-        //Ensures nothing can move the object
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 
-
     }
-   
+
 
     void OnCollisionStay2D(Collision2D col)
     {
@@ -47,35 +45,32 @@ public class PushObstacle : MonoBehaviour
 
             if (col.gameObject.tag == "Player")
             {
-                
-                Vector2 contPosition = conts.point;
-                if (contPosition.y - (colliderSize.y / 2) >= 0 && Input.GetKey("s") && Input.GetKey("g"))
-                {
-                    //The object can now be moved
-                    rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
 
-                    //Sets direction and velocity for object movement
+                Vector2 contPosition = conts.point;
+                Vector2 relativePosition = new Vector2(contPosition.x - transform.position.x, contPosition.y - transform.position.y);
+                if ((contPosition.y - transform.position.y) - (colliderSize.y / 2) >= 0 && Input.GetKey("s") && Input.GetKey("g"))
+                {
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                     movementDirection = new Vector2(0, -1);
                     rb.velocity = movementDirection * pushSpeed;
                     Debug.Log(rb.velocity);
                     rbPlayer.velocity = movementDirection * pushSpeed;
-                    Debug.Log("pushing down");
                 }
-                else if (contPosition.y + (colliderSize.y / 2) <= 0 && Input.GetKey("w") && Input.GetKey("g"))
+                else if (contPosition.y - transform.position.y + (colliderSize.y / 2) <= 0 && Input.GetKey("w") && Input.GetKey("g"))
                 {
                     rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                     movementDirection = new Vector2(0, 1);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
-                    Debug.Log("pushing up");
                 }
-                else if (contPosition.x - (colliderSize.x / 2) >= 0 && Input.GetKey("a") && Input.GetKey("g"))
+                else if (contPosition.x - transform.position.x - (colliderSize.x / 2) >= 0 && Input.GetKey("a") && Input.GetKey("g"))
                 {
+                    rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                     movementDirection = new Vector2(-1, 0);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
                 }
-                else if (contPosition.y + (colliderSize.y / 2) <= 0 && Input.GetKey("d") && Input.GetKey("g"))
+                else if (contPosition.x - transform.position.x + (colliderSize.x / 2) <= 0 && Input.GetKey("d") && Input.GetKey("g"))
                 {
                     rb.constraints &= ~RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
                     movementDirection = new Vector2(1, 0);
@@ -93,8 +88,6 @@ public class PushObstacle : MonoBehaviour
     void OnCollisionExit2D(Collision2D col)
     {
         rb.velocity = new Vector2(0, 0);
-
-        //Ensures nothing can move the object
         rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
     }
 

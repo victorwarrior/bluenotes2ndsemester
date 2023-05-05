@@ -49,7 +49,7 @@ public class PlayerSFX : MonoBehaviour
         audioSource.Play();
         walkingInt = 2;
         clipTime += audioSource.clip.length;
-        Debug.Log("soundclip nr "+walkingInt+" is playing and the next sound will play at "+clipTime+" current time is "+resetTimer);
+       // Debug.Log("soundclip nr "+walkingInt+" is playing and the next sound will play at "+clipTime+" current time is "+resetTimer);
     }
 
     public void WalkingSound2()
@@ -58,6 +58,6 @@ public class PlayerSFX : MonoBehaviour
         audioSource.Play();
         walkingInt = 1;
         clipTime += audioSource.clip.length;
-        Debug.Log("soundclip nr " + walkingInt + " is playing and the next sound will play at " + clipTime + " current time is " + resetTimer);
+      //  Debug.Log("soundclip nr " + walkingInt + " is playing and the next sound will play at " + clipTime + " current time is " + resetTimer);
     }
 }
