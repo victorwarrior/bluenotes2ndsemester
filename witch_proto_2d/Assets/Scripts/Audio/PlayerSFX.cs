@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerSFX : MonoBehaviour
 {
     public AudioSource audioSource;
-    public AudioClip audioClip1;
-    public AudioClip audioClip2;
+    public AudioSource audioSource2;
+    public AudioClip footStep1;
+    public AudioClip footStep2;
+    public AudioClip sprintAudio;
+    public AudioClip grunt1;
 
 
     private float clipTime;    // cummulative amount of time of clips.
@@ -40,24 +43,43 @@ public class PlayerSFX : MonoBehaviour
                 WalkingSound2();
             }
         }
-    }
 
-   
+        if((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            SprintSound();
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            GruntSound1();
+        }
+    }
+    public void SprintSound()
+    {
+        audioSource2.clip = sprintAudio;
+        audioSource2.Play();
+    }
     public void WalkingSound1()
     {
-        audioSource.clip = audioClip1;
+        audioSource.clip = footStep1;
         audioSource.Play();
         walkingInt = 2;
         clipTime += audioSource.clip.length;
-       // Debug.Log("soundclip nr "+walkingInt+" is playing and the next sound will play at "+clipTime+" current time is "+resetTimer);
     }
 
     public void WalkingSound2()
     {
-        audioSource.clip = audioClip2;
+        audioSource.clip = footStep1;
         audioSource.Play();
         walkingInt = 1;
         clipTime += audioSource.clip.length;
-      //  Debug.Log("soundclip nr " + walkingInt + " is playing and the next sound will play at " + clipTime + " current time is " + resetTimer);
+    }
+
+    public void GruntSound1()
+    {
+        audioSource2.clip = grunt1;
+        audioSource2.Play();
     }
 }
