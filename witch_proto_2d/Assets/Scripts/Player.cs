@@ -60,8 +60,16 @@ public class Player : MonoBehaviour {
         rb.drag    = friction;
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
         animate    = GetComponentInChildren<Animator>();
-    }
 
+       
+    }
+    private void Awake()
+    {
+        if (CheckPointManagerScript.hasCheckPoint)
+        {
+            transform.position = CheckPointManagerScript.currentCheckpoint;
+        }
+    }
 
     void Update() {
 
