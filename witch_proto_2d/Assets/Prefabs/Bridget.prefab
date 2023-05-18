@@ -212,9 +212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 6023218078660288082}
   audioSource2: {fileID: 2399521826718942853}
-  audioClip1: {fileID: 8300000, guid: 860d7ac0d7f3b64418b80cfb922b7304, type: 3}
-  audioClip2: {fileID: 8300000, guid: e0e84699deb1e694999b359ff655722f, type: 3}
+  footStep1: {fileID: 8300000, guid: ba06953de9d71d444ab5c55f271613d2, type: 3}
+  footStep2: {fileID: 8300000, guid: ff7abba34cbea0a4392b6ceec775f9cf, type: 3}
   sprintAudio: {fileID: 8300000, guid: c250c718decc64a4093cf231d10cef39, type: 3}
+  grunt1: {fileID: 8300000, guid: 80725798fe856cc419523d23d2014a32, type: 3}
 --- !u!1 &6325247920071456239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,6 +2951,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4541057405770491444}
     m_Modifications:
+    - target: {fileID: 311046990421532784, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c7ab5ed027504e49877e09a8f461872, type: 3}
     - target: {fileID: 1946577421127343450, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
       propertyPath: m_RootOrder
       value: 8

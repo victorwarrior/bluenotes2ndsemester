@@ -19,11 +19,15 @@ public class Enemy : MonoBehaviour {
 
     // other
     float   timer        = 0f;
+    float   soundTimer;
     string  mode         = "";
     int     type         = 0;
     Vector3 walkPosition = new Vector3(0f, 0f, 0f);
     Vector2 chaseDirection;
     public bool isAttacking;
+    public AudioSource audioSource1;
+    public AudioClip growl1;
+    public AudioClip growl2;
 
 
     void Start() {
@@ -38,6 +42,9 @@ public class Enemy : MonoBehaviour {
 
         isAttacking = false;
 
+        soundTimer = Random.Range(5f, 20f);
+        audioSource1.enabled = true;
+
         //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
 
     }
@@ -47,6 +54,7 @@ public class Enemy : MonoBehaviour {
 
         string nextMode = "";
         timer           = timer - Time.deltaTime;
+        soundTimer      = soundTimer - Time.deltaTime;
 
         if (false) {
 
@@ -168,6 +176,27 @@ public class Enemy : MonoBehaviour {
                 case "move":
                 case "stunned":
                     break;
+            }
+        }
+
+        if(soundTimer <= 0f)
+        {
+            Debug.Log("angel sound");
+            
+            int soundNr =  Random.Range(1, 3);
+            if(soundNr == 1)
+            {
+                audioSource1.clip   = growl1;
+                audioSource1.volume = 1f;
+                audioSource1.Play();
+                soundTimer = Random.Range(5f, 20f);
+            }
+            if(soundNr == 2)
+            {
+                audioSource1.clip = growl2;
+                audioSource1.volume = 1f;
+                audioSource1.Play();
+                soundTimer = Random.Range(5f, 20f);
             }
         }
 
