@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainController : MonoBehaviour {
     
     // references
-    public GameObject player;
-    public GameObject enemyPrefab;
-    public GameObject graymanPrefab;
-    public GameObject simpleMistPrefab;
-    public GameObject mapImage;
+    public GameObject      player;
+    public GameObject      enemyPrefab;
+    public GameObject      graymanPrefab;
+    public GameObject      simpleMistPrefab;
+    public GameObject      mapImage;
+    public TextMeshProUGUI dialogueCharacterName;
+    public TextMeshProUGUI dialogue;
+
 
     // constants
     public int numberOfEnemies = 0;
@@ -25,8 +29,8 @@ public class MainController : MonoBehaviour {
             timer = 2f;
         }
         
-        Dialogue[] testDialogue = {   new Dialogue("BRIDGET",
-                                                   "hi, this is Bridget talking! this text is maybe a bit boring... Hmm...",
+        Dialogue[] testDialogue = {   new Dialogue("Bridget",
+                                                   "Hi, this is Bridget talking! This text is maybe a bit boring... Hmm...",
                                                    4f, 1, 2),
                                       new Dialogue("CAT",
                                                    "...well, THIS text is on the screen for a long time...",
@@ -34,6 +38,11 @@ public class MainController : MonoBehaviour {
                                       new Dialogue("CAT",
                                                    "short exclamation!",
                                                    1f, 3, 4)   };
+
+        if (dialogueCharacterName != null && dialogue != null) {
+            dialogueCharacterName.text = testDialogue[0].characterTalking;
+            dialogue.text              = testDialogue[0].text;            
+        }
 
     }
 
@@ -94,7 +103,7 @@ public class MainController : MonoBehaviour {
     }
 }
 
-public class Dialogue : MonoBehaviour {
+public class Dialogue {
     
     public string characterTalking;
     public string text;
