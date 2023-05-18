@@ -1,0 +1,39 @@
+{
+    "activeFile": "Tileset/WinterTiles.tsx",
+    "expandedProjectPaths": [
+        "Maps",
+        ".",
+        "Tileset"
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "Maps/Wintermap.tmx": {
+            "scale": 0.03125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 9888,
+                "y": -976
+            }
+        },
+        "Tileset/WinterTiles.tsx": {
+            "scaleInDock": 0.12,
+            "scaleInEditor": 0.33
+        }
+    },
+    "last.imagePath": "C:/Users/Toke/Documents/GitHub/bluenotes2ndsemester/tiles",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "Maps/Wintermap.tmx",
+        "Tileset/WinterTiles.tsx"
+    ],
+    "project": "Tilemap.tiled-project",
+    "recentFiles": [
+        "Maps/Wintermap.tmx",
+        "Tileset/WinterTiles.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 1024,
+        "width": 1024
+    }
+}
