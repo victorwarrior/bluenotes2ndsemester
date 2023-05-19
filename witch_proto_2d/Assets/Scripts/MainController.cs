@@ -18,15 +18,16 @@ public class MainController : MonoBehaviour {
 
 
     // constants
-    public int numberOfEnemies = 0;
+    public const int numberOfEnemies = 0;
 
     // other
     bool mapOnScreen = false;
-    float timer      = 0f;
+    float mistTimer     = 0f;
+    float dialogueTimer = 0f;
 
     void Start() {
         if (SceneManager.GetActiveScene().name == "MistTest") {
-            timer = 2f;
+            mistTimer = 2f;
         }
         
         Dialogue[] testDialogue = {   new Dialogue("Bridget",
@@ -68,11 +69,11 @@ public class MainController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        timer -= Time.deltaTime;
+        mistTimer -= Time.deltaTime;
 
         // spawning gray men and mist
-        if (timer <= 0f) timer = 0f;
-        if (SceneManager.GetActiveScene().name == "MistTest" && timer <= 0f) {
+        if (mistTimer <= 0f) mistTimer = 0f;
+        if (SceneManager.GetActiveScene().name == "MistTest" && mistTimer <= 0f) {
 
             if (Random.Range(0, 3) == 0) {
                 int n = Random.Range(1, 3);
@@ -94,9 +95,9 @@ public class MainController : MonoBehaviour {
                                               Quaternion.identity); // right now it figures out a random position on its own
                 inst.GetComponent<Grayman>().player = player;
             }
-            if (timer <= -30f) {
-                timer = Random.Range(30f, 120f);
-                Debug.Log("timer set to " + timer);
+            if (mistTimer <= -30f) {
+                mistTimer = Random.Range(30f, 120f);
+                Debug.Log("mistTimer set to " + mistTimer);
             }
 
         }

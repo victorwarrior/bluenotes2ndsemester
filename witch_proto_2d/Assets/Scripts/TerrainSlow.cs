@@ -20,7 +20,7 @@ public class TerrainSlow : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            playerScript.slowMultiplier = playerScript.mudMultiplier;
+            playerScript.slowMultiplier = Player.mudMultiplier;
         }
     }
 

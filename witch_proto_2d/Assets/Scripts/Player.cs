@@ -7,66 +7,65 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
-    // references
-    Rigidbody2D  rb;
-    Animator     animate;
-    Object       stoneLight;
-    GameObject   emitLight; 
+    // debug
+    //float xVelForDisplay        = 0f;
+    //float xVelForDisplayPreCalc = 0f;
+    //float yVelForDisplay        = 0f;
+    //float yVelForDisplayPreCalc = 0f;
 
+    // references
+    Rigidbody2D rb;
+    Animator    animate;
+    Object      stoneLight;
+    GameObject  emitLight; 
+
+    // references (set in editor)
     public Image staminaBar;
     public Image hpBar;
 
-    // constants                        // CAREFUL WHEN MAKING CONSTANTS PUBLIC, IF PUBLIC THEY PRIORIZE THE VALUE IN THE EDITOR
-    float speed                = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
-    float maxSpeed             = 7.6f;  // top speed
-    float sprintMultiplier     = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
-    public float mudMultiplier = 0.6f;  // to slow down the player when in the nuckelavee mud trail.
-    float friction             = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
+    // constants
+    public const float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
+    public const float maxSpeed         = 7.6f;  // top speed
+    public const float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
+    public const float mudMultiplier    = 0.6f;  // to slow down the player when in the nuckelavee mud trail.
+    public const float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
 
-    public int hp    = 100;
-    int hpMax        = 100;
-    int stamina      = 1000;        // used for sprinting
-    int staminaMax   = 1000;       
-    int staminaMin   = 100;         // can't sprint if below this unless you're already sprinting
-    int staminaDrain = 8;           // how much stamina is used per tick when sprinting
-    int staminaRegen = 1;           // how much stamina is gained when not sprinting
-
-    // debug
-    public float xVelForDisplay        = 0f;
-    public float xVelForDisplayPreCalc = 0f;
-    public float yVelForDisplay        = 0f;
-    public float yVelForDisplayPreCalc = 0f;
+    public const int hpMax              = 100;
+    public const int staminaMax         = 1000;       
+    public const int staminaMin         = 100;   // can't sprint if below this unless you're already sprinting
+    public const int staminaDrain       = 8;     // how much stamina is used per tick when sprinting
+    public const int staminaRegen       = 1;     // how much stamina is gained when not sprinting
 
     // other
-    bool keyUp       = false;
-    bool keyDown     = false;
-    bool keyLeft     = false;
-    bool keyRight    = false;
-    bool keySprint   = false;
-    bool keyLight    = false;
-    bool keyLightEnd = false;
-
-    bool staminaRegenBool      = false;
-    bool staminaExhausted      = false;
-    bool latestVerIsUp         = false;
-    bool latestHorIsRight      = false;
-
+    public int hp               = 100;
+    public int stamina          = 1000;
     public float spdMultiplier  = 1f;
     public float slowMultiplier = 1f;
+   
+    bool keyUp                  = false;
+    bool keyDown                = false;
+    bool keyLeft                = false;
+    bool keyRight               = false;
+    bool keySprint              = false;
+    bool keyLight               = false;
+    bool keyLightEnd            = false;
+      
+    bool staminaRegenBool       = false;
+    bool staminaExhausted       = false;
+    bool latestVerIsUp          = false;
+    bool latestHorIsRight       = false;
+
 
 
     void Start() {
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction;
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
-        animate    = GetComponentInChildren<Animator>();
-
-       
+        animate    = GetComponentInChildren<Animator>();       
     }
-    private void Awake()
-    {
-        if (CheckPointManagerScript.hasCheckPoint)
-        {
+
+    private void Awake() {
+        if (CheckPointManagerScript.hasCheckPoint) {
             transform.position = CheckPointManagerScript.currentCheckpoint;
         }
     }
@@ -134,8 +133,8 @@ public class Player : MonoBehaviour {
 
         rb.AddForce(new Vector2(horDir * speed * spdMultiplier, verDir * speed * spdMultiplier));
 
-        xVelForDisplayPreCalc = rb.velocity.x; // @DEBUG
-        yVelForDisplayPreCalc = rb.velocity.y; // @DEBUG
+        //xVelForDisplayPreCalc = rb.velocity.x; // @DEBUG
+        //yVelForDisplayPreCalc = rb.velocity.y; // @DEBUG
 
         if (isMovingDiagonally == false) {
             if      (rb.velocity.x > (maxSpeed * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2((maxSpeed * spdMultiplier * slowMultiplier), rb.velocity.y);
@@ -149,8 +148,8 @@ public class Player : MonoBehaviour {
             else if (rb.velocity.y < -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier));            
         }
 
-        xVelForDisplay = rb.velocity.x; // @DEBUG
-        yVelForDisplay = rb.velocity.y; // @DEBUG
+        //xVelForDisplay = rb.velocity.x; // @DEBUG
+        //yVelForDisplay = rb.velocity.y; // @DEBUG
 
         // update hp
         hpBar.fillAmount = (float) hp / (float) hpMax;

@@ -36,7 +36,7 @@ public class MudSlow : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "Player") {
-            playerScript.slowMultiplier = playerScript.mudMultiplier;
+            playerScript.slowMultiplier = Player.mudMultiplier;
         }
     }
 
