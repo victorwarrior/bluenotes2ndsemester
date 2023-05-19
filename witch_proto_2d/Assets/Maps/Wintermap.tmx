@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="1024" tileheight="1024" infinite="1" nextlayerid="3" nextobjectid="18">
+ <editorsettings>
+  <export target="Wintermap..tmx" format="tmx"/>
+ </editorsettings>
+ <tileset firstgid="1" source="../Tileset/WinterTiles.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="30" height="20" offsetx="-216" offsety="-856">
+  <data encoding="csv">
+   <chunk x="-16" y="-16" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,4,2,5,4,1,
+0,0,0,0,0,0,0,0,0,0,0,2,1,1,1,1,
+0,0,0,0,0,0,0,0,0,0,0,6,2,2,5,1,
+0,0,0,0,0,0,0,0,0,0,0,4,2,1,1,5,
+0,0,0,0,0,0,0,0,0,0,0,6,2,1,2,3,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+ <objectgroup id="2" name="Object Layer 1">
+  <object id="15" name="Square" x="-2939.39" y="-7727.27" width="390.909" height="339.394"/>
+  <object id="16" name="Circle" x="-3333.33" y="-5539.39" width="433.333" height="312.121">
+   <ellipse/>
+  </object>
+  <object id="17" x="-3324.24" y="-6963.64">
+   <ellipse/>
+  </object>
+ </objectgroup>
+</map>

@@ -1,0 +1,92 @@
+{ "compressionlevel":-1,
+ "height":20,
+ "infinite":true,
+ "layers":[
+        {
+         "chunks":[
+                {
+                 "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 5, 4, 1,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 1, 1,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 2, 2, 5, 1,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 2, 1, 1, 5,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 2, 1, 2, 3,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                 "height":16,
+                 "width":16,
+                 "x":-16,
+                 "y":-16
+                }],
+         "height":32,
+         "id":1,
+         "name":"Tile Layer 1",
+         "offsetx":-216,
+         "offsety":-856,
+         "opacity":1,
+         "startx":-16,
+         "starty":-16,
+         "type":"tilelayer",
+         "visible":true,
+         "width":32,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":2,
+         "name":"Object Layer 1",
+         "objects":[
+                {
+                 "height":339.393939393939,
+                 "id":15,
+                 "name":"Square",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":390.909090909091,
+                 "x":-2939.39393939394,
+                 "y":-7727.27272727273
+                }, 
+                {
+                 "ellipse":true,
+                 "height":312.121212121212,
+                 "id":16,
+                 "name":"Circle",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":433.333333333333,
+                 "x":-3333.33333333333,
+                 "y":-5539.39393939394
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":3,
+ "nextobjectid":17,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.10.1",
+ "tileheight":1024,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"..\/Tileset\/WinterTiles.tsx"
+        }],
+ "tilewidth":1024,
+ "type":"map",
+ "version":"1.10",
+ "width":30
+}

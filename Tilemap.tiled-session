@@ -1,26 +1,39 @@
 {
-    "activeFile": "Tileset/WinterTiles.tsx",
+    "activeFile": "Maps/Wintermap.tmx",
     "expandedProjectPaths": [
-        "Maps",
         ".",
-        "Tileset"
+        "witch_proto_2d/Assets/Map",
+        "witch_proto_2d/Assets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "Maps/Wintermap.tmx": {
-            "scale": 0.03125,
-            "selectedLayer": 0,
+            "scale": 0.33,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 9888,
-                "y": -976
+                "x": -2733.3333333333335,
+                "y": -6631.818181818182
             }
         },
         "Tileset/WinterTiles.tsx": {
-            "scaleInDock": 0.12,
-            "scaleInEditor": 0.33
+            "scaleInDock": 0.125,
+            "scaleInEditor": 0.06
+        },
+        "witch_proto_2d/Assets/Map/Wintermap.tmx": {
+            "scale": 0.025048828125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -8223.93762183236,
+                "y": -8203.976608187135
+            }
+        },
+        "witch_proto_2d/Assets/Tileset/WinterTiles.tsx": {
+            "scaleInDock": 1
         }
     },
+    "last.exportedFilePath": "C:/Users/Toke/Documents/GitHub/bluenotes2ndsemester/Maps",
     "last.imagePath": "C:/Users/Toke/Documents/GitHub/bluenotes2ndsemester/tiles",
+    "map.lastUsedExportFilter": "Tiled map files (*.tmx *.xml)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "Maps/Wintermap.tmx",
@@ -28,8 +41,9 @@
     ],
     "project": "Tilemap.tiled-project",
     "recentFiles": [
+        "Tileset/WinterTiles.tsx",
         "Maps/Wintermap.tmx",
-        "Tileset/WinterTiles.tsx"
+        "witch_proto_2d/Assets/Map/Wintermap.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
