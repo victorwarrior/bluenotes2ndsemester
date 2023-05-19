@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class CheckPointScript : MonoBehaviour
 {
+    AudioSource audioSource;
 
+
+    private bool hasActivated = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,7 +15,13 @@ public class CheckPointScript : MonoBehaviour
         {
             CheckPointManagerScript.currentCheckpoint = transform.position;
             CheckPointManagerScript.hasCheckPoint = true;
-            Debug.Log("Checkpoint!!" + CheckPointManagerScript.hasCheckPoint);
+            if (!hasActivated)
+            {
+                audioSource = GetComponent<AudioSource>();
+                audioSource.volume = 0.2f;
+                audioSource.Play();
+                hasActivated = true;
+            }
         }
     }
 }

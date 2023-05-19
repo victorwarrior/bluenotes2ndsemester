@@ -14,40 +14,52 @@ public class PlayerSFX : MonoBehaviour
 
     private float clipTime;    // cummulative amount of time of clips.
     private float resetTimer; // time that needs to surpass cliptime to play sound.
-    private float startTime; // time the script starts.
     private int walkingInt = 1;
 
     // Start is called before the first frame update
 
     void Start()
     {
-        clipTime = 0f;
-        startTime = Time.time;
+        resetTimer = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        resetTimer = Time.time - startTime;
-        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d"))&& resetTimer >= clipTime)
+        resetTimer -= Time.deltaTime;
+        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d"))&& resetTimer <= 0)
         {
             if(walkingInt == 1)
             {
                 WalkingSound1();
             }
         }
-        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && resetTimer >= clipTime)
+        
+        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            SprintSound();
+        }
+        
+        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && resetTimer <= 0 && Input.GetKey(KeyCode.LeftShift))
+        {
+            walkingInt = 0;
+            RunningSound();
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            walkingInt = 1;
+        }
+
+       /* if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && resetTimer <= 0)
         {
             if (walkingInt == 2)
             {
                 WalkingSound2();
             }
-        }
+        }*/
 
-        if((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            SprintSound();
-        }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -59,14 +71,24 @@ public class PlayerSFX : MonoBehaviour
     public void SprintSound()
     {
         audioSource2.clip = sprintAudio;
+        audioSource2.volume = 0.1f;
         audioSource2.Play();
+    }
+
+    public void RunningSound()
+    {
+        audioSource.clip = footStep2;
+        audioSource.volume = 0.3f;
+        audioSource.Play();
+        resetTimer = audioSource.clip.length;
     }
     public void WalkingSound1()
     {
         audioSource.clip = footStep1;
+        audioSource.volume = 0.3f;
         audioSource.Play();
-        walkingInt = 2;
-        clipTime += audioSource.clip.length;
+       // walkingInt = 2;
+        resetTimer = audioSource.clip.length;
     }
 
     public void WalkingSound2()
@@ -74,7 +96,7 @@ public class PlayerSFX : MonoBehaviour
         audioSource.clip = footStep1;
         audioSource.Play();
         walkingInt = 1;
-        clipTime += audioSource.clip.length;
+        resetTimer = audioSource.clip.length;
     }
 
     public void GruntSound1()
