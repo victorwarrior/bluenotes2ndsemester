@@ -1733,7 +1733,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 196}
   m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &213728133
@@ -1758,8 +1758,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Character Name:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c94e185e632031b4c9c6ddaf158c73e9, type: 2}
+  m_sharedMaterial: {fileID: -5802396183211738505, guid: c94e185e632031b4c9c6ddaf158c73e9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9911,6 +9911,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 7081135925398222775}
+    - target: {fileID: 6214305138736407747, guid: ed9f85f9aa2a70c43a0cf377399d1efa, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6618813838602149095, guid: ed9f85f9aa2a70c43a0cf377399d1efa, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.979105
@@ -11668,7 +11672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 106}
+  m_AnchoredPosition: {x: 0, y: 115}
   m_SizeDelta: {x: 900, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455041774
@@ -11694,8 +11698,8 @@ MonoBehaviour:
   m_text: Dialogue text. This is a longer sentence, with different words and signs!
     does it look alright? What's the meaning of life you ask? Well, let me tell you...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e3cc68c16973cc044b2d303e5a11842d, type: 2}
+  m_sharedMaterial: {fileID: -7895311910208500984, guid: e3cc68c16973cc044b2d303e5a11842d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12921,8 +12925,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -407}
-  m_SizeDelta: {x: 940, y: 230}
+  m_AnchoredPosition: {x: 0, y: -400}
+  m_SizeDelta: {x: 950, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616125973
 MonoBehaviour:
@@ -12937,14 +12941,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.30588236}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 177da05a319a36746ae29a0149f14370, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18050,11 +18054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaBar: {fileID: 1178060316}
   hpBar: {fileID: 641483134}
-  mudMultiplier: 0.6
   hp: 100
-  xVelForDisplay: 0
-  xVelForDisplayPreCalc: 0
-  yVelForDisplay: 0
-  yVelForDisplayPreCalc: 0
+  stamina: 1000
   spdMultiplier: 1
   slowMultiplier: 1
