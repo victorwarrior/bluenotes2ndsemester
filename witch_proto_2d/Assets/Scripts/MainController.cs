@@ -13,6 +13,8 @@ public class MainController : MonoBehaviour {
     public GameObject      graymanPrefab;
     public GameObject      simpleMistPrefab;
     public GameObject      mapImage;
+
+    public GameObject      dialogueParent;
     public TextMeshProUGUI dialogueCharacterName;
     public TextMeshProUGUI dialogue;
 
@@ -21,29 +23,30 @@ public class MainController : MonoBehaviour {
     public const int numberOfEnemies = 0;
 
     // other
-    bool mapOnScreen = false;
+    bool  mapOnScreen   = false;
     float mistTimer     = 0f;
     float dialogueTimer = 0f;
+    int   nextDialogue  = -1;
+
+    Dialogue[] testDialogue = new Dialogue[3];
 
     void Start() {
         if (SceneManager.GetActiveScene().name == "MistTest") {
             mistTimer = 2f;
         }
         
-        Dialogue[] testDialogue = {   new Dialogue("Bridget",
-                                                   "Hi, this is Bridget talking! This text is maybe a bit boring... Hmm...",
-                                                   4f, 1, 2),
-                                      new Dialogue("CAT",
-                                                   "...well, THIS text is on the screen for a long time...",
-                                                   8f, 2, 3),
-                                      new Dialogue("CAT",
-                                                   "short exclamation!",
-                                                   1f, 3, 4)   };
+        testDialogue[0] = new Dialogue("Bridget",
+                                       "Hi, this is Bridget talking! This text is maybe a bit boring... Hmm...",
+                                       4f, 0, 1);
+        testDialogue[1] = new Dialogue("CAT",
+                                       "...well, THIS text is on the screen for a long time...",
+                                       8f, 1, 2);
+        testDialogue[2] = new Dialogue("CAT",
+                                       "short exclamation!",
+                                       1f, 2, -1);
 
-        if (dialogueCharacterName != null && dialogue != null) {
-            dialogueCharacterName.text = testDialogue[0].characterTalking;
-            dialogue.text              = testDialogue[0].text;            
-        }
+        nextDialogue = 0;
+        dialogueTimer = 2f;
 
     }
 
@@ -69,10 +72,10 @@ public class MainController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        mistTimer -= Time.deltaTime;
+        mistTimer     = mistTimer - Time.deltaTime; // @TODO: should timers only go down to 0 and then stop? if they run for long enough they become positive again right? Oo -Victor
 
-        // spawning gray men and mist
-        if (mistTimer <= 0f) mistTimer = 0f;
+        // mist
+        if (mistTimer <= 0f) mistTimer = 0f; // @TODO: resetting doesn't work right now because it runs this all the time :) - Victor
         if (SceneManager.GetActiveScene().name == "MistTest" && mistTimer <= 0f) {
 
             if (Random.Range(0, 3) == 0) {
@@ -95,12 +98,33 @@ public class MainController : MonoBehaviour {
                                               Quaternion.identity); // right now it figures out a random position on its own
                 inst.GetComponent<Grayman>().player = player;
             }
+
             if (mistTimer <= -30f) {
                 mistTimer = Random.Range(30f, 120f);
                 Debug.Log("mistTimer set to " + mistTimer);
             }
 
         }
+
+        // dialogue
+        
+        if (dialogueTimer > 0f) {
+            dialogueTimer = dialogueTimer - Time.deltaTime;
+
+            if (dialogueTimer <= 0f && dialogueCharacterName != null && dialogue != null) {
+                if (nextDialogue != -1) {
+                    dialogueParent.SetActive(true);
+                    dialogueCharacterName.text = testDialogue[nextDialogue].characterTalking;
+                    dialogue.text              = testDialogue[nextDialogue].text;
+                    dialogueTimer              = testDialogue[nextDialogue].timeOnScreen;
+                    nextDialogue               = testDialogue[nextDialogue].nextId;
+                } else {
+                    dialogueParent.SetActive(false);
+                }
+            }
+        }
+
+
     }
 }
 
