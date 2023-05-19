@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour {
     public AudioSource audioSource1;
     public AudioClip growl1;
     public AudioClip growl2;
+    public AudioClip growl3;
 
 
     void Start() {
@@ -42,8 +43,7 @@ public class Enemy : MonoBehaviour {
 
         isAttacking = false;
 
-        soundTimer = Random.Range(5f, 20f);
-        audioSource1.enabled = true;
+        soundTimer = 0;
 
         //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
 
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour {
 
         string nextMode = "";
         timer           = timer - Time.deltaTime;
-        soundTimer      = soundTimer - Time.deltaTime;
+
 
         if (false) {
 
@@ -159,6 +159,7 @@ public class Enemy : MonoBehaviour {
             timer          = 0.85f;
             chaseDirection = (new Vector2(player.transform.position.x, player.transform.position.y)
                              -new Vector2(transform.position.x, transform.position.y)).normalized;
+            AttackSound();
             switch (mode) {
                 case "wait":
                 case "move":
@@ -179,30 +180,49 @@ public class Enemy : MonoBehaviour {
             }
         }
 
-        if(soundTimer <= 0f)
-        {
-            Debug.Log("angel sound");
-            
-            int soundNr =  Random.Range(1, 3);
-            if(soundNr == 1)
-            {
-                audioSource1.clip   = growl1;
-                audioSource1.volume = 1f;
-                audioSource1.Play();
-                soundTimer = Random.Range(5f, 20f);
-            }
-            if(soundNr == 2)
-            {
-                audioSource1.clip = growl2;
-                audioSource1.volume = 1f;
-                audioSource1.Play();
-                soundTimer = Random.Range(5f, 20f);
-            }
-        }
+        
+        
 
+            
+       
+       if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange * 1.3)
+            {
+            soundTimer = soundTimer - Time.deltaTime;
+            Debug.Log("angel sound" + soundTimer);
+            if (soundTimer <= 0f)
+            {
+                int soundNr = Random.Range(1, 3);
+                if (soundNr == 1)
+                {
+                    audioSource1.clip = growl1;
+                    audioSource1.volume = 0.1f;
+                    audioSource1.Play();
+                    soundTimer = Random.Range(5f, 10f);
+                }
+                if (soundNr == 2)
+                {
+                    audioSource1.clip = growl2;
+                    audioSource1.volume = 0.1f;
+                    audioSource1.Play();
+                    soundTimer = Random.Range(5f, 10f);
+                }
+            }
+               
+            }
+        
+        
 
         // update z coordinate to be in front / behind other objects
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
+    }
+
+    void AttackSound()
+    {
+        audioSource1.clip = growl3;
+        audioSource1.volume = 0.1f;
+        float pitchMod = Random.Range(0.9f, 1.1f);
+        audioSource1.pitch = pitchMod;
+        audioSource1.Play();
     }
 
     void OnCollisionEnter2D(Collision2D col) {

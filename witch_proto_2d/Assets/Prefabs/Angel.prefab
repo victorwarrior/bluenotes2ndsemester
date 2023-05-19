@@ -202,7 +202,7 @@ Transform:
   m_Children:
   - {fileID: 2713350867880339185}
   - {fileID: 2820971844662961392}
-  - {fileID: 1935053546315638041}
+  - {fileID: 6642814408428973983}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -257,9 +257,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7081135925501212638, guid: 101ca72e2e9a27741b523df181b97873, type: 3}
   isAttacking: 0
-  audioSource1: {fileID: 311046990421532784, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
+  audioSource1: {fileID: 4855631147814720181}
   growl1: {fileID: 8300000, guid: de1043e8ba1fed049836f71feac7de1f, type: 3}
-  growl2: {fileID: 8300000, guid: 3c7ab5ed027504e49877e09a8f461872, type: 3}
+  growl2: {fileID: 8300000, guid: bfb20da74859e3f4585808e5dff165ed, type: 3}
+  growl3: {fileID: 8300000, guid: 3c7ab5ed027504e49877e09a8f461872, type: 3}
 --- !u!82 &1312820269
 AudioSource:
   m_ObjectHideFlags: 0
@@ -356,7 +357,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &133156541767858243
+--- !u!1001 &5130626212935643845
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -413,8 +414,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
---- !u!4 &1935053546315638041 stripped
+--- !u!82 &4855631147814720181 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 311046990421532784, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
+  m_PrefabInstance: {fileID: 5130626212935643845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6642814408428973983 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1946577421127343450, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
-  m_PrefabInstance: {fileID: 133156541767858243}
+  m_PrefabInstance: {fileID: 5130626212935643845}
   m_PrefabAsset: {fileID: 0}
