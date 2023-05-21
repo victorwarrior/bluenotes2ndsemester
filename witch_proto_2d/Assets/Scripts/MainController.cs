@@ -15,6 +15,8 @@ public class MainController : MonoBehaviour {
     public GameObject      mapImage;
 
     public GameObject      dialogueParent;
+    public GameObject      dialogueNameTag;
+    public GameObject      dialogueCharacterNameObject;
     public TextMeshProUGUI dialogueCharacterName;
     public TextMeshProUGUI dialogue;
 
@@ -28,22 +30,27 @@ public class MainController : MonoBehaviour {
     float dialogueTimer = 0f;
     int   nextDialogue  = -1;
 
-    Dialogue[] testDialogue = new Dialogue[3];
+    Dialogue[] testDialogue = new Dialogue[4];
 
     void Start() {
         if (SceneManager.GetActiveScene().name == "MistTest") {
-            mistTimer = 2f;
+            mistTimer = 200f;
         }
         
-        testDialogue[0] = new Dialogue("Bridget",
-                                       "Hi, this is Bridget talking! This text is maybe a bit boring... Hmm...",
-                                       4f, 0, 1);
-        testDialogue[1] = new Dialogue("CAT",
-                                       "...well, THIS text is on the screen for a long time...",
-                                       8f, 1, 2);
-        testDialogue[2] = new Dialogue("CAT",
-                                       "short exclamation!",
-                                       1f, 2, -1);
+        int n = 0;
+
+        testDialogue[n++] = new Dialogue("Bridget",
+                                         "Hi, this is Bridget talking! This text is maybe a bit boring... Hmm...",
+                                         4f, 0, 1);
+        testDialogue[n++] = new Dialogue("CAT",
+                                         "...well, THIS text is on the screen for a long time...",
+                                         8f, 1, 2);
+        testDialogue[n++] = new Dialogue("CAT",
+                                         "short exclamation!",
+                                         1.5f, 2, 3);
+        testDialogue[n++] = new Dialogue("Bridget",
+                                         "Right... i guess this is the last line of dialogue, maybe i should make it a bit longer than the other lines - to end it on a high note, you know?",
+                                         6.2f, 3, -1);
 
         nextDialogue = 0;
         dialogueTimer = 2f;
@@ -72,7 +79,7 @@ public class MainController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        mistTimer     = mistTimer - Time.deltaTime; // @TODO: should timers only go down to 0 and then stop? if they run for long enough they become positive again right? Oo -Victor
+        mistTimer = mistTimer - Time.deltaTime; // @TODO: should timers only go down to 0 and then stop? if they run for long enough they become positive again right? Oo -Victor
 
         // mist
         if (mistTimer <= 0f) mistTimer = 0f; // @TODO: resetting doesn't work right now because it runs this all the time :) - Victor
@@ -108,15 +115,33 @@ public class MainController : MonoBehaviour {
 
         // dialogue
         
-        if (dialogueTimer > 0f) {
+        if (dialogueTimer >= 0f) {
             dialogueTimer = dialogueTimer - Time.deltaTime;
 
             if (dialogueTimer <= 0f && dialogueCharacterName != null && dialogue != null) {
                 if (nextDialogue != -1) {
                     dialogueParent.SetActive(true);
+
+                    if (testDialogue[nextDialogue].characterTalking == "Bridget") {
+                        dialogueNameTag.GetComponent<RectTransform>().localPosition             = new Vector3(-357f, -174f, 0f);
+                        dialogueCharacterNameObject.GetComponent<RectTransform>().localPosition = new Vector3(-357f, -174f, 0f);
+                        float zRotation = dialogueNameTag.GetComponent<RectTransform>().localRotation.z;
+                        if (zRotation < 0) {
+                            dialogueNameTag.GetComponent<RectTransform>().Rotate(0, 0, 2*6.777f);
+                            dialogueCharacterNameObject.GetComponent<RectTransform>().Rotate(0, 0, 2*6.777f);
+                        }
+                    } else {
+                        dialogueNameTag.GetComponent<RectTransform>().localPosition             = new Vector3(327f, -174f, 0f);
+                        dialogueCharacterNameObject.GetComponent<RectTransform>().localPosition = new Vector3(327f, -174f, 0f);
+                        float zRotation = dialogueNameTag.GetComponent<RectTransform>().localRotation.z;
+                        if (zRotation > 0) {
+                            dialogueNameTag.GetComponent<RectTransform>().Rotate(0, 0, 2*-6.777f);
+                            dialogueCharacterNameObject.GetComponent<RectTransform>().Rotate(0, 0, 2*-6.777f);
+                        }
+                    }
                     dialogueCharacterName.text = testDialogue[nextDialogue].characterTalking;
                     dialogue.text              = testDialogue[nextDialogue].text;
-                    dialogueTimer              = testDialogue[nextDialogue].timeOnScreen;
+                    dialogueTimer              = testDialogue[nextDialogue].timeOnScreen; // @TODO: should some of this be moved to update instead?
                     nextDialogue               = testDialogue[nextDialogue].nextId;
                 } else {
                     dialogueParent.SetActive(false);
@@ -140,7 +165,7 @@ public class Dialogue {
         characterTalking = _characterTalking;
         text             = _text;
         timeOnScreen     = _timeOnScreen;
-        id               = _id;
+        id               = _id; // @NOTE: isn't necessary in the current implementation, could be though in another, so lets keep it for now -Victor
         nextId           = _nextId;
     }
 
