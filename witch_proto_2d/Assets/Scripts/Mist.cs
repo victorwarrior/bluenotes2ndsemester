@@ -5,13 +5,12 @@ using UnityEngine;
 public class Mist : MonoBehaviour {
 
     // references
-    public GameObject player;
 
     // constants
     float fadeInSpeed  = 0.004f;
     float fadeOutSpeed = 0.002f;
     float maxAlpha     = 0.36f;
-    float timeAlive    = 3.2f;
+    float maxAlphaTime = 3.2f;
 
     // other
     int   dir;
@@ -29,7 +28,8 @@ public class Mist : MonoBehaviour {
         fadeIn  = true;
         fadeOut = false;
 
-        transform.localScale = transform.localScale * Random.Range(1f, 1.5f);
+        this.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 0f);
+        this.transform.localScale                          = transform.localScale * Random.Range(1f, 1.5f);
     }
 
     void FixedUpdate() {
@@ -38,9 +38,10 @@ public class Mist : MonoBehaviour {
         if (alpha < maxAlpha && fadeIn) {
             alpha += fadeInSpeed;
             if (alpha >= maxAlpha) {
-                alpha  = maxAlpha;
-                fadeIn = false;
-                timer  = timeAlive;
+                alpha   = maxAlpha;
+                fadeIn  = false;
+                fadeOut = true;
+                timer   = maxAlphaTime;
             }
         } else if (fadeOut) {
             alpha -= fadeOutSpeed;
@@ -50,8 +51,6 @@ public class Mist : MonoBehaviour {
         }
 
         timer -= Time.deltaTime;
-        if (timer <= 0f && fadeIn == false) fadeOut = true;
-
         GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, alpha);
 
         // moving the mist

@@ -15,10 +15,19 @@ public class MainController : MonoBehaviour {
     public GameObject      mapImage;
 
     public GameObject      dialogueParent;
-    public GameObject      dialogueNameTag;
-    public GameObject      dialogueCharacterNameObject;
+    //public GameObject      dialogueNameTag;
+    //public GameObject      dialogueCharacterNameObject;
     public TextMeshProUGUI dialogueCharacterName;
     public TextMeshProUGUI dialogue;
+
+    public GameObject      bridgetIcon;
+    public GameObject      catIcon;
+
+    public Image[]         allEyes   = new Image[5];
+    public Image[]         allMouths = new Image[5];
+
+    Dictionary<string, int> eyeDictionary = new Dictionary<string, int>()   {{"angry", 0}, {"happy", 1}, {"iffy", 2}, {"relaxed", 3}, {"wide", 4}    };
+    Dictionary<string, int> mouthDictionary = new Dictionary<string, int>() {{"excited", 0}, {"happy", 1}, {"relaxed", 2}, {"sad", 3}, {"worried", 4}};
 
 
     // constants
@@ -34,23 +43,24 @@ public class MainController : MonoBehaviour {
 
     void Start() {
         if (SceneManager.GetActiveScene().name == "MistTest") {
-            mistTimer = 200f;
+            mistTimer = 1f;
         }
         
         int n = 0;
+        dialogueParent.SetActive(false);
 
         testDialogue[n++] = new Dialogue("Bridget",
-                                         "Hi, this is Bridget talking! This text is maybe a bit boring... Hmm...",
-                                         4f, 0, 1);
+                                         "Hi, this is Bridget talking! This text is maybe a bit boring... Ha ha ha!",
+                                         "happy", "relaxed", 4f, 0, 1);
         testDialogue[n++] = new Dialogue("CAT",
                                          "...well, THIS text is on the screen for a long time...",
-                                         8f, 1, 2);
+                                         "happy", "happy", 8f, 1, 2);
         testDialogue[n++] = new Dialogue("CAT",
                                          "short exclamation!",
-                                         1.5f, 2, 3);
+                                         "happy", "happy", 1.5f, 2, 3);
         testDialogue[n++] = new Dialogue("Bridget",
                                          "Right... i guess this is the last line of dialogue, maybe i should make it a bit longer than the other lines - to end it on a high note, you know?",
-                                         6.2f, 3, -1);
+                                         "relaxed", "happy", 6.2f, 3, -1);
 
         nextDialogue = 0;
         dialogueTimer = 2f;
@@ -81,23 +91,22 @@ public class MainController : MonoBehaviour {
 
         mistTimer = mistTimer - Time.deltaTime; // @TODO: should timers only go down to 0 and then stop? if they run for long enough they become positive again right? Oo -Victor
 
-        // mist
+        // mist & graymen
         if (mistTimer <= 0f) mistTimer = 0f; // @TODO: resetting doesn't work right now because it runs this all the time :) - Victor
         if (SceneManager.GetActiveScene().name == "MistTest" && mistTimer <= 0f) {
 
-            if (Random.Range(0, 3) == 0) {
-                int n = Random.Range(1, 3);
+            if (Random.Range(0, 100) < 33) {
+                int n = 2;
                 for (int i = 0; i < n; i++) {
                     GameObject inst = Instantiate(simpleMistPrefab,
                                                   new Vector3(player.transform.position.x + Random.Range(-36f, 36f),
                                                               player.transform.position.y + Random.Range(-36f, 36f),
                                                               player.transform.position.z + 100),
                                                   Quaternion.identity);
-                    inst.GetComponent<SpriteRenderer>().material.color = new Color(1f, 1f, 1f, 0f);                    
                 }
             }
  
-            if (Random.Range(0, 100) >= 84) {
+            if (Random.Range(0, 100) < 16) {
                 GameObject inst = Instantiate(graymanPrefab,
                                               new Vector3(player.transform.position.x + Random.Range(-32f, 32f),
                                                           player.transform.position.y + Random.Range(-32f, 32f),
@@ -121,23 +130,42 @@ public class MainController : MonoBehaviour {
             if (dialogueTimer <= 0f && dialogueCharacterName != null && dialogue != null) {
                 if (nextDialogue != -1) {
                     dialogueParent.SetActive(true);
+                    if (testDialogue[nextDialogue].characterTalking == "Bridget" && bridgetIcon != null && catIcon != null) {
+                        bridgetIcon.SetActive(true);
+                        catIcon.SetActive(false);
 
-                    if (testDialogue[nextDialogue].characterTalking == "Bridget") {
-                        dialogueNameTag.GetComponent<RectTransform>().localPosition             = new Vector3(-357f, -174f, 0f);
-                        dialogueCharacterNameObject.GetComponent<RectTransform>().localPosition = new Vector3(-357f, -174f, 0f);
-                        float zRotation = dialogueNameTag.GetComponent<RectTransform>().localRotation.z;
-                        if (zRotation < 0) {
-                            dialogueNameTag.GetComponent<RectTransform>().Rotate(0, 0, 2*6.777f);
-                            dialogueCharacterNameObject.GetComponent<RectTransform>().Rotate(0, 0, 2*6.777f);
+                        for (int i = 0; i < 5; i++) {
+                            if (mouthDictionary[testDialogue[nextDialogue].mouth] == i) {
+                                allMouths[i].enabled = true;
+                            } else {
+                                allMouths[i].enabled = false;
+                            }
                         }
+                        for (int i = 0; i < 5; i++) {
+                            if (eyeDictionary[testDialogue[nextDialogue].eyes] == i) {
+                                allEyes[i].enabled = true;
+                            } else {
+                                allEyes[i].enabled = false;
+                            }
+                        }
+
+                        //dialogue.alignment = TextAlignmentOptions.Left;
+                        //dialogueNameTag.transform.localPosition             = new Vector3(-357f, -174f, 0f);
+                        //dialogueCharacterNameObject.transform.localPosition = new Vector3(-357f, -174f, 0f);
+                        //if (dialogueNameTag.transform.localRotation.z < 0) {
+                        //    dialogueNameTag.transform.Rotate(0, 0, 2*6.777f);
+                        //    dialogueCharacterNameObject.transform.Rotate(0, 0, 2*6.777f);
+                        //}
                     } else {
-                        dialogueNameTag.GetComponent<RectTransform>().localPosition             = new Vector3(327f, -174f, 0f);
-                        dialogueCharacterNameObject.GetComponent<RectTransform>().localPosition = new Vector3(327f, -174f, 0f);
-                        float zRotation = dialogueNameTag.GetComponent<RectTransform>().localRotation.z;
-                        if (zRotation > 0) {
-                            dialogueNameTag.GetComponent<RectTransform>().Rotate(0, 0, 2*-6.777f);
-                            dialogueCharacterNameObject.GetComponent<RectTransform>().Rotate(0, 0, 2*-6.777f);
-                        }
+                        bridgetIcon.SetActive(false);
+                        catIcon.SetActive(true);                            
+                        //dialogue.alignment = TextAlignmentOptions.Right;
+                        //dialogueNameTag.transform.localPosition             = new Vector3(327f, -174f, 0f);
+                        //dialogueCharacterNameObject.transform.localPosition = new Vector3(327f, -174f, 0f);
+                        //if (dialogueNameTag.transform.localRotation.z > 0) {
+                        //    dialogueNameTag.transform.Rotate(0, 0, 2*-6.777f);
+                        //    dialogueCharacterNameObject.transform.Rotate(0, 0, 2*-6.777f);
+                        //}
                     }
                     dialogueCharacterName.text = testDialogue[nextDialogue].characterTalking;
                     dialogue.text              = testDialogue[nextDialogue].text;
@@ -153,17 +181,22 @@ public class MainController : MonoBehaviour {
     }
 }
 
+
 public class Dialogue {
     
     public string characterTalking;
     public string text;
+    public string mouth;
+    public string eyes;
     public float timeOnScreen;
     public int id;
     public int nextId;
 
-    public Dialogue(string _characterTalking, string _text, float _timeOnScreen, int _id, int _nextId) {
+    public Dialogue(string _characterTalking, string _text, string _mouth, string _eyes, float _timeOnScreen, int _id, int _nextId) {
         characterTalking = _characterTalking;
         text             = _text;
+        mouth            = _mouth;
+        eyes             = _eyes;
         timeOnScreen     = _timeOnScreen;
         id               = _id; // @NOTE: isn't necessary in the current implementation, could be though in another, so lets keep it for now -Victor
         nextId           = _nextId;
