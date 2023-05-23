@@ -47,7 +47,7 @@ public class MainController : MonoBehaviour {
         }
         
         int n = 0;
-        dialogueParent.SetActive(false);
+        if (dialogueParent != null) dialogueParent.SetActive(false);
 
         testDialogue[n++] = new Dialogue("Bridget",
                                          "Hi, this is Bridget talking! This text is maybe a bit boring... Ha ha ha!",
@@ -127,7 +127,7 @@ public class MainController : MonoBehaviour {
         if (dialogueTimer >= 0f) {
             dialogueTimer = dialogueTimer - Time.deltaTime;
 
-            if (dialogueTimer <= 0f && dialogueCharacterName != null && dialogue != null) {
+            if (dialogueTimer <= 0f && dialogueCharacterName != null && dialogue != null && dialogueParent != null) {
                 if (nextDialogue != -1) {
                     dialogueParent.SetActive(true);
                     if (testDialogue[nextDialogue].characterTalking == "Bridget" && bridgetIcon != null && catIcon != null) {
