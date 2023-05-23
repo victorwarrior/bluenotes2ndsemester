@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6f8cd8f-118a-46eb-b128-8043a536bba6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Audio/SFX/Ambience.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Audio/SFX/Ambience/ArcticWind.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Audio/SFX/Ambience/ArcticWind.wav.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Bridget_Headshot_blank_face.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Bridget_Headshot_blank_face.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Bridget_blank_face0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Bridget_blank_face0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_angry0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_angry0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_happy0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_happy0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_iffy0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_iffy0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_relaxed0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_relaxed0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_wide_open0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Eyes_wide_open0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_excited0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_excited0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_happy0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_happy0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_relaxed0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_relaxed0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_sad0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_sad0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_worried0.75x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/Mouth_worried0.75x.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/dialogue_background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/dialogue_background.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/namecard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Sprites/UI/namecard.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/DirtyHarold-8MvpM SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/DirtyHarold-8MvpM SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/DirtyHarold-8MvpM.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/DirtyHarold-8MvpM.ttf.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Kurland-mLag9 SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Kurland-mLag9 SDF.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Kurland-mLag9.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/Kurland-mLag9.ttf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Prefabs/Angel.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Prefabs/Angel.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Prefabs/AudioSource.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Prefabs/AudioSource.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Prefabs/SimpleMist.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Prefabs/SimpleMist.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Scenes/Level design 1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Scenes/Level design 1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Scenes/MistTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Scenes/MistTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Scripts/MainController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Scripts/MainController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/Assets/Scripts/Mist.cs" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/Assets/Scripts/Mist.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/witch_proto_2d/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/witch_proto_2d/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2Q9ZPHEeZGMKIVEDCotBLp8i5x2" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6f8cd8f-118a-46eb-b128-8043a536bba6" name="Changes" comment="" />
+      <created>1684767732815</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684767732815</updated>
+      <workItem from="1684767736027" duration="16000" />
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
