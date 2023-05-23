@@ -8,62 +8,73 @@ using TMPro;
 public class MainController : MonoBehaviour {
     
     // references
-    public GameObject      player;
-    public GameObject      enemyPrefab;
-    public GameObject      graymanPrefab;
-    public GameObject      simpleMistPrefab;
-    public GameObject      mapImage;
-
-    public GameObject      dialogueParent;
-    //public GameObject      dialogueNameTag;
-    //public GameObject      dialogueCharacterNameObject;
-    public TextMeshProUGUI dialogueCharacterName;
-    public TextMeshProUGUI dialogue;
-
-    public GameObject      bridgetIcon;
-    public GameObject      catIcon;
-
-    public Image[]         allEyes   = new Image[5];
-    public Image[]         allMouths = new Image[5];
+    public GameObject       player;
+    public GameObject       enemyPrefab;
+    public GameObject       graymanPrefab;
+    public GameObject       simpleMistPrefab;
+    public GameObject       mapImage;
+ 
+    public GameObject       dialogueParent;
+    //public GameObject       dialogueNameTag;
+    //public GameObject       dialogueCharacterNameObject;
+    public TextMeshProUGUI  dialogueCharacterName;
+    public TextMeshProUGUI  dialogue;
+ 
+    public GameObject       bridgetIcon;
+    public GameObject       catIcon;
+ 
+    public Image[]          allEyes   = new Image[5];
+    public Image[]          allMouths = new Image[5];
 
     Dictionary<string, int> eyeDictionary = new Dictionary<string, int>()   {{"angry", 0}, {"happy", 1}, {"iffy", 2}, {"relaxed", 3}, {"wide", 4}    };
     Dictionary<string, int> mouthDictionary = new Dictionary<string, int>() {{"excited", 0}, {"happy", 1}, {"relaxed", 2}, {"sad", 3}, {"worried", 4}};
+
+    public GameObject       recapDialogueParent;
+    public TextMeshProUGUI  recapDialogue;
 
 
     // constants
     public const int numberOfEnemies = 0;
 
+    // dialogue
+    public Dialogue[] testDialogue = new Dialogue[] {
+        new Dialogue("Bridget",
+                     "Hi, this is Bridget talking! This text is maybe a bit boring... Ha ha ha!",
+                     "happy", "relaxed", 4f, 0, 1),
+        new Dialogue("CAT",
+                     "...well, THIS text is on the screen for a long time...",
+                     "happy", "happy", 8f, 1, 2),
+        new Dialogue("CAT",
+                     "short exclamation!",
+                     "happy", "happy", 1.5f, 2, 3),
+        new Dialogue("Bridget",
+                     "Right... i guess this is the last line of dialogue, maybe i should make it a bit longer than the other lines - to end it on a high note, you know?",
+                     "relaxed", "happy", 6.2f, 3, -1)
+    };
+
+
     // other
     bool  mapOnScreen   = false;
+    bool  recapOnScreen = false;
     float mistTimer     = 0f;
     float dialogueTimer = 0f;
     int   nextDialogue  = -1;
+    Dialogue[] passedDialogue;
 
-    Dialogue[] testDialogue = new Dialogue[4];
 
     void Start() {
         if (SceneManager.GetActiveScene().name == "MistTest") {
             mistTimer = 1f;
         }
         
-        int n = 0;
         if (dialogueParent != null) dialogueParent.SetActive(false);
+        if (recapDialogueParent != null && recapDialogue != null) {
+            recapDialogueParent.SetActive(false);
+        }
 
-        testDialogue[n++] = new Dialogue("Bridget",
-                                         "Hi, this is Bridget talking! This text is maybe a bit boring... Ha ha ha!",
-                                         "happy", "relaxed", 4f, 0, 1);
-        testDialogue[n++] = new Dialogue("CAT",
-                                         "...well, THIS text is on the screen for a long time...",
-                                         "happy", "happy", 8f, 1, 2);
-        testDialogue[n++] = new Dialogue("CAT",
-                                         "short exclamation!",
-                                         "happy", "happy", 1.5f, 2, 3);
-        testDialogue[n++] = new Dialogue("Bridget",
-                                         "Right... i guess this is the last line of dialogue, maybe i should make it a bit longer than the other lines - to end it on a high note, you know?",
-                                         "relaxed", "happy", 6.2f, 3, -1);
 
-        nextDialogue = 0;
-        dialogueTimer = 2f;
+        // @NOTE recipe for starting dialogue: -Victor
+        StartDialogue(testDialogue, 0, 2f);
 
     }
 
@@ -79,8 +90,13 @@ public class MainController : MonoBehaviour {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        if (Input.GetKeyDown("escape")) {
-            // add a menu? 
+        if (Input.GetKeyDown("tab")) {
+            recapOnScreen = !recapOnScreen;
+            recapDialogueParent.SetActive(recapOnScreen); 
+        }
+
+        if (Input.GetKeyDown("j")) {
+            StartDialogue(testDialogue, 2, 0f);
         }
 
 
@@ -130,47 +146,27 @@ public class MainController : MonoBehaviour {
             if (dialogueTimer <= 0f && dialogueCharacterName != null && dialogue != null && dialogueParent != null) {
                 if (nextDialogue != -1) {
                     dialogueParent.SetActive(true);
-                    if (testDialogue[nextDialogue].characterTalking == "Bridget" && bridgetIcon != null && catIcon != null) {
+                    if (passedDialogue[nextDialogue].characterTalking == "Bridget" && bridgetIcon != null && catIcon != null) {
                         bridgetIcon.SetActive(true);
-                        catIcon.SetActive(false);
-
+                        catIcon    .SetActive(false);
                         for (int i = 0; i < 5; i++) {
-                            if (mouthDictionary[testDialogue[nextDialogue].mouth] == i) {
-                                allMouths[i].enabled = true;
-                            } else {
-                                allMouths[i].enabled = false;
-                            }
+                            allMouths[i].enabled = (mouthDictionary[passedDialogue[nextDialogue].mouth] == i) ? true : false;
                         }
                         for (int i = 0; i < 5; i++) {
-                            if (eyeDictionary[testDialogue[nextDialogue].eyes] == i) {
-                                allEyes[i].enabled = true;
-                            } else {
-                                allEyes[i].enabled = false;
-                            }
+                            allEyes[i].enabled = (eyeDictionary[passedDialogue[nextDialogue].eyes] == i) ? true : false;
                         }
-
-                        //dialogue.alignment = TextAlignmentOptions.Left;
-                        //dialogueNameTag.transform.localPosition             = new Vector3(-357f, -174f, 0f);
-                        //dialogueCharacterNameObject.transform.localPosition = new Vector3(-357f, -174f, 0f);
-                        //if (dialogueNameTag.transform.localRotation.z < 0) {
-                        //    dialogueNameTag.transform.Rotate(0, 0, 2*6.777f);
-                        //    dialogueCharacterNameObject.transform.Rotate(0, 0, 2*6.777f);
-                        //}
                     } else {
                         bridgetIcon.SetActive(false);
-                        catIcon.SetActive(true);                            
-                        //dialogue.alignment = TextAlignmentOptions.Right;
-                        //dialogueNameTag.transform.localPosition             = new Vector3(327f, -174f, 0f);
-                        //dialogueCharacterNameObject.transform.localPosition = new Vector3(327f, -174f, 0f);
-                        //if (dialogueNameTag.transform.localRotation.z > 0) {
-                        //    dialogueNameTag.transform.Rotate(0, 0, 2*-6.777f);
-                        //    dialogueCharacterNameObject.transform.Rotate(0, 0, 2*-6.777f);
-                        //}
+                        catIcon    .SetActive(true);
                     }
-                    dialogueCharacterName.text = testDialogue[nextDialogue].characterTalking;
-                    dialogue.text              = testDialogue[nextDialogue].text;
-                    dialogueTimer              = testDialogue[nextDialogue].timeOnScreen; // @TODO: should some of this be moved to update instead?
-                    nextDialogue               = testDialogue[nextDialogue].nextId;
+                    dialogueCharacterName.text = passedDialogue[nextDialogue].characterTalking;
+                    dialogue.text              = passedDialogue[nextDialogue].text;
+                    dialogueTimer              = passedDialogue[nextDialogue].timeOnScreen; // @TODO: should some of this be moved to update instead?
+                    
+                    recapDialogue.text         = recapDialogue.text + "\n\n" + passedDialogue[nextDialogue].characterTalking + ":\n" + testDialogue[nextDialogue].text;
+
+                    nextDialogue               = passedDialogue[nextDialogue].nextId;
+
                 } else {
                     dialogueParent.SetActive(false);
                 }
@@ -178,6 +174,14 @@ public class MainController : MonoBehaviour {
         }
 
 
+    }
+
+    public void StartDialogue(Dialogue[] _dialogue, int _start, float _waitTime) {
+        passedDialogue = _dialogue;
+        nextDialogue   = _start;
+        dialogueTimer  = _waitTime;
+
+        if (recapDialogue != null) recapDialogue.text = "";
     }
 }
 
