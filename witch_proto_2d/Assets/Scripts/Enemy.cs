@@ -20,10 +20,10 @@ public class Enemy : MonoBehaviour {
     // other
     float   timer        = 0f;
     float   soundTimer;
-    string  mode         = "";
     int     type         = 0;
     Vector3 walkPosition = new Vector3(0f, 0f, 0f);
     Vector2 chaseDirection;
+    public string mode   = "wait";
     public bool isAttacking;
     public AudioSource audioSource1;
     public AudioClip growl1;
@@ -36,7 +36,6 @@ public class Enemy : MonoBehaviour {
         rb      = GetComponent<Rigidbody2D>();
         rb.drag = 5.25f;
 
-        mode      = "wait";
         timer     = Random.Range(2f, 20f);
         type      = Random.Range(0, 2);
         type      = 1;
@@ -73,9 +72,13 @@ public class Enemy : MonoBehaviour {
                 nextMode = "move";
             }
 
-        } else if (mode == "move") {
+        } else if (mode == "guard") {
 
-//            float threshold = 1f;
+            if (isAttacking == true) {
+                nextMode = "attack";
+            }
+
+        } else if (mode == "move") {
 
             if (isAttacking == true) {
                 nextMode = "attack";
@@ -84,11 +87,6 @@ public class Enemy : MonoBehaviour {
             } else if (transform.position != walkPosition) {
                 transform.position = Vector2.MoveTowards(transform.position, walkPosition, walkSpeed);
             }
-//            } else if (((transform.position.x - walkPosition.x <= threshold && transform.position.x - walkPosition.x > 0) || (transform.position.x - walkPosition.x >= -threshold && transform.position.x - walkPosition.x < 0))
-//                   &&  ((transform.position.y - walkPosition.y <= threshold && transform.position.y - walkPosition.y > 0) || (transform.position.y - walkPosition.y >= -threshold && transform.position.y - walkPosition.y < 0))) {
-//                Debug.Log("move to wait.");
-//                nextMode = "wait";
-//            }
 
         } else if (mode == "attack") {
 
@@ -108,7 +106,8 @@ public class Enemy : MonoBehaviour {
             }
         
         } else if (mode == "stunned") {
-            isAttacking= false;
+
+            isAttacking = false;
 
             if (timer <= 0) {
                 if (Vector2.Distance(transform.position, player.transform.position) <= aggroRange) {
