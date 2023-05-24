@@ -37,6 +37,7 @@ public class CameraScript : MonoBehaviour
 
     public void ZoomIn()
     {
+        StopCoroutine(CinematicView());
         StartCoroutine(CinematicToNormalView());
     }
     public IEnumerator CinematicView()

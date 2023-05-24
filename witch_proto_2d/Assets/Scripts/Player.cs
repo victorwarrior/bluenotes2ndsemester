@@ -17,7 +17,8 @@ public class Player : MonoBehaviour {
     Rigidbody2D rb;
     Animator    animate;
     Object      stoneLight;
-    GameObject  emitLight; 
+    GameObject  emitLight;
+    Transform   ColliderTransform;
 
     // references (set in editor)
     public Image staminaBar;
@@ -61,7 +62,9 @@ public class Player : MonoBehaviour {
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction;
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
-        animate    = GetComponentInChildren<Animator>();       
+        animate    = GetComponentInChildren<Animator>();    
+        
+       // Collider soundArea = ColliderTransform.GetChild(10).GetComponent<CircleCollider2D>;
     }
 
     private void Awake() {
@@ -175,6 +178,7 @@ public class Player : MonoBehaviour {
         }
 
     }
+
 
 
 }
