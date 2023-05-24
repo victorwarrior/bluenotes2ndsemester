@@ -64,7 +64,7 @@ public class Player : MonoBehaviour {
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
         animate    = GetComponentInChildren<Animator>();    
         
-        Collider soundArea = ColliderTransform.GetChild(10).GetComponent<CircleCollider2D>;
+       // Collider soundArea = ColliderTransform.GetChild(10).GetComponent<CircleCollider2D>;
     }
 
     private void Awake() {
