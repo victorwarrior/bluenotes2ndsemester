@@ -63,7 +63,7 @@ public class MainController : MonoBehaviour {
 
 
     void Start() {
-        if (SceneManager.GetActiveScene().name == "MistTest") {
+        if (SceneManager.GetActiveScene().name == "Level design 1") {
             mistTimer = 1f;
         }
         
@@ -72,9 +72,7 @@ public class MainController : MonoBehaviour {
             recapDialogueParent.SetActive(false);
         }
 
-
-        // @NOTE recipe for starting dialogue: -Victor
-        StartDialogue(testDialogue, 0, 2f);
+        //StartDialogue(testDialogue, 0, 2f);
 
     }
 
@@ -105,23 +103,24 @@ public class MainController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        mistTimer = mistTimer - Time.deltaTime; // @TODO: should timers only go down to 0 and then stop? if they run for long enough they become positive again right? Oo -Victor
+
+        if (mistTimer > 0f) mistTimer -= Time.deltaTime;
 
         // mist & graymen
-        if (mistTimer <= 0f) mistTimer = 0f; // @TODO: resetting doesn't work right now because it runs this all the time :) - Victor
-        if (SceneManager.GetActiveScene().name == "MistTest" && mistTimer <= 0f) {
+        if (SceneManager.GetActiveScene().name == "Level design 1" && mistTimer <= 0f) {
 
-            if (Random.Range(0, 100) < 33) {
+            if (Random.Range(0, 100) < 30) {
                 int n = 2;
                 for (int i = 0; i < n; i++) {
                     GameObject inst = Instantiate(simpleMistPrefab,
-                                                  new Vector3(player.transform.position.x + Random.Range(-36f, 36f),
-                                                              player.transform.position.y + Random.Range(-36f, 36f),
-                                                              player.transform.position.z + 100),
+                                                  new Vector3(Random.Range(-474.7f + 4f, -408.8f - 4f),
+                                                              Random.Range(-274.6f + 4f, -208.3f - 1f),
+                                                              0),
                                                   Quaternion.identity);
                 }
             }
- 
+            
+            /*
             if (Random.Range(0, 100) < 16) {
                 GameObject inst = Instantiate(graymanPrefab,
                                               new Vector3(player.transform.position.x + Random.Range(-32f, 32f),
@@ -134,7 +133,7 @@ public class MainController : MonoBehaviour {
             if (mistTimer <= -30f) {
                 mistTimer = Random.Range(30f, 120f);
                 Debug.Log("mistTimer set to " + mistTimer);
-            }
+            }*/
 
         }
 
