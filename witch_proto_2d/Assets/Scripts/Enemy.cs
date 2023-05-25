@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour {
                 else if (type == 1) {
                     if (timer > 0f) {
                         transform.Translate(dashSpeed * chaseDirection);
-                        AttackSound();
+                        
                     } else {
                         nextMode = "stunned";
                     }
@@ -183,27 +183,32 @@ public class Enemy : MonoBehaviour {
 
         
         
-
+        if ((Vector2.Distance(transform.position, player.transform.position) <= aggroRange &&  !(mode == "stunned")) 
+            || (Vector2.Distance(transform.position, player.transform.position) <= aggroRange && !(mode == "wait")) 
+            || (Vector2.Distance(transform.position, player.transform.position) <= aggroRange && !(mode == "move")))
+        {
+            AttackSound();
+        }
             
        
-       if (Vector3.Distance(player.transform.position, transform.position) <= aggroRange * 1.3)
+       if (Vector3.Distance(player.transform.position, transform.position) <= 20f && !(nextMode == "stunned") 
+            && !(Vector3.Distance(player.transform.position, transform.position) <= aggroRange))
             {
             soundTimer = soundTimer - Time.deltaTime;
-            Debug.Log("angel sound" + soundTimer);
             if (soundTimer <= 0f)
             {
                 int soundNr = Random.Range(1, 3);
                 if (soundNr == 1)
                 {
                     audioSource1.clip = growl1;
-                    audioSource1.volume = 0.1f;
+                    audioSource1.volume = 0.02f;
                     audioSource1.Play();
                     soundTimer = Random.Range(2f, 8f);
                 }
                 if (soundNr == 2)
                 {
                     audioSource1.clip = growl2;
-                    audioSource1.volume = 0.1f;
+                    audioSource1.volume = 0.05f;
                     audioSource1.Play();
                     soundTimer = Random.Range(2f, 8f);
                 }
@@ -219,8 +224,12 @@ public class Enemy : MonoBehaviour {
 
     void AttackSound()
     {
+        if (audioSource1.isPlaying)
+        {
+            audioSource1.Stop();
+        }
         audioSource1.clip = growl3;
-        audioSource1.volume = 0.1f;
+        audioSource1.volume = 0.04f;
         float pitchMod = Random.Range(0.9f, 1.1f);
         audioSource1.pitch = pitchMod;
         audioSource1.Play();

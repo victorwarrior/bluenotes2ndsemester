@@ -11,8 +11,8 @@ public class PlayerSFX : MonoBehaviour
     public AudioClip sprintAudio;
     public AudioClip grunt1;
 
+    Player playerScript;
 
-    private float clipTime;    // cummulative amount of time of clips.
     private float resetTimer; // time that needs to surpass cliptime to play sound.
     private int walkingInt = 1;
 
@@ -21,32 +21,40 @@ public class PlayerSFX : MonoBehaviour
     void Start()
     {
         resetTimer = 0f;
+
+        playerScript = GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
         resetTimer -= Time.deltaTime;
-        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d"))&& resetTimer <= 0)
-        {
-            if(walkingInt == 1)
-            {
-                WalkingSound1();
-            }
-        }
-        
-        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            SprintSound();
-        }
-        
-        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && resetTimer <= 0 && Input.GetKey(KeyCode.LeftShift))
+
+        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && resetTimer <= 0 && Input.GetKey(KeyCode.LeftShift) && !(playerScript.stamina <= 100))
         {
             walkingInt = 0;
             RunningSound();
         }
+        if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && resetTimer <= 0)
+        {
+            if (walkingInt == 1)
+            {
+                WalkingSound1();
+            }
+        }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
+        /*  if ((Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")) && Input.GetKeyDown(KeyCode.LeftShift))
+          {
+              SprintSound();
+          }*/
+
+        if(!(Input.GetKey("w") || Input.GetKey("s") || Input.GetKey("a") || Input.GetKey("d")))
+        {
+            audioSource.Stop();
+        }
+
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) || playerScript.stamina <= 100)
         {
             walkingInt = 1;
         }
@@ -101,7 +109,9 @@ public class PlayerSFX : MonoBehaviour
 
     public void GruntSound1()
     {
-        audioSource2.clip = grunt1;
+        audioSource2.clip   = grunt1;
+        audioSource2.pitch  = Random.Range(0.9f, 1.3f);
+        audioSource2.volume = Random.Range(0.8f, 1f);
         audioSource2.Play();
     }
 }
