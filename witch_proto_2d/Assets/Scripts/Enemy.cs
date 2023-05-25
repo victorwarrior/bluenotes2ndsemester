@@ -19,12 +19,14 @@ public class Enemy : MonoBehaviour {
 
     // other
     float   timer        = 0f;
-    float   soundTimer;
+    
     int     type         = 0;
     Vector3 walkPosition = new Vector3(0f, 0f, 0f);
     Vector2 chaseDirection;
     public string mode   = "wait";
     public bool isAttacking;
+
+    static float       soundTimer;
     public AudioSource audioSource1;
     public AudioClip growl1;
     public AudioClip growl2;
@@ -99,6 +101,7 @@ public class Enemy : MonoBehaviour {
                 else if (type == 1) {
                     if (timer > 0f) {
                         transform.Translate(dashSpeed * chaseDirection);
+                        AttackSound();
                     } else {
                         nextMode = "stunned";
                     }
@@ -158,7 +161,6 @@ public class Enemy : MonoBehaviour {
             timer          = 0.85f;
             chaseDirection = (new Vector2(player.transform.position.x, player.transform.position.y)
                              -new Vector2(transform.position.x, transform.position.y)).normalized;
-            AttackSound();
             switch (mode) {
                 case "wait":
                 case "move":
@@ -196,14 +198,14 @@ public class Enemy : MonoBehaviour {
                     audioSource1.clip = growl1;
                     audioSource1.volume = 0.1f;
                     audioSource1.Play();
-                    soundTimer = Random.Range(5f, 10f);
+                    soundTimer = Random.Range(2f, 8f);
                 }
                 if (soundNr == 2)
                 {
                     audioSource1.clip = growl2;
                     audioSource1.volume = 0.1f;
                     audioSource1.Play();
-                    soundTimer = Random.Range(5f, 10f);
+                    soundTimer = Random.Range(2f, 8f);
                 }
             }
                

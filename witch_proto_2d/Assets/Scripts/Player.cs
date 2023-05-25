@@ -18,7 +18,8 @@ public class Player : MonoBehaviour {
     Animator    animate;
     Object      stoneLight;
     GameObject  emitLight;
-    Transform   ColliderTransform;
+    
+    public Transform   ColliderTransform;
 
     // references (set in editor)
     public Image staminaBar;
