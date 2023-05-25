@@ -174,6 +174,7 @@ public class MainController : MonoBehaviour {
 
 
     }
+    
 
     public void StartDialogue(Dialogue[] _dialogue, int _start, float _waitTime) {
         passedDialogue = _dialogue;
