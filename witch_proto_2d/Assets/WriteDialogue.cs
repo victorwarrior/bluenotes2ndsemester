@@ -24,8 +24,44 @@ public class WriteDialogue : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+            if (this.gameObject.name == "FirstDialogue")
+            {
+                mainScript.StartDialogue(mainScript.introDialogue, 0, 0);
+                Destroy(this);
 
-            mainScript.StartDialogue(mainScript.testDialogue, 0, 0);
+            } 
+            else if (this.gameObject.name == "BoxDialogue")
+            {
+                mainScript.StartDialogue(mainScript.boxDialogue, 0, 0);
+                Destroy(this);
+            }
+            else if (this.gameObject.name == "BridgeDialogue")
+            {
+                mainScript.StartDialogue(mainScript.bridgeDialogue, 0, 0);
+                Destroy(this);
+            }
+            else if (this.gameObject.name == "EnterFarmDialogue")
+            {
+                mainScript.StartDialogue(mainScript.enterFarm, 0, 0);
+                Destroy(this);
+            }
+            else if (this.gameObject.name == "LabyrinthDialogue")
+            {
+                mainScript.StartDialogue(mainScript.labyrinthDialogue, 0, 0);
+                Destroy(this);
+            }
+            else if (this.gameObject.name == "Collectable")
+            {
+                mainScript.StartDialogue(mainScript.testPickupDialogue, 0, 0);
+                Destroy(this);
+            }
+            else if (this.gameObject.name == "VictoryDialogue")
+            {
+                mainScript.StartDialogue(mainScript.beachDialogue, 0, 0);
+                Destroy(this);
+            }
+
+
         }
     }
 }

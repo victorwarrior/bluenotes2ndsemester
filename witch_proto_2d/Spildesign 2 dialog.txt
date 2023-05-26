@@ -1,0 +1,86 @@
+Dialog:
+
+Where do we want the dialogue?
+	- In the opening of the first section, where the player is learning the mechanics and there is a lot of empty space
+	- At the ruined house
+	- At the beach
+	- Maybe at the circle, similar to how Furi does it?
+
+Purpose of dialogue:
+	- Exposition
+	- Relationship between characters
+	- Adding personality to the game
+	- Telling a story
+
+What is the story of the level?
+	- We arrive, seeing the dead land. This presents a clear goal which is finding a way to heal it.
+	- However, the enemy is too powerful, requiring you to run away and regroup, so you can come back later.
+
+Who are the characters?
+	- Bridget
+		- Player character
+		- Curious: This makes sense since it is a game about discovery
+		- Misses her mother
+		- Dutyful
+		- Spoiled?
+		- Sample dialogue: "This place looks... dead". "Does this place seems  somewhat more dead than everywhere else?"
+	- Macha
+		- Knowledgeable
+		- Mentor figure
+		- Arrogant
+		- Sample dialogue: "Just do it. Are you a druid or not?"
+	- Nuckelavee
+		- Evil beast
+		- Angry, murderous
+		- Sample dialogue: "AAAAAAAAAAAAAAAARGH!", "WHOOOOOOOOOOOOOOOOOOOOOOOOOOOO", "*Howls", "*Angry horse noises."
+		
+What is the relationship between Bridget and Macha?
+	
+Simple and functional dialogue:
+	Bridget:
+		- The stone circle has lost its power! We should search the area and find out why.
+	Later...
+	Macha:
+		- The forest seems dead. It is as if something has sucked out the life of everything here.
+	Bridget:
+		- If we can heal it, maybe the circle will be restored as well.
+	
+	Later...
+	Macha:
+		- Watch out! This farm smells weird...
+	
+	Later...
+	Bridget:
+		- What was that!?
+	Macha:
+		- Grey men... Supposedly, this is what happens when all lifeforce is drained
+	
+	public class MainController : MonoBehaviour {
+		Start(){
+			
+		}
+	}
+	
+Traumatised Bridget version
+
+	Bridget:
+		- ...And you are sure this will help save my mother?
+	
+	Macha:
+		- Of courrse. You drruids are symbiotic with nature. Rrestoring this dead arrea to life will aid you both.
+	
+	Bridget:
+		- I just don't understand why we can't go to her now. Sur
+		
+	At the house.
+	Macha:
+		- Wait! This smells-
+	
+	Bridget:
+		- I have no time for your smells! This place was clearly inhabited once, and we need to know what happened. This is the fastest way.
+	
+	After the house:
+	Bridget:
+		- By the Gods! What were those things!? What could have possibly caused this!?
+	Macha:
+		- I thought we did not have time for idle questions, girl. Besides, I trried to warn you.

@@ -52,6 +52,101 @@ public class MainController : MonoBehaviour {
                      "relaxed", "happy", 6.2f, 3, -1)
     };
 
+    public Dialogue[] introDialogue = new Dialogue[]
+    {
+         new Dialogue ("Bridget",
+                        "...And you are sure this will help save my mother?",
+                        "worried", "iffy", 3f, 0, 1), 
+
+         new Dialogue ("Cat",
+                        "Of courrse. You drruids are symbiotic with nature. Rrestoring this dead arrea to life will aid you both.",
+                        "worried", "iffy", 5f, 1, 2),
+
+         new Dialogue ("Bridget",
+                        "I just don't understand why we can't go to her now. At least we can walk while we talk.",
+                        "worried", "iffy", 4f, 2, 3),
+
+         new Dialogue ("Cat",
+                        "- Maybe we should slow down for a moment. Lay a plan. This place not only seems dead, it is as if all life has been forcibly sucked away from here.",
+                        "worried", "iffy", 6f, 3, 4),
+
+         new Dialogue ("Bridget",
+                        "There is no time for that! For all we know, Mother could be dying right now! Besides, the death must have spread from somewhere. Finding the source is our best bet at solving this.",
+                        "sad", "angry", 6f, 4, -1)
+
+
+    };
+
+    public Dialogue[] boxDialogue = new Dialogue[]
+    {
+         new Dialogue ("Bridget",
+                        "Goddess, give me the strength to move these obstacles out of the way! *Hold down 'G' on the kyboard while moving to push the boxes.* ",
+                        "relaxed", "wide", 6f, 0, -1)
+
+
+    };
+    public Dialogue[] enemyEncounterDialogue = new Dialogue[]
+ {
+         new Dialogue ("Cat",
+                        "This is a lot of beasts. You should use the oxes to hide from them",
+                        "worried", "iffy", 4f, 0, 1),
+
+         new Dialogue ("Bridget",
+                        "It might be easier just to run. *Hold down 'leftshift' to sprint.*",
+                        "worried", "angry", 7f, 1, -1)
+
+ };
+
+    public Dialogue[] bridgeDialogue = new Dialogue[]
+{
+         new Dialogue ("Cat",
+                        "This brridge seems extrremely frragile",
+                        "worried", "iffy", 4f, 0, 1),
+
+         new Dialogue ("Bridget",
+                        "Don't worry, it won't break. You don't have to worry about getting wet.",
+                        "relaxed", "angry", 5f, 1, -1)
+
+};
+    public Dialogue[] enterFarm = new Dialogue[]
+{
+         new Dialogue ("Cat",
+                        "Wait! This smells-",
+                        "worried", "iffy", 4f, 0, 1),
+
+         new Dialogue ("Bridget",
+                        "I have no time for your smells! This place was clearly inhabited once, and we need to know what happened. This is the fastest way.",
+                        "excited", "angry", 6f, 1, -1)
+
+};
+    public Dialogue[] labyrinthDialogue = new Dialogue[]
+{
+         new Dialogue ("Cat",
+                        "Seems like they barricaded themselves.",
+                        "worried", "iffy", 3f, 0, 1),
+
+         new Dialogue ("Bridget",
+                        "Seems like it was pointless.",
+                        "relaxed", "iffy", 3f, 1, -1)
+
+};
+    public Dialogue[] testPickupDialogue = new Dialogue[]
+{
+         new Dialogue ("Cat",
+                        "Good. Now bring this to the beach!",
+                        "worried", "iffy", 3f, 0, -1),
+
+
+};
+    public Dialogue[] beachDialogue = new Dialogue[]
+{
+         new Dialogue ("Cat",
+                        "Congratulations tester! You won!",
+                        "worried", "iffy", 10f, 0, -1),
+
+
+};
+
 
     // other
     bool  mapOnScreen   = false;
@@ -162,7 +257,7 @@ public class MainController : MonoBehaviour {
                     dialogue.text              = passedDialogue[nextDialogue].text;
                     dialogueTimer              = passedDialogue[nextDialogue].timeOnScreen; // @TODO: should some of this be moved to update instead?
                     
-                    recapDialogue.text         = recapDialogue.text + "\n\n" + passedDialogue[nextDialogue].characterTalking + ":\n" + testDialogue[nextDialogue].text;
+                    recapDialogue.text         = recapDialogue.text + "\n\n" + passedDialogue[nextDialogue].characterTalking + ":\n" + passedDialogue[nextDialogue].text;
 
                     nextDialogue               = passedDialogue[nextDialogue].nextId;
 
