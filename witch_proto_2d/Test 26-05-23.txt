@@ -1,0 +1,131 @@
+Christian:
+
+Rød = liv, grøn = stamina
+Dyster stemning. Løb? Jump?
+Rødhætte vibes
+Nok noget, der er på vej efter mig
+Giver horror vibes men føles ikke helt som et horror game
+Kan ikke se særligtlangt.
+Movement virker fint. Smooth.
+Ved ikek hvilken retning han skal gå i.
+Forventer at kant ikke bare er sort
+Nåede ikke at læse hele dialogen.
+Mangler information om at man kan trykke tab.
+Mangler sprite for Cat. Jeg må være Bridget og jeg snakker med en kat. Snadsynligvist et dyr.
+Distraheret af fjende.
+Gammelt map er forvirrende.
+Leder efter dash knap når han møder fjende.
+Troede kant mellem tiles var en væg.
+Kommenterer på tegnestil. Tænker eventyr/rødhætte. Ved ikke de ting han kommenterer på er importeret.
+Forventer at han kan hive i kasserne.
+Finder hurtigt ud af at skubbe dem
+Stamina lader langsomt op.
+Presset af fjender.
+Forventede ikke han kunne skubbe den store kasse.
+Svært ved at se præcis hvornår enemy angriber.
+Syntes ikke broen havde noget vigtig information.
+Kan lide at følge kanten af mappet, skufftet over ikke at få noget. Han springer til slutningen af mappet hvilket forvirrer flowet i spillet.
+"This smells weird" Virker forvirrende.
+Ville forvente en genvej ud.
+Tilpas udfordrende.
+
+Overall tanker:
+Kan godt lide vibem. Får en eventyrlig vibe.
+Fed stemning.
+Gode challenges, god difficulty curve. "Tilpads for mig". Spøgelser, der spawner er challenging
+Kedelig at baggrunden kun er hvid.
+Synes ikke lyset har nogen indflydelse på gameplay. Gørkun noget stemningsvist.
+
+Vores spørgsmål:
+Hvad var mest spændende ved levellet og hvad var mest kedeligt?
+	- Mest spændende var at se verdenen. Ligeglad med dialog. Vil egentligt bare gerne kende mechanics.
+	Synes ikke spillet behøver at være så udfordrende når det handler om udforskning.
+	- Var dog fanget af stemningen.
+
+Samhørighed mellem spænding, narrativ og gameplay?
+	- Nåede ikke at læse det hele.
+	- Jeg skulle hen til noget, havde noget at gøre med døden, ville tro labyrinten var en kirkegård.
+
+Som spildesigner, hvad er så det største problem?
+	- Virker som et børnevenligt/begyndervenligt spil, der handler om at udforske og få fortalt en historie. Synes at det er for svært og dystert til børn, men ville stadig have dem som målgruppe.
+
+Måske checkpoint ved broen?
+
+Magnus:
+Dystert, gråt, kedeligt.
+Kan lide han kan gå mellem træerne, selvom det er lidt clunky.
+Nåede ikke at læse teksten.
+"Det er nok mig, der er Bridget".
+
+Efter at have skubbet de første kasser:
+
+Røde fjender ligner landminer.
+"Nååh så det er min sprintbar"
+Vil gerne kunne trække i kasserne.
+
+Efter de første fjender:
+Leder efter easter eggs ved at udforske, men ved godt han skal over broen.
+"Hvorfor snakker katten til mig?"
+
+Efter broen:
+Ude i ingenmandsland.
+Går direkte til gården.
+Skal jeg igennem en labyrint?
+
+EFter spillet:
+Kan godt lide at udforske
+Spiller hitbox føltes lille inden i labyrinten.
+Vil gerne have en mulighed for at regenerere liv.
+Kunne ikke se meget grund til at sprinte, men kunne lide at gå almindeligt.
+Spillet er meget sjovt, kan godt lide det.
+
+Vores spørgsmål:
+Hvordan var sværhedsgraden?
+	Godt nok til mig, for svært for forældre. 
+	Hvis man dør hele tiden giver man op.
+
+Var gameplay interresant?
+	- Synes det var interresant?
+	- Hvem snakker til mig?
+
+Samhørighed mellem stemning, narrativ og gameplay?
+	- Fungerer godt.
+
+Som spiludvikler, hvad ser du så som det største problem?
+	- Synes spøgelserne fra himlen er irriterrende.
+	
+
+Jaime:
+- Fokuserer på at læse.
+Når meget hurtigt forbi fjenderne.
+At kunne gemme sig bag kasserne er en god mechanic. 
+Troede først hun skulle have en kasse med hele vejen.
+Kunne godt nå at læse tekstboksene, men ville foretrække at de var der længere.
+Træt af at hun skal igennem hele labyrinten igen.
+
+Føles som om spøgelserne rammer dig når de ikke burde. Men kan godt lide at hendes hitbox er lille så hun nemmere kan slippe væk.
+Mangler noget musik for at skabe stemning.
+Hørte ikke lydeffekter når hun blev ramt.
+Mangler liv i spillet - mangler animationer og lyd. 
+Lyset har ikke nogen indflydelse på gameplay.
+Kunne godt lide puslespillene, men syntes man blev ramt for hurtigt i labyrinten.
+
+Sværhedsgrad?
+	Første del var meget nemt, puslespil var svært og det føltes unfair fordi man ikke vidste hvornår man blev ramt.
+	Men virker fair hvis der er savepoint på broen.
+	
+MEst spændende del?
+	- Puslespilselementer?
+
+MEst frustrerende/kedelige element?
+	- Intet kedeligt, men hitboxes på spøgelser var frustrerende.
+	- Intet var forvirrende.
+
+Samhørighed mellem stemning, narartiv og gameplay:
+	- Vil gerne have at levellet er større
+	- Synes der er god samhørighed
+	-Nysgerrig efter at se mere af verdenen og høre mere historie.
+
+Som spiludvikler, hvad ser du så som det største problem?
+	- Hitbox på spøgelserne er trelst og vil have en visuel indikator for hvornår man bliver ramt.
+	
