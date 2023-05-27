@@ -40,6 +40,11 @@ public class WriteDialogue : MonoBehaviour
                 mainScript.StartDialogue(mainScript.bridgeDialogue, 0, 0);
                 Destroy(this);
             }
+            else if (this.gameObject.name == "EnemyEncounterDialogue")
+            {
+                mainScript.StartDialogue(mainScript.enemyEncounterDialogue, 0, 0);
+                Destroy(this);
+            }
             else if (this.gameObject.name == "EnterFarmDialogue")
             {
                 mainScript.StartDialogue(mainScript.enterFarm, 0, 0);

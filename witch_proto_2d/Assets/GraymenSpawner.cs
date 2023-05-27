@@ -14,11 +14,11 @@ public class GraymenSpawner : MonoBehaviour {
     
     void FixedUpdate() {
         if (spawning && player != null && graymanPrefab != null) {
-            if (Random.Range(0, 100) < 16) {
+            if (Random.Range(0, 100) < 14) {
                 GameObject inst = Instantiate(graymanPrefab,
-                                              new Vector3(player.transform.position.x + Random.Range(-32f, 32f),
-                                                          player.transform.position.y + Random.Range(-32f, 32f),
-                                                          player.transform.position.z + 100),
+                                              new Vector3(transform.position.x + Random.Range(-32.5f, 32.5f),
+                                                          transform.position.y + Random.Range(-22f, 22f),
+                                                          transform.position.z + 100),
                                               Quaternion.identity); // right now it figures out a random position on its own
                 inst.GetComponent<Grayman>().player = player;
             }

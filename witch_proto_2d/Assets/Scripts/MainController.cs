@@ -209,26 +209,11 @@ public class MainController : MonoBehaviour {
                 for (int i = 0; i < n; i++) {
                     GameObject inst = Instantiate(simpleMistPrefab,
                                                   new Vector3(Random.Range(-474.7f + 4f, -408.8f - 4f),
-                                                              Random.Range(-274.6f + 4f, -208.3f - 1f),
+                                                              Random.Range(-288.0f + 4f, -221.8f - 1f),
                                                               0),
                                                   Quaternion.identity);
                 }
             }
-            
-            /*
-            if (Random.Range(0, 100) < 16) {
-                GameObject inst = Instantiate(graymanPrefab,
-                                              new Vector3(player.transform.position.x + Random.Range(-32f, 32f),
-                                                          player.transform.position.y + Random.Range(-32f, 32f),
-                                                          player.transform.position.z + 100),
-                                              Quaternion.identity); // right now it figures out a random position on its own
-                inst.GetComponent<Grayman>().player = player;
-            }
-
-            if (mistTimer <= -30f) {
-                mistTimer = Random.Range(30f, 120f);
-                Debug.Log("mistTimer set to " + mistTimer);
-            }*/
 
         }
 

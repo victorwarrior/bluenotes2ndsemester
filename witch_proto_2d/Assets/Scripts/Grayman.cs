@@ -25,7 +25,7 @@ public class Grayman : MonoBehaviour {
         damageCollider = GetComponent<BoxCollider2D>();
         damageCollider.enabled = false;
 
-        timeAlive = 2.4f + Random.Range(-0.4f, 0.4f);
+        timeAlive = 2.4f + Random.Range(-0.25f, 0.25f);
         speed     = 0.06f + Random.Range(-0.03f, 0.03f);
         timer     = 0f;
         alpha     = 0f;
@@ -81,13 +81,13 @@ public class Grayman : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
-            player.GetComponent<Player>().hp -= 1;
+            player.GetComponent<Player>().hp -= 0.5f;
         }
     }
     
     void OnTriggerStay2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
-            player.GetComponent<Player>().hp -= 1;
+            player.GetComponent<Player>().hp -= 0.5f;
         }
     }
 }

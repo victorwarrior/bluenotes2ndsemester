@@ -32,14 +32,14 @@ public class Player : MonoBehaviour {
     public const float mudMultiplier    = 0.6f;  // to slow down the player when in the nuckelavee mud trail.
     public const float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
 
-    public const int hpMax              = 100;
+    public const float hpMax              = 100;
     public const int staminaMax         = 1000;       
     public const int staminaMin         = 100;   // can't sprint if below this unless you're already sprinting
     public const int staminaDrain       = 8;     // how much stamina is used per tick when sprinting
     public const int staminaRegen       = 1;     // how much stamina is gained when not sprinting
 
     // other
-    public int hp               = 100;
+    public float hp               = 100;
     public int stamina          = 1000;
     public float spdMultiplier  = 1f;
     public float slowMultiplier = 1f;
@@ -156,7 +156,13 @@ public class Player : MonoBehaviour {
         //yVelForDisplay = rb.velocity.y; // @DEBUG
 
         // update hp
-        hpBar.fillAmount = (float) hp / (float) hpMax;
+        if (hp < hpMax) {
+            hp += 0.005f; // @TODO: this is hp regen, it should be a variable
+        } else {
+            hp = hpMax;
+        }
+
+        hpBar.fillAmount = hp / hpMax;
         if (hp <= 0f) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         // updates z coordinate to be in front / behind other objects
