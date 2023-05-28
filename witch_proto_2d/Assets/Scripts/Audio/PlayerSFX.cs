@@ -88,19 +88,19 @@ public class PlayerSFX : MonoBehaviour
             }
         }*/
 
-        if(enemyScript.mode == "attack")
+      /*  if(enemyScript.mode == "attack")
         {
             audioSource3.clip = enemyAttack;
             audioSource3.volume = 0.2f;
             float pitchMod = Random.Range(0.9f, 1.1f);
             audioSource3.pitch = pitchMod;
             audioSource3.Play();
-        }
+        }*/
         // else audioSource3.Stop();
 
-        VolumeFunction(forestSound , 0.15f, 130 , soundDissipationModifier1);
-        VolumeFunction(swampSound, 0.2f, 80 , soundDissipationModifier2);
-        VolumeFunction(graveYardSound, 0.1f, 40, soundDissipationModifier3);
+        VolumeFunction(forestSound , 0.3f, 130 , soundDissipationModifier1);
+        VolumeFunction(swampSound, 0.5f, 80 , soundDissipationModifier2);
+        VolumeFunction(graveYardSound, 0.3f, 40, soundDissipationModifier3);
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -120,14 +120,14 @@ public class PlayerSFX : MonoBehaviour
     public void RunningSound()
     {
         audioSource.clip = footStep2;
-        audioSource.volume = 0.3f;
+        audioSource.volume = 1f;
         audioSource.Play();
         resetTimer = audioSource.clip.length;
     }
     public void WalkingSound1()
     {
         audioSource.clip = footStep1;
-        audioSource.volume = 0.3f;
+        audioSource.volume = 1f;
         audioSource.Play();
        // walkingInt = 2;
         resetTimer = audioSource.clip.length;
