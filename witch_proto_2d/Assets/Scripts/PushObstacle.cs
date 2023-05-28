@@ -58,7 +58,7 @@ public class PushObstacle : MonoBehaviour
                     movementDirection = new Vector2(0, -1);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
-                    //LoopScrape();
+                    LoopScrape();
                 }
                 else if (contPosition.y - transform.position.y + (colliderSize.y / 2) <= 0 && Input.GetKey("w") && Input.GetKey("g"))
                 {
@@ -66,7 +66,7 @@ public class PushObstacle : MonoBehaviour
                     movementDirection = new Vector2(0, 1);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
-                    //LoopScrape();
+                    LoopScrape();
                 }
                 else if (contPosition.x - transform.position.x - (colliderSize.x / 2) >= 0 && Input.GetKey("a") && Input.GetKey("g"))
                 {
@@ -74,7 +74,7 @@ public class PushObstacle : MonoBehaviour
                     movementDirection = new Vector2(-1, 0);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
-                    //LoopScrape();
+                    LoopScrape();
                 }
                 else if (contPosition.x - transform.position.x + (colliderSize.x / 2) <= 0 && Input.GetKey("d") && Input.GetKey("g"))
                 {
@@ -82,12 +82,12 @@ public class PushObstacle : MonoBehaviour
                     movementDirection = new Vector2(1, 0);
                     rb.velocity = movementDirection * pushSpeed;
                     rbPlayer.velocity = movementDirection * pushSpeed;
-                    //LoopScrape();
+                    LoopScrape();
                 }
                 else if (!Input.GetKey("g"))
                 {
                     rb.velocity = new Vector2(0, 0);
-                    //Audiosource.Stop();
+                    Audiosource.Stop();
                 }
             }
         }
@@ -103,17 +103,17 @@ public class PushObstacle : MonoBehaviour
     {
         transform.position = new Vector2(transform.position.x, transform.position.y);
     }
-    //void LoopScrape()
-    //{
+    void LoopScrape()
+    {
     //    Debug.Log("playing");
-    //    Audiosource.clip = scrape;
-    //    Audiosource.loop = false;
-    //    Audiosource.volume = 0.1f;
-    //    //Audiosource.Play();
-    //    if (!Audiosource.isPlaying)
-    //    {
-    //        Audiosource.PlayOneShot(scrape, 0.2f);
-    //    }
-    //}
+        Audiosource.clip = scrape;
+        Audiosource.loop = false;
+        Audiosource.volume = 0.1f;
+        //Audiosource.Play();
+        if (!Audiosource.isPlaying)
+        {
+            Audiosource.PlayOneShot(scrape, 0.4f);
+        }
+    }
 }
 

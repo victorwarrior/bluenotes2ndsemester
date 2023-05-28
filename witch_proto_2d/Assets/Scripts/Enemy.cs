@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour {
 
     static float       soundTimer;
     public AudioSource audioSource1;
+    public AudioSource audioSource2;
     public AudioClip growl1;
     public AudioClip growl2;
     public AudioClip growl3;
@@ -48,6 +50,7 @@ public class Enemy : MonoBehaviour {
 
         //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
 
+        audioSource2.clip = growl3;
     }
 
 
@@ -183,15 +186,24 @@ public class Enemy : MonoBehaviour {
 
         
         
-        if ((Vector2.Distance(transform.position, player.transform.position) <= aggroRange &&  !(mode == "stunned")) 
+      /*  if ((Vector2.Distance(transform.position, player.transform.position) <= aggroRange &&  !(mode == "stunned")) 
             || (Vector2.Distance(transform.position, player.transform.position) <= aggroRange && !(mode == "wait")) 
             || (Vector2.Distance(transform.position, player.transform.position) <= aggroRange && !(mode == "move")))
         {
             AttackSound();
-        }
-            
-       
-       if (Vector3.Distance(player.transform.position, transform.position) <= 20f && !(nextMode == "stunned") 
+        }*/
+           
+       /* if((Vector2.Distance(transform.position, player.transform.position) <= aggroRange) && mode == "stunned")
+        {
+            AttackSound();
+        }*/
+
+       /* if ((Vector2.Distance(transform.position, player.transform.position) <= aggroRange) )
+        {
+            AttackSound();
+        }*/
+
+        if (Vector3.Distance(player.transform.position, transform.position) <= 20f 
             && !(Vector3.Distance(player.transform.position, transform.position) <= aggroRange))
             {
             soundTimer = soundTimer - Time.deltaTime;
@@ -215,29 +227,43 @@ public class Enemy : MonoBehaviour {
             }
                
             }
-        
+       else
+       {
+           audioSource1.Stop();
+       }
         
 
         // update z coordinate to be in front / behind other objects
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
     }
 
-    void AttackSound()
+    public void AttackSound()
     {
         if (audioSource1.isPlaying)
         {
             audioSource1.Stop();
         }
-        audioSource1.clip = growl3;
-        audioSource1.volume = 0.04f;
-        float pitchMod = Random.Range(0.9f, 1.1f);
-        audioSource1.pitch = pitchMod;
-        audioSource1.Play();
+       
+        
+      
+            audioSource2.clip = growl3;
+            audioSource2.volume = 0.2f;
+            float pitchMod = Random.Range(0.9f, 1.1f);
+            audioSource2.pitch = pitchMod;
+            audioSource2.Play();
+        
+       
     }
 
     void OnCollisionEnter2D(Collision2D col) {
         if (col.gameObject.tag == "Player") {
             player.GetComponent<Player>().hp -= 40; // 
+            audioSource2.volume = 0.2f;
+            audioSource2.Play();
         }
+    }
+    void OnCollisionExit2D(Collision2D col) 
+    {
+        audioSource2.Stop();
     }
 }

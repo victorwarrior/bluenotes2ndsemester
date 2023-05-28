@@ -6,6 +6,8 @@ public class SoundTrigger : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip triggerClip1;
+    public AudioClip triggerClip2;
+    public AudioClip triggerClip3;
 
     float timeTillPlay;
 
@@ -30,8 +32,22 @@ public class SoundTrigger : MonoBehaviour
             audioSource.volume = volume;
             audioSource.pitch  = Random.Range(1 - pitchVariation, 1 + pitchVariation);
             audioSource.clip   = triggerClip1;
-            audioSource.Play();
-            
+            Debug.Log("play");
+            if (!(triggerClip1 == null))
+            {
+                audioSource.PlayOneShot(triggerClip1, volume);
+                Debug.Log("play");
+            }
+            if (!(triggerClip2 == null))
+            {
+                audioSource.PlayOneShot(triggerClip2 , volume);
+            }
+
+            if (!(triggerClip3 == null))
+            {
+                audioSource.PlayOneShot(triggerClip3, volume);
+            }
+
             timeTillPlay = resetTime;
         }
     }

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CircleLight
   - Enemy
+  - Forest
+  - Swamp
+  - GraveYard
   layers:
   - Default
   - TransparentFX
