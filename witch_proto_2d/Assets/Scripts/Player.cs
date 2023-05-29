@@ -22,8 +22,10 @@ public class Player : MonoBehaviour {
     public Transform   ColliderTransform;
 
     // references (set in editor)
-    public Image staminaBar;
-    public Image hpBar;
+    public Image    staminaBar;
+    public Image    hpBar;
+    public Gradient hpGradient;
+    public Gradient staminaGradient;
 
     // constants
     public const float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
@@ -32,14 +34,14 @@ public class Player : MonoBehaviour {
     public const float mudMultiplier    = 0.6f;  // to slow down the player when in the nuckelavee mud trail.
     public const float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
 
-    public const float hpMax              = 100;
+    public const float hpMax            = 100;
     public const int staminaMax         = 1000;       
     public const int staminaMin         = 100;   // can't sprint if below this unless you're already sprinting
     public const int staminaDrain       = 8;     // how much stamina is used per tick when sprinting
     public const int staminaRegen       = 1;     // how much stamina is gained when not sprinting
 
     // other
-    public float hp               = 100;
+    public float hp             = 100;
     public int stamina          = 1000;
     public float spdMultiplier  = 1f;
     public float slowMultiplier = 1f;
@@ -63,8 +65,10 @@ public class Player : MonoBehaviour {
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction;
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
-        animate    = GetComponentInChildren<Animator>();    
-        
+        animate    = GetComponentInChildren<Animator>();
+
+        staminaBar.color = staminaGradient.Evaluate(1f);
+        hpBar.color      = hpGradient.Evaluate(1f);
        // Collider soundArea = ColliderTransform.GetChild(10).GetComponent<CircleCollider2D>;
     }
 
@@ -128,11 +132,13 @@ public class Player : MonoBehaviour {
             stamina               = (stamina <= 0) ? 0 : stamina;
             staminaExhausted      = (stamina <= 0) ? true : false;
             staminaBar.fillAmount = (float) stamina / (float) staminaMax;
+            staminaBar.color      = staminaGradient.Evaluate((float) stamina / (float) staminaMax);
             }
 
         if (staminaRegenBool) {
             stamina               = (stamina > staminaMax) ? staminaMax : stamina + staminaRegen;
             staminaBar.fillAmount = (float) stamina / (float) staminaMax;
+            staminaBar.color      = staminaGradient.Evaluate((float) stamina / (float) staminaMax);
         }
 
         rb.AddForce(new Vector2(horDir * speed * spdMultiplier, verDir * speed * spdMultiplier));
@@ -163,6 +169,7 @@ public class Player : MonoBehaviour {
         }
 
         hpBar.fillAmount = hp / hpMax;
+        hpBar.color      = hpGradient.Evaluate(hp / hpMax);
         if (hp <= 0f) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         // updates z coordinate to be in front / behind other objects

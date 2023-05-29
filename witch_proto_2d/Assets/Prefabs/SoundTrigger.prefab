@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4211011099442095840}
   - component: {fileID: 5841322239257537114}
   - component: {fileID: 9215601682985259997}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SoundTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,6 +74,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 531862110431979815}
   triggerClip1: {fileID: 0}
+  triggerClip2: {fileID: 0}
+  triggerClip3: {fileID: 0}
   resetTime: 5
   volume: 0.1
   pitchVariation: 0
@@ -131,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 6725966478319155581, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
       propertyPath: m_Name
       value: AudioSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 6725966478319155581, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee488f38a4d5ce4884ad720fd5e0038, type: 3}

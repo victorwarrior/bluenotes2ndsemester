@@ -9,6 +9,9 @@ public class SoundTrigger : MonoBehaviour
     public AudioClip triggerClip2;
     public AudioClip triggerClip3;
 
+    float timer;
+    bool  stopPlay;
+
     float timeTillPlay;
 
     public float resetTime = 5f;
@@ -18,15 +21,33 @@ public class SoundTrigger : MonoBehaviour
     private void Start()
     {
         timeTillPlay = 0;
+
+        stopPlay = false;
+        timer = 0;
     }
 
     private void Update()
     {
         timeTillPlay -= Time.deltaTime;
+        timer -= Time.deltaTime;
+
+        if (stopPlay)
+        {
+            if(timer <= 0)
+            {
+                audioSource.volume -= volume / 10;
+                timer = 0.3f;
+            }
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        audioSource.volume = volume;
+        if(stopPlay == true)
+        {
+            stopPlay = false;
+        }
         if(collision.gameObject.tag == "Player" && timeTillPlay <= 0)
         {
             audioSource.volume = volume;
@@ -59,5 +80,10 @@ public class SoundTrigger : MonoBehaviour
 
             timeTillPlay = resetTime;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        stopPlay = true;
     }
 }
