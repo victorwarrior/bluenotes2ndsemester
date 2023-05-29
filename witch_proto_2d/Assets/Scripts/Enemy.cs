@@ -184,25 +184,6 @@ public class Enemy : MonoBehaviour {
             }
         }
 
-        
-        
-      /*  if ((Vector2.Distance(transform.position, player.transform.position) <= aggroRange &&  !(mode == "stunned")) 
-            || (Vector2.Distance(transform.position, player.transform.position) <= aggroRange && !(mode == "wait")) 
-            || (Vector2.Distance(transform.position, player.transform.position) <= aggroRange && !(mode == "move")))
-        {
-            AttackSound();
-        }*/
-           
-       /* if((Vector2.Distance(transform.position, player.transform.position) <= aggroRange) && mode == "stunned")
-        {
-            AttackSound();
-        }*/
-
-       /* if ((Vector2.Distance(transform.position, player.transform.position) <= aggroRange) )
-        {
-            AttackSound();
-        }*/
-
         if (Vector3.Distance(player.transform.position, transform.position) <= 20f 
             && !(Vector3.Distance(player.transform.position, transform.position) <= aggroRange))
             {

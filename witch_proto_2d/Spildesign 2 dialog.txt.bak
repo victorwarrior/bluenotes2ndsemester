@@ -1,0 +1,127 @@
+Dialog:
+
+Where do we want the dialogue?
+	- In the opening of the first section, where the player is learning the mechanics and there is a lot of empty space
+	- At the ruined house
+	- At the beach
+	- Maybe at the circle, similar to how Furi does it?
+
+Purpose of dialogue:
+	- Exposition
+	- Relationship between characters
+	- Adding personality to the game
+	- Telling a story
+
+What is the story of the level?
+	- We arrive, seeing the dead land. This presents a clear goal which is finding a way to heal it.
+	- However, the enemy is too powerful, requiring you to run away and regroup, so you can come back later.
+
+Who are the characters?
+	- Bridget
+		- Player character
+		- Curious: This makes sense since it is a game about discovery
+		- Misses her mother
+		- Dutyful
+		- Spoiled?
+		- Sample dialogue: "This place looks... dead". "Does this place seems  somewhat more dead than everywhere else?"
+	- Macha
+		- Knowledgeable
+		- Mentor figure
+		- Arrogant
+		- Sample dialogue: "Just do it. Are you a druid or not?"
+	- Nuckelavee
+		- Evil beast
+		- Angry, murderous
+		- Sample dialogue: "AAAAAAAAAAAAAAAARGH!", "WHOOOOOOOOOOOOOOOOOOOOOOOOOOOO", "*Howls", "*Angry horse noises."
+		
+What is the relationship between Bridget and Macha?
+	
+Simple and functional dialogue:
+	Bridget:
+		- The stone circle has lost its power! We should search the area and find out why.
+	Later...
+	Macha:
+		- The forest seems dead. It is as if something has sucked out the life of everything here.
+	Bridget:
+		- If we can heal it, maybe the circle will be restored as well.
+	
+	Later...
+	Macha:
+		- Watch out! This farm smells weird...
+	
+	Later...
+	Bridget:
+		- What was that!?
+	Macha:
+		- Grey men... Supposedly, this is what happens when all lifeforce is drained
+	
+	public class MainController : MonoBehaviour {
+		Start(){
+			
+		}
+	}
+	
+Traumatised Bridget version
+
+	Bridget:
+		- ...And you are sure this will help save my mother?
+	
+	Macha:
+		- Of courrse. You drruids are symbiotic with nature. Rrestoring this dead arrea to life will aid you both.
+	
+	Bridget:
+		- I just don't understand why we can't go to her now. Sur
+		
+	At the house.
+	Macha:
+		- Wait! This smells-
+	
+	Bridget:
+		- I have no time for your smells! This place was clearly inhabited once, and we need to know what happened. This is the fastest way.
+	
+	After the house:
+	Bridget:
+		- By the Gods! What were those things!? What could have caused this!?
+	Macha:
+		- I thought we did not have time for idle questions, girl. Besides, I trried to warn you.
+
+Make the text shorter and have it stay on the screen for much longer.
+
+I basically only have enough time for 1 text pr. 12 seconds, or two very short ones. So if we are moving thorugh the level, we will need it to e a bit bigger. 
+The texs should be super short, whilst also communicating character and exposition.'
+Fuck me... That's a good one!
+
+What is supposed to change for Bridget throughout the level?
+Foxus on Bridget's goal and why she can't have it (save her mother)
+World is ineteresting because it changes.
+Why should we care about the cat? - Cares about Bridget.
+Since the player progresses the story as they move forwards, there already is a sense of motion.
+
+Cat wants to keep Bridget safe
+Wants to save mother
+But knows that Bridget is not yet strong enough
+
+Bridget just wants to save her mother
+Prove her competence
+Reckless
+
+Maybe the level is Bridget realising she couldn't do anything?
+
+Bridget:
+		- ...And you are sure this will help save my mother? - Establishes motivation. Can I do more with this?
+		- Why do we have to make a detour like this? I am strong enough to go save mother right now! - Motivation and character. But the line is twice as long.
+		- Why we to a like? I enough go mother now! - Half the words removed.
+		- Why can't we just go save Mother right now!? I'm strong enough! - Contractions makes sentence shorter whilst still communicating motivation and impatience. Sentence feels more juvenile though.
+		cat:
+		- You are not. And with nature like this, neither is your mother.
+		Is bridget actually impatient by nature though? Or just traumatised?
+		
+		- We need to go save Mother right now! There's no time for this! As short as the above, but less juvenile, more traumatised.
+		cat:
+		- What we need is to restore this area to life. Or have you forgotten that you druids derive your powers from nature? Longer sentence signifies patience. Introduce purpose of the area.
+		
+		A lot of the player's actions make more sense if the cat wants to rush while Bridget is cautious, since obviously the player character chooses to stay. 
+		But then the player no longer acts like a classic character. And impatience doesn't seem very cat-like. Basically, I need a reason for Bridget to stay, even though she wants to go somewhere else.
+		
+		
+		

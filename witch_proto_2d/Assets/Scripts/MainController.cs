@@ -55,25 +55,16 @@ public class MainController : MonoBehaviour {
     public Dialogue[] introDialogue = new Dialogue[]
     {
          new Dialogue ("Bridget",
-                        "...And you are sure this will help save my mother?",
-                        "worried", "iffy", 3f, 0, 1), 
+                        "We need to go save Mother right now! There's no time for this!?",
+                        "worried", "angry", 8f, 0, 1), 
 
          new Dialogue ("Cat",
-                        "Of courrse. You drruids are symbiotic with nature. Rrestoring this dead arrea to life will aid you both.",
-                        "worried", "iffy", 5f, 1, 2),
+                        "What we need is to rrestore this arrea to life. Or have you forgotten that you drruids derrive your powers from nature?",
+                        "worried", "iffy", 12f, 1, 2),
 
          new Dialogue ("Bridget",
-                        "I just don't understand why we can't go to her now. At least we can walk while we talk.",
-                        "worried", "iffy", 4f, 2, 3),
-
-         new Dialogue ("Cat",
-                        "- Maybe we should slow down for a moment. Lay a plan. This place not only seems dead, it is as if all life has been forcibly sucked away from here.",
-                        "worried", "iffy", 6f, 3, 4),
-
-         new Dialogue ("Bridget",
-                        "There is no time for that! For all we know, Mother could be dying right now! Besides, the death must have spread from somewhere. Finding the source is our best bet at solving this.",
-                        "sad", "angry", 6f, 4, -1)
-
+                        "I just hope this isn't a waste of time...",
+                        "worried", "iffy", 8f, 2, -1),
 
     };
 
@@ -81,31 +72,31 @@ public class MainController : MonoBehaviour {
     {
          new Dialogue ("Bridget",
                         "Goddess, give me the strength to move these obstacles out of the way! *Hold down 'G' on the kyboard while moving to push the boxes.* ",
-                        "relaxed", "wide", 6f, 0, -1)
+                        "relaxed", "wide", 30f, 0, -1)
 
 
     };
     public Dialogue[] enemyEncounterDialogue = new Dialogue[]
  {
          new Dialogue ("Cat",
-                        "This is a lot of beasts. You should use the oxes to hide from them",
-                        "worried", "iffy", 4f, 0, 1),
+                        "Careful! Hide behind the boxes!",
+                        "worried", "iffy", 8f, 0, 1),
 
          new Dialogue ("Bridget",
-                        "It might be easier just to run. *Hold down 'leftshift' to sprint.*",
-                        "worried", "angry", 7f, 1, -1)
+                        "Can't we just run past? *Hold down 'leftshift' to sprint.*",
+                        "worried", "angry", 20f, 1, -1)
 
  };
 
     public Dialogue[] bridgeDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                        "This brridge seems extrremely frragile",
-                        "worried", "iffy", 4f, 0, 1),
+                        "That Brridge looks extrremely frragile.",
+                        "worried", "iffy", 8f, 0, 1),
 
          new Dialogue ("Bridget",
-                        "Don't worry, it won't break. You don't have to worry about getting wet.",
-                        "relaxed", "angry", 5f, 1, -1)
+                        "It's the shortest way across. We're taking it.",
+                        "relaxed", "angry", 10f, 1, -1)
 
 };
     public Dialogue[] enterFarm = new Dialogue[]

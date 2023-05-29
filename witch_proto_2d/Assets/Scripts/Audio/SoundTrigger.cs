@@ -35,17 +35,26 @@ public class SoundTrigger : MonoBehaviour
             Debug.Log("play");
             if (!(triggerClip1 == null))
             {
-                audioSource.PlayOneShot(triggerClip1, volume);
-                Debug.Log("play");
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(triggerClip1, volume);
+                }
+
             }
             if (!(triggerClip2 == null))
             {
-                audioSource.PlayOneShot(triggerClip2 , volume);
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(triggerClip2, volume);
+                }
             }
 
             if (!(triggerClip3 == null))
             {
-                audioSource.PlayOneShot(triggerClip3, volume);
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.PlayOneShot(triggerClip3, volume);
+                }
             }
 
             timeTillPlay = resetTime;

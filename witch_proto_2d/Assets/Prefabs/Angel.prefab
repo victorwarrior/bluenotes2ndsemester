@@ -262,7 +262,7 @@ MonoBehaviour:
   audioSource1: {fileID: 4855631147814720181}
   audioSource2: {fileID: 7721928473844578475}
   growl1: {fileID: 8300000, guid: de1043e8ba1fed049836f71feac7de1f, type: 3}
-  growl2: {fileID: 8300000, guid: b318209bbaa58fc4085ca67af0b6adbd, type: 3}
+  growl2: {fileID: 8300000, guid: bfb20da74859e3f4585808e5dff165ed, type: 3}
   growl3: {fileID: 8300000, guid: b318209bbaa58fc4085ca67af0b6adbd, type: 3}
 --- !u!82 &1312820269
 AudioSource:
