@@ -118,10 +118,39 @@ Bridget:
 		
 		- We need to go save Mother right now! There's no time for this! As short as the above, but less juvenile, more traumatised.
 		cat:
-		- What we need is to restore this area to life. Or have you forgotten that you druids derive your powers from nature? Longer sentence signifies patience. Introduce purpose of the area.
+		- What we need is to rrestore this arrea to life. Or have you forgotten that you drruids derrive your powers from nature? Longer sentence signifies patience. Introduce purpose of the area.
+		Bridget:
+		- I just hope this isn't a waste of time...
 		
 		A lot of the player's actions make more sense if the cat wants to rush while Bridget is cautious, since obviously the player character chooses to stay. 
-		But then the player no longer acts like a classic character. And impatience doesn't seem very cat-like. Basically, I need a reason for Bridget to stay, even though she wants to go somewhere else.
+		But then the player no longer acts like a classic character. And impatience doesn't seem very cat-like.
+		Basically, I need a reason for Bridget to stay, even though she wants to go somewhere else.
 		
 		
+		You promise that you will try to find mother onc
+		I am only here because you said you would help me find my mother!
 		
+		
+		enemyEncounterDialogue
+		Cat:
+		- Careful! Hide behind the boxes!
+		
+		Bridget:
+		- Can't we just run past?
+		
+		
+		bridgeDialogue
+		Cat
+		- That Brridge looks extrremely frragile.
+		
+		Bridget:
+		- It's the shortest way across. We're taking it.
+		
+		
+		enterFarm
+		So the graveyard is interesting because it actually changes the narrative dramatically. How do I weave this into the overall plot?
+		Bridget:
+		- Looks like a mass graveyard.
+		
+		Cat:
+		- The paths look blocked. I wonder if they were hiding something.

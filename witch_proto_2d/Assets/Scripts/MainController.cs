@@ -95,45 +95,47 @@ public class MainController : MonoBehaviour {
                         "worried", "iffy", 8f, 0, 1),
 
          new Dialogue ("Bridget",
-                        "It's the shortest way across. We're taking it.",
+                        "It's the fastest way across. We're taking it.",
                         "relaxed", "angry", 10f, 1, -1)
 
 };
     public Dialogue[] enterFarm = new Dialogue[]
 {
-         new Dialogue ("Cat",
-                        "Wait! This smells-",
-                        "worried", "iffy", 4f, 0, 1),
-
          new Dialogue ("Bridget",
-                        "I have no time for your smells! This place was clearly inhabited once, and we need to know what happened. This is the fastest way.",
-                        "excited", "angry", 6f, 1, -1)
+                        "Looks like a mass graveyard.",
+                        "worried", "relaxed", 8f, 0, 1),
+
+         new Dialogue ("Cat",
+                        "The paths look blocked. I wonder if they were hiding something.",
+                        "excited", "angry", 12f, 1, -1)
 
 };
     public Dialogue[] labyrinthDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
                         "Seems like they barricaded themselves.",
-                        "worried", "iffy", 3f, 0, 1),
+                        "worried", "relaxed", 6f, 0, 1),
 
          new Dialogue ("Bridget",
                         "Seems like it was pointless.",
-                        "relaxed", "iffy", 3f, 1, -1)
+                        "relaxed", "iffy", 6f, 1, -1)
 
 };
     public Dialogue[] testPickupDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                        "Good. Now bring this to the beach!",
-                        "worried", "iffy", 3f, 0, -1),
+                        "Kelp. Interresting... There should be a furnace at the beach to the north. We could use the ashes frrom this to rreturn nutrrients to the soil. ",
+                        "worried", "iffy", 20f, 0, 1),
 
-
+         new Dialogue ("Bridget",
+                        "And then life would slowly be restored here. Perfect!",
+                        "relaxed", "happy", 12f, 1, -1)
 };
     public Dialogue[] beachDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                        "Congratulations tester! You won!",
-                        "worried", "iffy", 10f, 0, -1),
+                        "Congratulations tester! You won! At least until the chase sequence has been implemented.",
+                        "worried", "iffy", 20f, 0, -1),
 
 
 };

@@ -148,8 +148,17 @@ Bridget:
 		
 		
 		enterFarm
+		So the graveyard is interesting because it actually changes the narrative dramatically. How do I weave this into the overall plot?
+		Bridget:
+		- Looks like a mass graveyard.
+		
 		Cat:
-		- Wait! This mist smells-
+		- The paths look blocked. I wonder if they were hiding something.
+		
+		
+		pickupDialogue
+		Cat:
+		- Kelp. Interresting... There should be a furnace at the beach to the north. We could use the ashes frrom this to rreturn nutrrients to the soil. 
 		
 		Bridget:
-		- Its a graveyard. They smell. Let's just go in there
+		- And that would restore life here. Perfect!

@@ -8,6 +8,7 @@ public class WriteDialogue : MonoBehaviour
 
     //References
     public GameObject mainController;
+    public GameObject burnTheKelpDialogue;
     public MainController mainScript;
 
     void Start()
@@ -29,7 +30,7 @@ public class WriteDialogue : MonoBehaviour
                 mainScript.StartDialogue(mainScript.introDialogue, 0, 0);
                 Destroy(this);
 
-            } 
+            }
             else if (this.gameObject.name == "BoxDialogue")
             {
                 mainScript.StartDialogue(mainScript.boxDialogue, 0, 0);
@@ -58,9 +59,15 @@ public class WriteDialogue : MonoBehaviour
             else if (this.gameObject.name == "Collectable")
             {
                 mainScript.StartDialogue(mainScript.testPickupDialogue, 0, 0);
+                burnTheKelpDialogue.gameObject.SetActive(true);
                 Destroy(this);
             }
             else if (this.gameObject.name == "VictoryDialogue")
+            {
+                mainScript.StartDialogue(mainScript.beachDialogue, 0, 0);
+                Destroy(this);
+            }
+            else if (this.gameObject.name == "BurnTheKelpDialogue")
             {
                 mainScript.StartDialogue(mainScript.beachDialogue, 0, 0);
                 Destroy(this);
