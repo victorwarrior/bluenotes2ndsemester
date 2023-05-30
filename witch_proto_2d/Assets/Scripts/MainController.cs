@@ -169,7 +169,7 @@ public class MainController : MonoBehaviour {
         // controls
         if (Input.GetKeyDown("m")) {
             mapOnScreen = !mapOnScreen;
-            mapImage.SetActive(mapOnScreen);
+            if (mapOnScreen != null) mapImage.SetActive(mapOnScreen);
         }
         
         if (Input.GetKeyDown("r")) {
@@ -178,12 +178,10 @@ public class MainController : MonoBehaviour {
 
         if (Input.GetKeyDown("tab")) {
             recapOnScreen = !recapOnScreen;
-            recapDialogueParent.SetActive(recapOnScreen); 
+            if (recapDialogueParent != null) recapDialogueParent.SetActive(recapOnScreen); 
         }
 
-        if (Input.GetKeyDown("j")) {
-            StartDialogue(testDialogue, 2, 0f);
-        }
+        //if (Input.GetKeyDown("j")) StartDialogue(testDialogue, 2, 0f); // @DEBUG
 
 
 
