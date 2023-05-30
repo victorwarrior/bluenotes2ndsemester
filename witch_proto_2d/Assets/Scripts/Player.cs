@@ -15,11 +15,12 @@ public class Player : MonoBehaviour {
 
     // references
     Rigidbody2D rb;
-    Animator    animate;
+    Animator    animator;
     Object      stoneLight;
     GameObject  emitLight;
     
     public Transform   ColliderTransform;
+
 
     // references (set in editor)
     public Image    staminaBar;
@@ -59,13 +60,15 @@ public class Player : MonoBehaviour {
     bool latestVerIsUp          = false;
     bool latestHorIsRight       = false;
 
+    string latestRelease        = "down";
+
 
 
     void Start() {
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction;
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
-        animate    = GetComponentInChildren<Animator>();
+        animator   = GetComponent<Animator>();
 
         staminaBar.color = staminaGradient.Evaluate(1f);
         hpBar.color      = hpGradient.Evaluate(1f);
@@ -89,7 +92,10 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown("s") || Input.GetKeyDown(KeyCode.DownArrow))  latestVerIsUp    = false;
         if (Input.GetKeyDown("a") || Input.GetKeyDown(KeyCode.LeftArrow))  latestHorIsRight = false;
         if (Input.GetKeyDown("d") || Input.GetKeyDown(KeyCode.RightArrow)) latestHorIsRight = true;
-        
+        if (Input.GetKeyUp("w") || Input.GetKeyUp(KeyCode.UpArrow))    latestRelease = "up";
+        if (Input.GetKeyUp("s") || Input.GetKeyUp(KeyCode.DownArrow))  latestRelease = "down";
+        if (Input.GetKeyUp("a") || Input.GetKeyUp(KeyCode.LeftArrow))  latestRelease = "left";
+        if (Input.GetKeyUp("d") || Input.GetKeyUp(KeyCode.RightArrow)) latestRelease = "right";
         keySprint   = Input.GetKey(KeyCode.LeftShift);
         keyLight    = Input.GetKeyDown("l");
         keyLightEnd = Input.GetKeyUp("l");
@@ -143,9 +149,6 @@ public class Player : MonoBehaviour {
 
         rb.AddForce(new Vector2(horDir * speed * spdMultiplier, verDir * speed * spdMultiplier));
 
-        //xVelForDisplayPreCalc = rb.velocity.x; // @DEBUG
-        //yVelForDisplayPreCalc = rb.velocity.y; // @DEBUG
-
         if (isMovingDiagonally == false) {
             if      (rb.velocity.x > (maxSpeed * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2((maxSpeed * spdMultiplier * slowMultiplier), rb.velocity.y);
             else if (rb.velocity.x < -(maxSpeed * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(-(maxSpeed * spdMultiplier * slowMultiplier), rb.velocity.y);
@@ -158,8 +161,27 @@ public class Player : MonoBehaviour {
             else if (rb.velocity.y < -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier));            
         }
 
-        //xVelForDisplay = rb.velocity.x; // @DEBUG
-        //yVelForDisplay = rb.velocity.y; // @DEBUG
+        // animation
+        float xScale = 1f;
+
+        if (horDir != 0f || verDir != 0f) {
+            if (horDir < 0f) xScale = -1f;
+            if (horDir > 0f) xScale =  1f;
+            if (spdMultiplier <= 1f) animator.SetFloat("SPEED", 1f);
+            if (spdMultiplier >  1f) animator.SetFloat("SPEED", 2f);
+            animator.SetFloat("VER", verDir);
+            animator.SetFloat("HOR", horDir);
+        } else {
+            animator.SetFloat("SPEED", 0f);
+            if (latestRelease == "up")    {animator.SetFloat("VER",   1f); animator.SetFloat("HOR", 0.5f); xScale =  1f;}
+            if (latestRelease == "down")  {animator.SetFloat("VER",  -1f); animator.SetFloat("HOR", 0.5f); xScale =  1f;}
+            if (latestRelease == "left")  {animator.SetFloat("VER", 0.5f); animator.SetFloat("HOR",  -1f); xScale = -1f;}
+            if (latestRelease == "right") {animator.SetFloat("VER", 0.5f); animator.SetFloat("HOR",   1f); xScale =  1f;}
+        }
+
+        transform.localScale = new Vector3(xScale, transform.localScale.y, transform.localScale.z);
+
+
 
         // update hp
         if (hp < hpMax) {
