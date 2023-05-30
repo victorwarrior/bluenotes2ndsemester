@@ -95,6 +95,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 2558994812198156089}
     m_Position: {x: 60, y: 380, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 7198335576561151699}
+    m_Position: {x: 130, y: 510, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -163,7 +166,7 @@ BlendTree:
     m_DirectBlendParameter: HOR
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 92b92a44c2768264c962c1015caf5086, type: 2}
+    m_Motion: {fileID: 7400000, guid: 94ba674fd4179714795057c1158546b0, type: 2}
     m_Threshold: 5
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -210,7 +213,7 @@ BlendTree:
     m_DirectBlendParameter: HOR
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 525685c3f11d26a41bb4ead78c1f7a2e, type: 2}
+    m_Motion: {fileID: 7400000, guid: e3b70732fac69104faa18e75fc2c2980, type: 2}
     m_Threshold: 5
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -402,7 +405,7 @@ BlendTree:
     m_DirectBlendParameter: HOR
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 03970bfc41234534da915b91a0435399, type: 2}
+    m_Motion: {fileID: 7400000, guid: 1a2fc0454092b7f46b4815ac6bad7db0, type: 2}
     m_Threshold: 5
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -441,3 +444,29 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &7198335576561151699
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Player_Sprint_Back
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 94ba674fd4179714795057c1158546b0, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
