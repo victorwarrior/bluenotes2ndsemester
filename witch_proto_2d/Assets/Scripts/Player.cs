@@ -8,32 +8,33 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour {
 
     // debug
-    //float xVelForDisplay        = 0f;
-    //float xVelForDisplayPreCalc = 0f;
-    //float yVelForDisplay        = 0f;
-    //float yVelForDisplayPreCalc = 0f;
-
-    // references
-    Rigidbody2D rb;
-    Animator    animator;
-    Object      stoneLight;
-    GameObject  emitLight;
-    
-    public Transform   ColliderTransform;
-
+    public float xVelForDisplayPreCalc = 0f;
+    public float yVelForDisplayPreCalc = 0f;
+    public float xVelForDisplay        = 0f;
+    public float yVelForDisplay        = 0f;
 
     // references (set in editor)
+    public SpriteRenderer editorPlayerSprite;
+
     public Image    staminaBar;
     public Image    hpBar;
     public Gradient hpGradient;
     public Gradient staminaGradient;
 
+    // references (not set in editor)
+    Rigidbody2D rb;
+    Animator    animator;
+    Object      stoneLight;
+    GameObject  emitLight;
+    
+    public Transform ColliderTransform;
+
     // constants
-    public const float speed            = 70.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
-    public const float maxSpeed         = 7.6f;  // top speed
-    public const float sprintMultiplier = 1.75f; // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
+    public const float speed            = 94.2f; // how fast you accelerate, rigidbody velocity is the real measurement of speed
+    public const float maxSpeed         = 7.4f;  // top speed
+    public const float sprintMultiplier = 2f;  // speed * sprintMultiplier = sprinting speed, max speed * sprintMultiplier = top sprinting speed 
     public const float mudMultiplier    = 0.6f;  // to slow down the player when in the nuckelavee mud trail.
-    public const float friction         = 6.5f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
+    public const float friction         = 11.6f;  // used to make the character slow down, so it eventually stands still no keys are being pressed
 
     public const float hpMax            = 100;
     public const int staminaMax         = 1000;       
@@ -72,6 +73,8 @@ public class Player : MonoBehaviour {
 
         staminaBar.color = staminaGradient.Evaluate(1f);
         hpBar.color      = hpGradient.Evaluate(1f);
+
+        if (editorPlayerSprite != null) editorPlayerSprite.enabled = false;
        // Collider soundArea = ColliderTransform.GetChild(10).GetComponent<CircleCollider2D>;
     }
 
@@ -149,6 +152,9 @@ public class Player : MonoBehaviour {
 
         rb.AddForce(new Vector2(horDir * speed * spdMultiplier, verDir * speed * spdMultiplier));
 
+        xVelForDisplayPreCalc = rb.velocity.x;
+        yVelForDisplayPreCalc = rb.velocity.y;
+
         if (isMovingDiagonally == false) {
             if      (rb.velocity.x > (maxSpeed * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2((maxSpeed * spdMultiplier * slowMultiplier), rb.velocity.y);
             else if (rb.velocity.x < -(maxSpeed * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(-(maxSpeed * spdMultiplier * slowMultiplier), rb.velocity.y);
@@ -160,6 +166,9 @@ public class Player : MonoBehaviour {
             if      (rb.velocity.y > (maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier))  rb.velocity = new Vector2(rb.velocity.x, (maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier));
             else if (rb.velocity.y < -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier)) rb.velocity = new Vector2(rb.velocity.x, -(maxSpeed * 0.70710678118654f * spdMultiplier * slowMultiplier));            
         }
+
+        xVelForDisplay = rb.velocity.x;
+        yVelForDisplay = rb.velocity.y;
 
         // animation
         float xScale = 1f;
