@@ -169,7 +169,7 @@ public class MainController : MonoBehaviour {
         // controls
         if (Input.GetKeyDown("m")) {
             mapOnScreen = !mapOnScreen;
-            if (mapOnScreen != null) mapImage.SetActive(mapOnScreen);
+            if (mapImage != null) mapImage.SetActive(mapOnScreen);
         }
         
         if (Input.GetKeyDown("r")) {

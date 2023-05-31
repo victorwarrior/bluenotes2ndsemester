@@ -98,11 +98,12 @@ public class PlayerSFX : MonoBehaviour
         }*/
         // else audioSource3.Stop();
 
-        VolumeFunction(forestSound , 0.3f, 130 , soundDissipationModifier1);
-        VolumeFunction(swampSound, 0.5f, 80 , soundDissipationModifier2);
-        VolumeFunction(graveYardSound, 0.3f, 40, soundDissipationModifier3);
+        VolumeFunction(forestSound ,   0.3f, 130, soundDissipationModifier1);
+        VolumeFunction(swampSound,     0.3f,  80, soundDissipationModifier2);
+        VolumeFunction(graveYardSound, 0.2f,  40, soundDissipationModifier3);
 
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -110,6 +111,7 @@ public class PlayerSFX : MonoBehaviour
             GruntSound1();
         }
     }
+
     public void SprintSound()
     {
         audioSource2.clip = sprintAudio;

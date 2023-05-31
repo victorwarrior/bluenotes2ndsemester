@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     public float yVelForDisplay        = 0f;
 
     // references (set in editor)
-    public SpriteRenderer editorPlayerSprite;
+    public GameObject editorPlayerSprite;
 
     public Image    staminaBar;
     public Image    hpBar;
@@ -69,12 +69,12 @@ public class Player : MonoBehaviour {
         rb         = GetComponent<Rigidbody2D>();
         rb.drag    = friction;
         stoneLight = Resources.Load("PlayerLight", typeof(GameObject));
-        animator   = GetComponent<Animator>();
+        animator   = GetComponentsInChildren<Animator>()[0];
 
         staminaBar.color = staminaGradient.Evaluate(1f);
         hpBar.color      = hpGradient.Evaluate(1f);
 
-        if (editorPlayerSprite != null) editorPlayerSprite.enabled = false;
+        if (editorPlayerSprite != null) editorPlayerSprite.SetActive(false);
        // Collider soundArea = ColliderTransform.GetChild(10).GetComponent<CircleCollider2D>;
     }
 
