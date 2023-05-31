@@ -16,14 +16,14 @@ public class Enemy : MonoBehaviour {
     float walkSpeed    = 0.04f;
     float followSpeed  = 0.16f;
     float dashSpeed    = 0.32f;
-    float walkDistance = 20f;
+    float walkDistance = 7f;
 
     // other
     float   timer        = 0f;
-    
     int     type         = 0;
     Vector3 walkPosition = new Vector3(0f, 0f, 0f);
     Vector2 chaseDirection;
+
     public string mode   = "wait";
     public bool isAttacking;
 
@@ -46,10 +46,7 @@ public class Enemy : MonoBehaviour {
 
         isAttacking = false;
 
-        soundTimer = 0;
-
-        //transform.position = new Vector3(Random.Range(-180f, 180f), Random.Range(-180f, 180f), transform.position.z);
-
+        soundTimer        = 0;
         audioSource2.clip = growl3;
     }
 
@@ -144,14 +141,11 @@ public class Enemy : MonoBehaviour {
             }
         } else if (nextMode == "move") {
             mode             = "move";
-            timer            = Random.Range(4f, 14f); // @TODO: enemies should switch to walk when they reach their new position instead of this stupid fix -Victor
+            timer            = Random.Range(3f, 4.5f); // @TODO: enemies should switch to walk when they reach their new position instead of this stupid fix -Victor
             float newWalkDir = Random.Range(0, 2.0f*Mathf.PI);
             walkPosition     = new Vector3(transform.position.x + Mathf.Sin(newWalkDir)*walkDistance,
                                            transform.position.y + Mathf.Cos(newWalkDir)*walkDistance,
                                            transform.position.z);
-            //walkPosition = new Vector3(transform.position.x + Random.Range(-walkDistance, walkDistance), // @TODO: should it be a circle instead of a square?
-            //                           transform.position.y + Random.Range(-walkDistance, walkDistance),
-            //                           transform.position.z);
             switch (mode) {
                 case "wait":
                 case "move":
@@ -173,7 +167,7 @@ public class Enemy : MonoBehaviour {
             }
         } else if (nextMode == "stunned") {
             mode  = "stunned";
-            timer = 0.7f;
+            timer = 0.63f;
             switch (mode) {
                 case "attack":
                     break;

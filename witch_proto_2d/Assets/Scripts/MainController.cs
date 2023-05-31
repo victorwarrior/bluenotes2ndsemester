@@ -15,6 +15,7 @@ public class MainController : MonoBehaviour {
     public GameObject       mapImage;
  
     public GameObject       tutorialParent;
+    public GameObject       helpParent;
     public GameObject       dialogueParent;
     public GameObject       statsParent;
     //public GameObject       dialogueNameTag;
@@ -155,6 +156,7 @@ public class MainController : MonoBehaviour {
 
 
     void Start() {
+
         if (SceneManager.GetActiveScene().name == "Level design 1") {
             mistTimer = 1f;
         }
@@ -164,8 +166,7 @@ public class MainController : MonoBehaviour {
             recapDialogueParent.SetActive(false);
             recapDialogue.text = "";
         }
-
-        //StartDialogue(testDialogue, 0, 2f);
+        if (helpParent != null) helpParent.SetActive(false);
 
     }
 
@@ -198,7 +199,10 @@ public class MainController : MonoBehaviour {
         }
         if (tutorialDone == true && tutorialTimer > 0f) {
             tutorialTimer -= Time.deltaTime;
-            if (tutorialTimer <= 0f && tutorialParent != null) tutorialParent.SetActive(false);
+            if (tutorialTimer <= 0f && tutorialParent != null) {
+                tutorialParent.SetActive(false);
+                if (helpParent != false) helpParent.SetActive(true);
+            }
         }
 
 
