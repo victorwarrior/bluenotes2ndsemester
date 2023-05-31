@@ -14,7 +14,9 @@ public class MainController : MonoBehaviour {
     public GameObject       simpleMistPrefab;
     public GameObject       mapImage;
  
+    public GameObject       tutorialParent;
     public GameObject       dialogueParent;
+    public GameObject       statsParent;
     //public GameObject       dialogueNameTag;
     //public GameObject       dialogueCharacterNameObject;
     public TextMeshProUGUI  dialogueCharacterName;
@@ -55,70 +57,70 @@ public class MainController : MonoBehaviour {
     public Dialogue[] introDialogue = new Dialogue[]
     {
          new Dialogue ("Bridget",
-                        "We need to go save Mother right now! There's no time for this!?",
-                        "worried", "angry", 8f, 0, 1), 
+                       "We need to go save Mother right now! There's no time for this!?",
+                       "worried", "angry", 8f, 0, 1), 
 
          new Dialogue ("Cat",
-                        "What we need is to rrestore this arrea to life. Or have you forgotten that you drruids derrive your powers from nature?",
-                        "worried", "iffy", 12f, 1, 2),
+                       "What we need is to rrestore this arrea to life. Or have you forgotten that you drruids derrive your powers from nature?",
+                       "worried", "iffy", 12f, 1, 2),
 
          new Dialogue ("Bridget",
                         "I just hope this isn't a waste of time...",
-                        "worried", "iffy", 8f, 2, -1),
+                        "worried", "iffy", 8f, 2, -1)
 
     };
 
     public Dialogue[] boxDialogue = new Dialogue[]
     {
          new Dialogue ("Bridget",
-                        "Goddess, give me the strength to move these obstacles out of the way! *Hold down 'G' on the kyboard while moving to push the boxes.* ",
-                        "relaxed", "wide", 30f, 0, -1)
+                       "Goddess, give me the strength to move these obstacles out of the way! *Hold down 'G' on the kyboard while moving to push the boxes.* ",
+                       "relaxed", "wide", 30f, 0, -1)
 
 
     };
     public Dialogue[] enemyEncounterDialogue = new Dialogue[]
  {
          new Dialogue ("Cat",
-                        "Careful! Hide behind the boxes!",
-                        "worried", "iffy", 8f, 0, 1),
+                       "Careful! Hide behind the boxes!",
+                       "worried", "iffy", 8f, 0, 1),
 
          new Dialogue ("Bridget",
-                        "Can't we just run past? *Hold down 'leftshift' to sprint.*",
-                        "worried", "angry", 20f, 1, -1)
+                       "Can't we just run past? *Hold down 'leftshift' to sprint.*",
+                       "worried", "angry", 20f, 1, -1)
 
  };
 
     public Dialogue[] bridgeDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                        "That Brridge looks extrremely frragile.",
-                        "worried", "iffy", 8f, 0, 1),
+                       "That Brridge looks extrremely frragile.",
+                       "worried", "iffy", 8f, 0, 1),
 
          new Dialogue ("Bridget",
-                        "It's the fastest way across. We're taking it.",
-                        "relaxed", "angry", 10f, 1, -1)
+                       "It's the fastest way across. We're taking it.",
+                       "relaxed", "angry", 10f, 1, -1)
 
 };
     public Dialogue[] enterFarm = new Dialogue[]
 {
          new Dialogue ("Bridget",
-                        "Looks like a mass graveyard.",
-                        "worried", "relaxed", 8f, 0, 1),
+                       "Looks like a mass graveyard.",
+                       "worried", "relaxed", 8f, 0, 1),
 
          new Dialogue ("Cat",
-                        "The paths look blocked. I wonder if they were hiding something.",
-                        "excited", "angry", 12f, 1, -1)
+                       "The paths look blocked. I wonder if they were hiding something.",
+                       "excited", "angry", 12f, 1, -1)
 
 };
     public Dialogue[] labyrinthDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                        "Seems like they barricaded themselves.",
-                        "worried", "relaxed", 6f, 0, 1),
+                       "Seems like they barricaded themselves.",
+                       "worried", "relaxed", 6f, 0, 1),
 
          new Dialogue ("Bridget",
-                        "Seems like it was pointless.",
-                        "relaxed", "iffy", 6f, 1, -1)
+                       "Seems like it was pointless.",
+                       "relaxed", "iffy", 6f, 1, -1)
 
 };
     public Dialogue[] testPickupDialogue = new Dialogue[]
@@ -142,8 +144,10 @@ public class MainController : MonoBehaviour {
 
 
     // other
+    bool  tutorialDone  = false;
     bool  mapOnScreen   = false;
     bool  recapOnScreen = false;
+    float tutorialTimer = 3f;
     float mistTimer     = 0f;
     float dialogueTimer = 0f;
     int   nextDialogue  = -1;
@@ -158,6 +162,7 @@ public class MainController : MonoBehaviour {
         if (dialogueParent != null) dialogueParent.SetActive(false);
         if (recapDialogueParent != null && recapDialogue != null) {
             recapDialogueParent.SetActive(false);
+            recapDialogue.text = "";
         }
 
         //StartDialogue(testDialogue, 0, 2f);
@@ -172,27 +177,38 @@ public class MainController : MonoBehaviour {
             if (mapImage != null) mapImage.SetActive(mapOnScreen);
         }
         
-        if (Input.GetKeyDown("r")) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
 
         if (Input.GetKeyDown("tab")) {
             recapOnScreen = !recapOnScreen;
-            if (recapDialogueParent != null) recapDialogueParent.SetActive(recapOnScreen); 
+            if (recapDialogueParent != null) {
+                recapDialogueParent.SetActive(recapOnScreen);
+                if (statsParent != null) statsParent.SetActive(!recapOnScreen);
+            }; 
         }
 
+        //if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //if (Input.GetKeyDown("j")) StartDialogue(testDialogue, 2, 0f); // @DEBUG
 
+        // tutorial
+        if (tutorialDone == false) {
+            if (Input.GetKeyDown("w")             || Input.GetKeyDown("a")               || Input.GetKeyDown("s")               || Input.GetKeyDown("d")
+            ||  Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow)) {
+                tutorialDone = true;
+            }
+        }
+        if (tutorialDone == true && tutorialTimer > 0f) {
+            tutorialTimer -= Time.deltaTime;
+            if (tutorialTimer <= 0f && tutorialParent != null) tutorialParent.SetActive(false);
+        }
 
 
     }
 
     void FixedUpdate() {
 
+        // mist
+        if (mistTimer > 0f) mistTimer -= Time.deltaTime; // @CLEANUP: everything mist-related should probably in a seperate script if the game was being developed further...
 
-        if (mistTimer > 0f) mistTimer -= Time.deltaTime;
-
-        // mist & graymen
         if (SceneManager.GetActiveScene().name == "Level design 1" && mistTimer <= 0f) {
 
             if (Random.Range(0, 100) < 30) {
@@ -209,7 +225,6 @@ public class MainController : MonoBehaviour {
         }
 
         // dialogue
-        
         if (dialogueTimer >= 0f) {
             dialogueTimer = dialogueTimer - Time.deltaTime;
 
