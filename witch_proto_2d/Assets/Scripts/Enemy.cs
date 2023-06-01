@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     // references
     public GameObject  player;
            Rigidbody2D rb;
+    public Animator    animator;
 
     // constants
     float aggroRange   = 9.5f;
@@ -16,13 +17,14 @@ public class Enemy : MonoBehaviour {
     float walkSpeed    = 0.04f;
     float followSpeed  = 0.16f;
     float dashSpeed    = 0.32f;
-    float walkDistance = 7f;
+    float walkDistance = 14f;
 
     // other
     float   timer        = 0f;
     int     type         = 0;
     Vector3 walkPosition = new Vector3(0f, 0f, 0f);
     Vector2 chaseDirection;
+    float   startXScale;
 
     public string mode   = "wait";
     public bool isAttacking;
@@ -48,6 +50,12 @@ public class Enemy : MonoBehaviour {
 
         soundTimer        = 0;
         audioSource2.clip = growl3;
+
+        startXScale = transform.localScale.x;
+        SpriteRenderer[] childSprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in childSprites) {
+            if (sprite.tag == "ContainsEditorOnlySprites") sprite.enabled = false;
+        }
     }
 
 
@@ -122,14 +130,16 @@ public class Enemy : MonoBehaviour {
 
         }
 
-
         if (nextMode == "") {
 
-            // no transition
+        // state transitions:
+        // first anything general that happens no matter what state you came
+        // from, then specific code depending on which state you came from.
 
         } else if (nextMode == "wait") {
-            mode = "wait";
+            mode  = "wait";
             timer = Random.Range(2f, 20f);
+            animator.SetFloat("STATE", 0f);
             switch (mode) {
                 case "attack":
                     isAttacking = false;
@@ -141,11 +151,14 @@ public class Enemy : MonoBehaviour {
             }
         } else if (nextMode == "move") {
             mode             = "move";
-            timer            = Random.Range(3f, 4.5f); // @TODO: enemies should switch to walk when they reach their new position instead of this stupid fix -Victor
+            timer            = Random.Range(3f, 6f); // @TODO: enemies should switch to walk when they reach their new position instead of this stupid fix -Victor
             float newWalkDir = Random.Range(0, 2.0f*Mathf.PI);
             walkPosition     = new Vector3(transform.position.x + Mathf.Sin(newWalkDir)*walkDistance,
                                            transform.position.y + Mathf.Cos(newWalkDir)*walkDistance,
                                            transform.position.z);
+            animator.SetFloat("STATE", 1f);
+            if (transform.position.x + Mathf.Sin(newWalkDir)*walkDistance > transform.position.x) transform.localScale = new Vector3(-startXScale, transform.localScale.y, transform.localScale.z);
+            if (transform.position.x + Mathf.Sin(newWalkDir)*walkDistance < transform.position.x) transform.localScale = new Vector3(startXScale, transform.localScale.y, transform.localScale.z);
             switch (mode) {
                 case "wait":
                 case "move":
@@ -158,6 +171,9 @@ public class Enemy : MonoBehaviour {
             timer          = 0.85f;
             chaseDirection = (new Vector2(player.transform.position.x, player.transform.position.y)
                              -new Vector2(transform.position.x, transform.position.y)).normalized;
+            animator.SetFloat("STATE", 1f);
+            if (chaseDirection.x > 0f) transform.localScale = new Vector3(-startXScale, transform.localScale.y, transform.localScale.z);
+            if (chaseDirection.x < 0f) transform.localScale = new Vector3(startXScale, transform.localScale.y, transform.localScale.z);
             switch (mode) {
                 case "wait":
                 case "move":
@@ -168,9 +184,9 @@ public class Enemy : MonoBehaviour {
         } else if (nextMode == "stunned") {
             mode  = "stunned";
             timer = 0.63f;
+            animator.SetFloat("STATE", 0f);
             switch (mode) {
                 case "attack":
-                    break;
                 case "wait":
                 case "move":
                 case "stunned":

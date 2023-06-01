@@ -9,6 +9,7 @@ TagManager:
   - Forest
   - Swamp
   - GraveYard
+  - ContainsEditorOnlySprites
   layers:
   - Default
   - TransparentFX
