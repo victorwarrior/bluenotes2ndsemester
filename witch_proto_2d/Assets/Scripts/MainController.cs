@@ -187,6 +187,16 @@ public class MainController : MonoBehaviour {
             }; 
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            #if UNITY_STANDALONE
+                Application.Quit();
+            #endif
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+        }
+
+
         //if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //if (Input.GetKeyDown("j")) StartDialogue(testDialogue, 2, 0f); // @DEBUG
 

@@ -11,9 +11,17 @@ public class WriteDialogue : MonoBehaviour
     public GameObject burnTheKelpDialogue;
     public MainController mainScript;
 
+    public SpriteRenderer editorSprite;
+
     void Start()
     {
         mainScript = mainController.GetComponent<MainController>();
+
+        SpriteRenderer[] spritesInChildren = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in spritesInChildren) {
+            editorSprite = GetComponentsInChildren<SpriteRenderer>()[0];            
+        }
+        if (editorSprite != null) editorSprite.enabled = false;
     }
 
     // Update is called once per frame

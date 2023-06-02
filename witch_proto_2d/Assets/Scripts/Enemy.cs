@@ -171,7 +171,7 @@ public class Enemy : MonoBehaviour {
             timer          = 0.85f;
             chaseDirection = (new Vector2(player.transform.position.x, player.transform.position.y)
                              -new Vector2(transform.position.x, transform.position.y)).normalized;
-            animator.SetFloat("STATE", 1f);
+            animator.SetFloat("STATE", 2f);
             if (chaseDirection.x > 0f) transform.localScale = new Vector3(-startXScale, transform.localScale.y, transform.localScale.z);
             if (chaseDirection.x < 0f) transform.localScale = new Vector3(startXScale, transform.localScale.y, transform.localScale.z);
             switch (mode) {

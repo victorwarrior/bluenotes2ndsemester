@@ -12,6 +12,13 @@ public class GraymenSpawner : MonoBehaviour {
     // other
     public bool spawning = false;
     
+    void Start() {
+        SpriteRenderer[] editorSprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach (SpriteRenderer sprite in editorSprites) {
+            sprite.enabled = false;
+        } 
+    }
+
     void FixedUpdate() {
         if (spawning && player != null && graymanPrefab != null) {
             if (Random.Range(0, 100) < 14) {
