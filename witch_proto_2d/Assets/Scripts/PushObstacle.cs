@@ -101,7 +101,7 @@ public class PushObstacle : MonoBehaviour
     void LoopScrape() {
         Audiosource.clip   = scrape;
         Audiosource.loop   = false;
-        Audiosource.volume = 0.1f;
+        Audiosource.volume = 0.34f;
         
         if (Audiosource.isPlaying == false) {
             Audiosource.PlayOneShot(scrape, 0.4f);
