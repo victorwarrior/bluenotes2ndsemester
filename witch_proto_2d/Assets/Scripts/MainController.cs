@@ -106,7 +106,7 @@ public class MainController : MonoBehaviour {
 {
          new Dialogue ("Bridget",
                        "Looks like a mass graveyard.",
-                       "woried", "relaxed", 8f, 0, 1),
+                       "worried", "relaxed", 8f, 0, 1),
 
          new Dialogue ("Cat",
                        "The paths look blocked. I wonder if they were hiding something.",
@@ -138,7 +138,7 @@ public class MainController : MonoBehaviour {
 {
          new Dialogue ("Cat",
                         "Congratulations tester! You won! At least until the chase sequence has been implemented.",
-                        "woried", "iffy", 20f, 0, -1),
+                        "worried", "iffy", 20f, 0, -1),
 
 
 };
