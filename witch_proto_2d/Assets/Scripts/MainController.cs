@@ -62,7 +62,7 @@ public class MainController : MonoBehaviour {
                        "worried", "angry", 8f, 0, 1), 
 
          new Dialogue ("Cat",
-                       "What we need is to rrestore this arrea to life. Or have you forgotten that you drruids derrive your powers from nature?",
+                       "What we need is to restore this area to life. Or have you forgotten that you druids derive your powers from nature?",
                        "worried", "iffy", 12f, 1, 2),
 
          new Dialogue ("Bridget",
@@ -94,7 +94,7 @@ public class MainController : MonoBehaviour {
     public Dialogue[] bridgeDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                       "That Brridge looks extrremely frragile.",
+                       "That Bridge looks extremely fragile.",
                        "worried", "iffy", 8f, 0, 1),
 
          new Dialogue ("Bridget",
@@ -106,7 +106,7 @@ public class MainController : MonoBehaviour {
 {
          new Dialogue ("Bridget",
                        "Looks like a mass graveyard.",
-                       "worried", "relaxed", 8f, 0, 1),
+                       "woried", "relaxed", 8f, 0, 1),
 
          new Dialogue ("Cat",
                        "The paths look blocked. I wonder if they were hiding something.",
@@ -116,7 +116,7 @@ public class MainController : MonoBehaviour {
     public Dialogue[] labyrinthDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                       "Seems like they barricaded themselves.",
+                       "Seems like they baricaded themselves.",
                        "worried", "relaxed", 6f, 0, 1),
 
          new Dialogue ("Bridget",
@@ -127,8 +127,8 @@ public class MainController : MonoBehaviour {
     public Dialogue[] testPickupDialogue = new Dialogue[]
 {
          new Dialogue ("Cat",
-                        "Kelp. Interresting... There should be a furnace at the beach to the north. We could use the ashes frrom this to rreturn nutrrients to the soil. ",
-                        "worried", "iffy", 20f, 0, 1),
+                        "Kelp... There should be a furnace at the beach to the north. We could use the ashes from this to return nutrients to the soil. ",
+                        "woied", "iffy", 20f, 0, 1),
 
          new Dialogue ("Bridget",
                         "And then life would slowly be restored here. Perfect!",
