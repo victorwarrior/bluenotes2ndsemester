@@ -1,0 +1,109 @@
+Victor's bror:
+
+Suk. Smiler
+"man kan sikkert ikke gå ned i vandet, jeg skal sikkert ikke gå herned"
+"Jeg læste ikke!"
+Jeg missede storye, men tror godt at..."
+"Skubber man med fødderne eller..."
+Fandt "G"
+Missede tab som tooltip
+"Kan jeg skubbe den ind i ham?"
+Døde til fjender
+Mangler en death animation
+Prøver at skubbe fjender væk med kasser.
+Tester line of sight med kasser
+Ovverrasket da fjende bryder line of sight
+Det kan være jeg ikke skal gå over broen hvis dene er fragile
+Men det skal jeg så.
+"Der var en lyd"
+"Lyden var nok et checkpoint" - Mangler vi en indikator?
+"Jeg har set de her, skal heg undgå dem?"
+"Kan være jeg ikke tager skade hvis jeg ikke bevæger mig"
+"Jeg kan ikke skubbe to boxe på samme tid?"
+Ikke-gameren backseater labyrinten.
+Andreas kunne ikke finde vejen mellem stenene
+Hus er lidt fladt.
+SKubber ikke hurtigere hvis man sprinter og skubber.
+Føltes som om, der burde have været secrets til højre.
+
+Efter spillet:
+Kunne ikke se hvornår han tog skade fra spøgelser.
+- Ved ikke hvad det tredje meter gør
+
+Spørgsmål:
+Generel indtryk:
+- Ingen generelle indtryk
+Hvor færdigt virker spillet?
+- Der er noget atmosfære, kan godt lide stilen i cutouts. Men man ville ikke få meget ud af gameplay som spiller.
+Hvor imemrsed følte du dig i verdenen?
+- Visuelt og auditivt relativt immersed. Men gameplay var ikke clean. Føltes ikke så polished.
+- Spøgelser føltes halvt polished, de andre fjender gjorde ikke.
+- Boxes kunne godt se flottere ud.
+- Andreas: Musikken giver Diablo 2 vibes godt.
+- Axel: Musikken er cool.
+Var dialogen relevant?
+- Jeg læste godt... Nogen gange dialogen. Mest for at finde gameplay hints.
+- Kan godt lide minimalisme.
+- Ville gerne kunne se hvem man snakker til. - Vi mangler en model af katten
+
+Hænger gameplay stemning og historie sammen
+- Ligeglad med historien
+- Stemningen kan de godt lide
+- Hænger stemning sammen med gameplay... Måske lidt.
+- Gameplay er ikke den stærke del.
+
+Var gameplay interresant/fair
+- Monstre føltes unpredictable
+- Lagde ikke mærkke til at monster var stunned. Idle animation føltes ikke som en stun animation.
+-- Gameplay var interresant nok tila t man ville spille videre. Men vil ikke sige det var interresant.
+- Labyrinten var sej. 
+- Det var sjovt at man kunne skubbe til monstrene
+
+Hvis verdenen var større, ville du så udforske mere?
+- Ja.
+
+I kontekst af verdenen, giver animationerne så mening
+- De er okay. Det er en bestemt stil, og det er fint nok.
+- Savner mere kompleksitet i behavior og animationer, så det føles mindre som et computerspil
+- Monstre føles meget computerspils agtige.
+- Kontrast mellem at spillerkarakteren har mange animationer, men at fjenderne ikke har det.
+- Hun bevæger ikke sin tilt på kroppen når hun går op og ned.
+
+Bringer lyden dig mere ind eller ud af spilelt?
+- Ind
+
+Hvor godt kan du lide lyden?
+- Fin
+- Kunne der være lyd, når man skubber kasser. - Måske er den ikke skruet højt nok op.
+
+
+Er der nogle mangler eller noget, der var forvirrende?
+- Vidste ikke hvornår han tog skade af spøgelserne.
+- Vidste ikke han kunne gå mellem gravstenene.
+- Huset er out of place - Skal det måske bare fjernes?
+
+Hvilke slags spil kan du lide at spille?
+
+Hvilken spillertype er du?
+- Explorer
+
+Hvilke spil med historier er du mest interreseret i, elelr har haft den bedste oplevelse med
+- Elden ring
+- Kan lide når historien ikke er explicit
+- Men kan også lide mass effect og dragon age. Historie gjorde ham invested i Dragon age, men den var ikke banebrydende
+- Kan godt lide mysterier
+- IDealet er minimalistisk og environmental storytelling.
+
+Andre kommentarer?
+- Meget cool?
+- Jeg kan ikke gå bag nogle træer
+- Placeholder sten er trash.
+- Vil gerne kunne gå ud mellem træer.
+
+Karakter ud af 10
+- 7? Det er ikke færdigt
+- 5? Efter at have hørt vi ikke har tid til at lave en slutning.
+
+Hvad ville du forvente hvis der var mere gameplay/ hvordan ville du gøre spillet bedre?
+- Jeg ville ikke lave flere mechanics, men ville polishe spillet mere
+- Så det som meget nemt og trivielt, ville gerne have flere udfordringer.
