@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+//using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+
+// ***********************************************************************************
+// JUST ABOUT EVERYTHING IS COMMENTED OUT BECAUSE IT MADE THE GAME IMPOSSIBLE TO BUILD
+// ***********************************************************************************
 
 public class CameraScript : MonoBehaviour
 {
@@ -31,34 +35,34 @@ public class CameraScript : MonoBehaviour
     }
     public void ZoomOut()
     {
-        Debug.Log("Zooming out");
-        StartCoroutine(CinematicView());
+        //Debug.Log("Zooming out");
+        //StartCoroutine(CinematicView());
     }
 
     public void ZoomIn()
     {
-        StopCoroutine(CinematicView());
-        StartCoroutine(CinematicToNormalView());
+        //StopCoroutine(CinematicView());
+        //StartCoroutine(CinematicToNormalView());
     }
     public IEnumerator CinematicView()
     {
-        for (float distance = cam.orthographicSize; distance <= 32f; distance += .1f)
+        /*for (float distance = cam.orthographicSize; distance <= 32f; distance += .1f)
         {
             zoom = distance;
             cam.orthographicSize = distance;
             yield return null;
-        }
-
+        }*/
+        yield return null;
     }
     public IEnumerator CinematicToNormalView()
     {
-        for (float distance = zoom; distance >= 16f; distance -= .1f)
+        /*for (float distance = zoom; distance >= 16f; distance -= .1f)
         {
             zoom = distance;
             cam.orthographicSize = distance;
             yield return null;
-        }
-
+        }*/
+        yield return null;
     }
 }
 
