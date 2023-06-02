@@ -74,8 +74,8 @@ public class MainController : MonoBehaviour {
     public Dialogue[] boxDialogue = new Dialogue[]
     {
          new Dialogue ("Bridget",
-                       "Goddess, give me the strength to move these obstacles out of the way! *Hold down 'G' on the kyboard while moving to push the boxes.* ",
-                       "relaxed", "wide", 30f, 0, -1)
+                       "Goddess, give me the strength to move these obstacles out of the way! ",
+                       "relaxed", "wide", 12f, 0, -1)
 
 
     };
@@ -86,8 +86,8 @@ public class MainController : MonoBehaviour {
                        "worried", "iffy", 8f, 0, 1),
 
          new Dialogue ("Bridget",
-                       "Can't we just run past? *Hold down 'leftshift' to sprint.*",
-                       "worried", "angry", 20f, 1, -1)
+                       "Can't we just run past?",
+                       "worried", "angry", 8f, 1, -1)
 
  };
 
@@ -138,7 +138,7 @@ public class MainController : MonoBehaviour {
 {
          new Dialogue ("Cat",
                         "Congratulations tester! You won! At least until the chase sequence has been implemented.",
-                        "worried", "iffy", 20f, 0, -1),
+                        "woried", "iffy", 20f, 0, -1),
 
 
 };
@@ -186,16 +186,6 @@ public class MainController : MonoBehaviour {
                 if (statsParent != null) statsParent.SetActive(!recapOnScreen);
             }; 
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            #if UNITY_STANDALONE
-                Application.Quit();
-            #endif
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #endif
-        }
-
 
         //if (Input.GetKeyDown("r")) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //if (Input.GetKeyDown("j")) StartDialogue(testDialogue, 2, 0f); // @DEBUG
