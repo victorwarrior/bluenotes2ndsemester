@@ -74,8 +74,8 @@ public class MainController : MonoBehaviour {
     public Dialogue[] boxDialogue = new Dialogue[]
     {
          new Dialogue ("Bridget",
-                       "Goddess, give me the strength to move these obstacles out of the way! ",
-                       "relaxed", "wide", 12f, 0, -1)
+                       "Goddess, give me the strength to move these obstacles",
+                       "relaxed", "wide", 10f, 0, -1)
 
 
     };

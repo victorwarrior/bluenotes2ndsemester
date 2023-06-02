@@ -39,11 +39,11 @@ public class WriteDialogue : MonoBehaviour
                 Destroy(this);
 
             }
-            else if (this.gameObject.name == "DialogueBoxInfo")
-            {
-                mainScript.StartDialogue(mainScript.boxDialogue, 0, 0);
-                Destroy(this);
-            }
+            //else if (this.gameObject.name == "DialogueBoxInfo")
+            //{
+            //    mainScript.StartDialogue(mainScript.boxDialogue, 0, 0);
+            //    Destroy(this);
+            //}
             else if (this.gameObject.name == "DialogueBridge")
             {
                 mainScript.StartDialogue(mainScript.bridgeDialogue, 0, 0);
