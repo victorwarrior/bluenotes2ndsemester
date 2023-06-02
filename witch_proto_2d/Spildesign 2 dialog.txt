@@ -161,4 +161,4 @@ Bridget:
 		- Kelp. Interresting... There should be a furnace at the beach to the north. We could use the ashes frrom this to rreturn nutrrients to the soil. 
 		
 		Bridget:
-		- And that would restore life here. Perfect!
+		- And then life would slowly be restored here. Perfect!
