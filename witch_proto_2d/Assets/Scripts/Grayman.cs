@@ -34,7 +34,7 @@ public class Grayman : MonoBehaviour {
         alpha     = 0f;
         fadeIn    = true;
         fadeOut   = false;
-
+        
         //transform.position = new Vector3(player.transform.position.x + Random.Range(- 20f, 20f),
         //                                 player.transform.position.y + Random.Range(- 20f, 20f),
         //                                 transform.position.z);
@@ -80,14 +80,21 @@ public class Grayman : MonoBehaviour {
 
         // update z coordinate to be in front / behind other objects
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
-
+        
+        if(Vector3.Distance(player.transform.position , transform.position) > 4)
+        {
+            if (audioSource.isPlaying && audioSource.clip == whileDamage)
+            {
+                audioSource.Stop();
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
             player.GetComponent<Player>().hp -= 0.5f;
-            audioSource.clip = whileDamage;
+            audioSource.clip   = whileDamage;
             audioSource.volume = 0.4f;
-           // audioSource.Play();
+            audioSource.Play();
         }
     }
     
@@ -96,16 +103,5 @@ public class Grayman : MonoBehaviour {
             player.GetComponent<Player>().hp -= 0.5f;
         }
     }
-  /*  private void OnTriggerExit(Collider col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-                audioSource.Stop();
-                audioSource.clip = afterDamage;
-                audioSource.volume = 0.4f;
-                audioSource.PlayOneShot(afterDamage , 04f);
-
-        }
-    }*/
 }
 
