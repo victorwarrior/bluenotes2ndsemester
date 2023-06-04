@@ -8,6 +8,9 @@ public class Grayman : MonoBehaviour {
     // references
     public GameObject player;
     BoxCollider2D damageCollider;
+    public AudioSource audioSource;
+    public AudioClip whileDamage;
+    public AudioClip afterDamage;
 
     // constants
     float fadeSpeed = 0.01f;
@@ -82,6 +85,9 @@ public class Grayman : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
             player.GetComponent<Player>().hp -= 0.5f;
+            audioSource.clip = whileDamage;
+            audioSource.volume = 0.4f;
+           // audioSource.Play();
         }
     }
     
@@ -90,4 +96,16 @@ public class Grayman : MonoBehaviour {
             player.GetComponent<Player>().hp -= 0.5f;
         }
     }
+  /*  private void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+                audioSource.Stop();
+                audioSource.clip = afterDamage;
+                audioSource.volume = 0.4f;
+                audioSource.PlayOneShot(afterDamage , 04f);
+
+        }
+    }*/
 }
+
