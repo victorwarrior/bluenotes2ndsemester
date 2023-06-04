@@ -81,11 +81,15 @@ public class Grayman : MonoBehaviour {
         // update z coordinate to be in front / behind other objects
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         
-        if(Vector3.Distance(player.transform.position , transform.position) > 4)
+        if(Vector3.Distance(player.transform.position , transform.position) > 8)
         {
             if (audioSource.isPlaying && audioSource.clip == whileDamage)
             {
-                audioSource.Stop();
+                audioSource.volume -= 0.4f / 50f;
+                if(audioSource.volume <= 0)
+                {
+                    audioSource.Stop();
+                }
             }
         }
     }
@@ -93,7 +97,7 @@ public class Grayman : MonoBehaviour {
         if (col.gameObject.tag == "Player") {
             player.GetComponent<Player>().hp -= 0.5f;
             audioSource.clip   = whileDamage;
-            audioSource.volume = 0.4f;
+            audioSource.volume = 0.2f;
             audioSource.Play();
         }
     }
